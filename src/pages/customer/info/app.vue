@@ -56,6 +56,19 @@
 					]
 				}
 			}
+		},
+		created: function() {
+			this.init();
+		},
+		methods: {
+			init() {
+				var _$$this = this;
+				_$$this.$http.get('/api/customer/info').then((_ret) => {
+					console.log(_ret);
+				}).catch((_err) => {
+					console.log(_err);
+				})
+			}
 		}
 	}
 </script>
