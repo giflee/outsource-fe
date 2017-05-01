@@ -30,10 +30,16 @@
 			    <el-input type="textarea" v-model="ruleForm.remark"></el-input>
 			</el-form-item>
 		</el-form>
+		<el-row class="m-fix-btn">
+			<el-col :span="6" :offset="9">
+				<el-button type="primary" @click="save" class="u-maxwidth-btn">保存</el-button>
+			</el-col>
+		</el-row>
 	</div>
 </template>
 
 <script>
+	const util = require('../../../util.js')
 	export default {
 		data() {
 			return {
@@ -62,11 +68,25 @@
 		},
 		methods: {
 			init() {
+				/**
+				* 手机号的参数名字必须传tel
+				*/
+				var urlObj = util.parseQueryString(location.search);
+				urlObj.phone = urlObj.tel;
+				_.merge(this.$data.ruleForm, urlObj, true);
+			},
+			save() {
 				var _$$this = this;
-				_$$this.$http.get('/api/customer/info').then((_ret) => {
-					console.log(_ret);
-				}).catch((_err) => {
-					console.log(_err);
+				_$$this.$refs['ruleForm'].validate((valid) => {
+					if (valid) {
+						_$$this.$http.post('/api/customer/update',_$$this.$data.ruleForm).then((_ret) => {
+							console.log(_ret);
+						}).catch((_err) => {
+							console.log(_err);
+						})
+					}else{
+						return false;
+					}
 				})
 			}
 		}
@@ -74,5 +94,7 @@
 </script>
 
 <style lang="postcss">
-	
+	.u-maxwidth-btn{
+		width: 100%;
+	}
 </style>
