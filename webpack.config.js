@@ -100,7 +100,7 @@ const config = {
     noInfo: true,
     proxy: {
       '/api/*': {
-        target: 'http://0.0.0.0:3030'
+        target: 'http://59.111.98.6:8080'
       }
     }
   },
