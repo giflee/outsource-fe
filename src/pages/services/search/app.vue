@@ -2,42 +2,50 @@
 	<div id="app">
 		<div class="m-search">
 			<el-input placeholder="请输入搜索内容" icon="search" v-model="keyword"></el-input>
-			<el-row :gutter="20" type="flex">
+			<el-row :gutter="20" type="flex" class="margin-15-row">
 				<el-col :span="12">
-					<el-button type="primary" icon="search">搜索经销商</el-button>
+					<el-button type="primary" icon="search" @click="serachSell" class="fix-btn">搜索经销商</el-button>
 				</el-col>
 				<el-col :span="12">
-					<el-button type="primary" icon="search">搜索服务商</el-button>
+					<el-button type="primary" icon="search" @click="searchService" class="fix-btn">搜索服务商</el-button>
 				</el-col>
 			</el-row>
 		</div>
 		<div class="m-result">
-			<el-form label-position="left" label-width="150px">
-				<el-form-item label="业务大区">
-					<span>华南区域</span>
-				</el-form-item>
-				<el-form-item label="服务商代码">
-					<span>HN6789</span>
-				</el-form-item>
-				<el-form-item label="服务商名称">
-					<span>骏宝行</span>
-				</el-form-item>
-				<el-form-item label="服务站号">
-					<span>123465</span>
-				</el-form-item>
-				<el-form-item label="分厂">
-					<span>杭州分厂</span>
-				</el-form-item>
-				<el-form-item label="联系人">
-					<span>王明静</span>
-				</el-form-item>
-				<el-form-item label="联系电话">
-					<span>13333333333</span>
-				</el-form-item>
-				<el-form-item label="经营地址">
-					<span>杭州滨江区五菱店</span>
-				</el-form-item>
-			</el-form>
+			<el-row v-show="hasData">
+				<el-form label-position="left" label-width="150px" v-for="(item, index) in services">
+					<el-form-item label="业务大区">
+						<span>{{item.area}}</span>
+					</el-form-item>
+					<el-form-item label="服务商代码">
+						<span>{{item.dealerCode}}</span>
+					</el-form-item>
+					<el-form-item label="服务商名称">
+						<span>{{item.dealerName}}</span>
+					</el-form-item>
+					<el-form-item label="服务站号">
+						<span>{{item.serviceNo}}</span>
+					</el-form-item>
+					<el-form-item label="分厂">
+						<span>{{item.childNo}}</span>
+					</el-form-item>
+					<el-form-item label="联系人">
+						<span>{{item.linkMan}}</span>
+					</el-form-item>
+					<el-form-item label="联系电话">
+						<span>{{item.tel}}</span>
+					</el-form-item>
+					<el-form-item label="经营地址">
+						<span>{{item.addr}}</span>
+					</el-form-item>
+				</el-form>
+			</el-row>
+			<el-row class="text-center" v-show="!hasData && !firstSearch">
+				<span>抱歉，搜索不到相关信息</span>
+			</el-row>
+			<el-row class="text-center" v-show="firstSearch">
+				<span>请输入关键字进行查找</span>
+			</el-row>
 		</div>
 	</div>
 </template>
@@ -46,12 +54,72 @@
 	export default {
 		data() {
 			return {
-				keyword: ''
+				keyword: '',
+				services: [
+					{
+						"addr": "7STEv9KErx",
+						"area": "Hp27UXJv7N",
+						"dealerCode": "g8Er925Ph2",
+						"dealerName": "zUPbIQs1kQ",
+						"linkMan": "gAXGjDfAPW",
+						"tel": "IIlcaBnMtP"
+					}
+				],
+				hasData: false,
+				firstSearch: true
+			}
+		},
+		methods: {
+			serachSell() {
+				var filter = {
+					keyword: this.$data.keyword
+				}
+				this.$http.get('/api/dealer/query', filter).then((_ret) => {
+					console.log(_ret);
+					_.merge(this.$data.services, _ret.body.result, true);
+				}).catch((_err) => {
+					this.$message({
+						shoeClose: true,
+						message: _err.body.message,
+						type: 'error'
+					})
+				})
+				this.$data.firstSearch = false;
+			},
+			searchService() {
+				var filter = {
+					keyword: this.$data.keyword
+				}
+				this.$http.get('/api/facilitator/query', filter).then((_ret => {
+					console.log(_ret);
+					_ret.body.result.length > 0 ? this.$data.hasData = true : this.$data.hasData = false;
+					_.merge(this.$data.services, _ret.body.result, true);
+				})).catch((_err) => {
+					this.$message({
+						shoeClose: true,
+						message: _err.body.message,
+						type: 'error'
+					})
+					this.$data.firstSearch = false;
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="postcss">
-	
+	.fix-btn{
+		width: 100%;
+	}
+	.text-center{
+		text-align: center;
+	}
+	.m-search{
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.margin-15-row{
+		margin-top: 15px;
+		margin-bottom: 15px;	
+	}
 </style>

@@ -15,9 +15,9 @@
 			</el-form-item>
 			<el-form-item label="反馈结果" prop="callback">
 			    <el-select v-model="ruleForm.callback" placeholder="请选择反馈结果">
-			      <el-option label="请选择反馈结果" value="0"></el-option>
-			      <el-option label="无法选择" value="1"></el-option>
-			      <el-option label="确定结果" value="2"></el-option>
+			      <el-option label="请选择反馈结果" value="2"></el-option>
+			      <el-option label="无法选择" value="0"></el-option>
+			      <el-option label="确定结果" value="1"></el-option>
 			    </el-select>
 			</el-form-item>
 			<el-form-item label="意向经销商代码" prop="code">
@@ -81,8 +81,20 @@
 					if (valid) {
 						_$$this.$http.post('/api/customer/update',_$$this.$data.ruleForm).then((_ret) => {
 							console.log(_ret);
+							if (_ret.body.code != 200) {
+								this.$message({
+									shoeClose: true,
+									message: _ret.body.message,
+									type: 'error'
+								})
+							}
 						}).catch((_err) => {
 							console.log(_err);
+							this.$message({
+								shoeClose: true,
+								message: _err.body.message,
+								type: 'error'
+							})
 						})
 					}else{
 						return false;
