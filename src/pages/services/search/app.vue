@@ -74,7 +74,7 @@
 				var filter = {
 					keyword: this.$data.keyword
 				}
-				this.$http.get('/api/dealer/query', filter).then((_ret) => {
+				this.$http.post('/api/dealer/query', filter).then((_ret) => {
 					console.log(_ret);
 					_.merge(this.$data.services, _ret.body.result, true);
 				}).catch((_err) => {
@@ -90,7 +90,7 @@
 				var filter = {
 					keyword: this.$data.keyword
 				}
-				this.$http.get('/api/facilitator/query', filter).then((_ret => {
+				this.$http.post('/api/facilitator/query', filter).then((_ret => {
 					console.log(_ret);
 					_ret.body.result.length > 0 ? this.$data.hasData = true : this.$data.hasData = false;
 					_.merge(this.$data.services, _ret.body.result, true);

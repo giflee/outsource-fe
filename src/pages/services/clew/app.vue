@@ -38,22 +38,22 @@
 				<el-input v-model="ruleForm.owner_dealer_name"></el-input>
 			</el-form-item>
 			<el-form-item label="线索获取时间" porp="get_date">
-				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.get_date">
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.get_date" :editable="disabled">
 					
 				</el-date-picker>
 			</el-form-item>
 			<el-form-item label="预计购车时间" porp="predict_buy_date">
-				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_buy_date">
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_buy_date" :editable="disabled">
 					
 				</el-date-picker>
 			</el-form-item>
 			<el-form-item label="预计试驾时间" porp="predict_drive_date">
-				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_drive_date">
-					
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_drive_date" :editable="disabled">
+				
 				</el-date-picker>
 			</el-form-item>
 			<el-form-item label="预计保养时间" porp="predict_repair_date">
-				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_repair_date">
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_repair_date" :editable="disabled">
 					
 				</el-date-picker>
 			</el-form-item>
@@ -80,6 +80,7 @@
 
 <script>
 	const util = require('../../../util.js')
+	const moment = require('moment')
 	export default {
 		data() {
 			return {
@@ -104,6 +105,7 @@
 					member_cust_no:'',
 					recommender_id:''
 				},
+				disabled: false,
 				rules: {
 					cust_name: [
 						{required: true, message: '客户姓名不能为空', trigger: 'blur'}
@@ -127,8 +129,20 @@
 					if (valid) {
 						_$$this.$http.post('/api/lead/add',_$$this.$data.ruleForm).then((_ret) => {
 							console.log(_ret);
+							if (_ret.body.code != 200) {
+								this.$message({
+									shoeClose: true,
+									message: _ret.body.message,
+									type: 'error'
+								})
+							}
 						}).catch((_err) => {
 							console.log(_err);
+							this.$message({
+								shoeClose: true,
+								message: _err.body.message,
+								type: 'error'
+							})
 						})
 					}else{
 						return false;

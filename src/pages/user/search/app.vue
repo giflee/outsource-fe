@@ -2,7 +2,16 @@
 	<div id="app">
 		<el-row>
 			<el-col :span="22" :offset="1">
-				<el-input placeholder="客户中心编号/手机号码/VIN号/车牌号" v-model="keyword" icon="search"></el-input>
+				<el-input placeholder="客户中心编号/手机号码/VIN号/车牌号" v-model="keyword" class="u-ipt">
+					<el-select v-model="key" placeholder="请选择" slot="prepend" class="u-sel">
+						<el-option label="客户中心编号" value="cust_no"></el-option>
+						<el-option label="vin号" value="vin"></el-option>
+						<el-option label="手机号码" value="tel"></el-option>
+						<el-option label="车牌号" value="memberId"></el-option>
+					</el-select>
+					<!--  <template slot="prepend">Http://</template> -->
+					<el-button slot="append" icon="search" @click="getUserInfo"></el-button>
+				</el-input>
 			</el-col>
 		</el-row>
 		<el-row>
@@ -10,58 +19,58 @@
 				<el-tab-pane label="用户信息" name="first">
 					<el-form :label-position="POSITION_WAY" label-width="140px">
 						<el-form-item label="数据中心编号">
-							<el-input v-model="userInfo.cust_no"></el-input>
+							<el-input v-model="userInfo.cust_no" @blur="updateInfo('cust_no', userInfo.cust_no)"></el-input>
 						</el-form-item>
 						<el-form-item label="姓名">
-							<el-input v-model="userInfo.cust_name"></el-input>
+							<el-input v-model="userInfo.cust_name" @blur="updateInfo('cust_name', userInfo.cust_name)"></el-input>
 						</el-form-item>
 						<el-form-item label="性别">
-							<el-input v-model="userInfo.gender"></el-input>
+							<el-input v-model="userInfo.gender" @blur="updateInfo('gender', userInfo.gender)"></el-input>
 						</el-form-item>
 						<el-form-item label="电话">
-							<el-input v-model="userInfo.tel"></el-input>
+							<el-input v-model="userInfo.tel" @blur="updateInfo('tel', userInfo.tel)"></el-input>
 						</el-form-item>
 						<el-form-item label="客户来源">
-							<el-input v-model="userInfo.source_from"></el-input>
+							<el-input v-model="userInfo.source_from" @blur="updateInfo('source_from', userInfo.source_from)"></el-input>
 						</el-form-item>
 						<el-form-item label="固定电话">
-							<el-input v-model="userInfo.fixed_tel"></el-input>
+							<el-input v-model="userInfo.fixed_tel" @blur="updateInfo('fixed_tel', userInfo.fixed_tel)"></el-input>
 						</el-form-item>
 						<el-form-item label="微信号">
-							<el-input v-model="userInfo.weixin"></el-input>
+							<el-input v-model="userInfo.weixin" @blur="updateInfo('weixin', userInfo.weixin)"></el-input>
 						</el-form-item>
 						<el-form-item label="QQ号">
-							<el-input v-model="userInfo.qq"></el-input>
+							<el-input v-model="userInfo.qq" @blur="updateInfo('qq', userInfo.qq)"></el-input>
 						</el-form-item>
 						<el-form-item label="邮箱">
-							<el-input v-model="userInfo.email"></el-input>
+							<el-input v-model="userInfo.email" @blur="updateInfo('email', userInfo.email)"></el-input>
 						</el-form-item>
 						<el-form-item label="省份">
-							<el-input v-model="userInfo.province"></el-input>
+							<el-input v-model="userInfo.province" @blur="updateInfo('province', userInfo.province)"></el-input>
 						</el-form-item>
 						<el-form-item label="城市">
-							<el-input v-model="userInfo.city"></el-input>
+							<el-input v-model="userInfo.city" @blur="updateInfo('city', userInfo.city)"></el-input>
 						</el-form-item>
 						<el-form-item label="区/县">
-							<el-input v-model="userInfo.county"></el-input>
+							<el-input v-model="userInfo.county" @blur="updateInfo('county', userInfo.county)"></el-input>
 						</el-form-item>
 						<el-form-item label="使用性质">
-							<el-input v-model="userInfo.use_nature"></el-input>
+							<el-input v-model="userInfo.use_nature" @blur="updateInfo('use_nature', userInfo.use_nature)"></el-input>
 						</el-form-item>
 						<el-form-item label="行业">
-							<el-input v-model="userInfo.industry"></el-input>
+							<el-input v-model="userInfo.industry" @blur="updateInfo('industry', userInfo.industry)"></el-input>
 						</el-form-item>
 						<el-form-item label="文化水平">
-							<el-input v-model="userInfo.education"></el-input>
+							<el-input v-model="userInfo.education" @blur="updateInfo('education', userInfo.education)"></el-input>
 						</el-form-item>
 						<el-form-item label="证件类型">
-							<el-input v-model="userInfo.certificate_type"></el-input>
+							<el-input v-model="userInfo.certificate_type" @blur="updateInfo('certificate_type', userInfo.certificate_type)"></el-input>
 						</el-form-item>
 						<el-form-item label="证件号码">
-							<el-input v-model="userInfo.certificate_no"></el-input>
+							<el-input v-model="userInfo.certificate_no" @blur="updateInfo('certificate_no', userInfo.certificate_no)"></el-input>
 						</el-form-item>
 						<el-form-item label="详细地址">
-							<el-input v-model="userInfo.addr"></el-input>
+							<el-input v-model="userInfo.addr" @blur="updateInfo('addr', userInfo.addr)"></el-input>
 						</el-form-item>
 						<el-form-item label="建档日期">
 							<span>{{userInfo.build_date}}</span>
@@ -106,7 +115,7 @@
 						</el-collapse-item>
 					</el-collapse>
 				</el-tab-pane>
-				<el-tab-pane label="维保工单" name="third">
+				<el-tab-pane label="维保工单" name="third" class="scroll-content">
 					<el-collapse accordion>
 						<el-collapse-item title="2011-23-22" name="1">
 							<h3>基础信息</h3>
@@ -227,6 +236,7 @@
 				activeName: 'first',
 				POSITION_WAY: 'left',
 				initShowIndex: '0',
+				key: 'tel',
 				ruleForm: {
 					workorder_no: '',
 					area: '',
@@ -324,16 +334,18 @@
 				*/
 				var urlObj = util.parseQueryString(location.search);
 				_.merge(this.$data.userInfo, urlObj, true);
+				this.$data.keyword = urlObj.tel;
 
 				this.getUserInfo();
 			},
 			getUserInfo() {
 				var _$$this = this;
 				var filter = {
-					key: 'tel',
+					key: _$$this.key,
 					keyword: _$$this.keyword || ''
 				}
-				_$$this.$http.get('/api/user/search', filter).then((_ret) => {
+				console.log(filter);
+				_$$this.$http.post('/api/user/search', filter).then((_ret) => {
 					console.log(_ret);
 					_.merge(_$$this.$data.userInfo, _ret.body.result, true);
 				}).catch((_err) => {
@@ -348,10 +360,12 @@
 				var _$$this = this;
 				var filter = {
 					key: 'tel',
-					keyword: _$$this.keyword || ''
+					keyword: _$$this.keyword || '',
+					limit: 50,
+					offset: 0
 				}
 				if (tab.index == 2) {
-					_$$this.$http.get('/api/user/workorder/search',filter).then((_ret) => {
+					_$$this.$http.post('/api/user/workorder/search',filter).then((_ret) => {
 						console.log(_ret);
 						_.merge(_$$this.$data.ruleForm, _ret.body.result, true);
 					}).catch((_err) => {
@@ -362,9 +376,35 @@
 						})
 					})
 				}
+			},
+			updateInfo(type, value) {
+				var filter = {
+					key: type,
+					value: value
+				}
+				this.$http.post('/api/user/update', filter).then((_ret) => {
+					console.log(_ret);
+					if (_ret.body.code != 200) {
+						this.$message({
+							shoeClose: true,
+							message: _ret.body.message,
+							type: 'error'
+						})
+					}
+				}).catch((_err) => {
+					this.$message({
+						shoeClose: true,
+						message: _err.body.message,
+						type: 'error'
+					})
+				})
 			}
 		}
 	}
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+	.u-sel{
+		width: 111px;
+	}
+</style>
