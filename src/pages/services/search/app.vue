@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<div class="m-search">
-			<el-input placeholder="请输入搜索内容" icon="search" v-model="keyword"></el-input>
+			<el-input placeholder="请输入经销商/服务商关键词" icon="search" v-model="keyword"></el-input>
 			<el-row :gutter="20" type="flex" class="margin-15-row">
 				<el-col :span="12">
 					<el-button type="primary" icon="search" @click="serachSell" class="fix-btn">搜索经销商</el-button>
@@ -72,11 +72,13 @@
 		methods: {
 			serachSell() {
 				var filter = {
-					keyword: this.$data.keyword
+					keyWord: this.$data.keyword
 				}
 				this.$http.post('/api/dealer/query', filter).then((_ret) => {
 					console.log(_ret);
+					_ret.body.result.length > 0 ? this.$data.hasData = true : this.$data.hasData = false;
 					_.merge(this.$data.services, _ret.body.result, true);
+
 				}).catch((_err) => {
 					this.$message({
 						shoeClose: true,
@@ -88,7 +90,7 @@
 			},
 			searchService() {
 				var filter = {
-					keyword: this.$data.keyword
+					keyWord: this.$data.keyword
 				}
 				this.$http.post('/api/facilitator/query', filter).then((_ret => {
 					console.log(_ret);
@@ -100,8 +102,8 @@
 						message: _err.body.message,
 						type: 'error'
 					})
-					this.$data.firstSearch = false;
 				})
+				this.$data.firstSearch = false;
 			}
 		}
 	}
