@@ -14,7 +14,7 @@
 				<el-input v-model.trim="ruleForm.city"></el-input>
 			</el-form-item>
 			<el-form-item label="反馈结果" prop="callback">
-			    <el-select v-model="ruleForm.callback" placeholder="请选择反馈结果">
+			    <el-select v-model="ruleForm.callback" placeholder="请选择反馈结果" @change="selectChange">
 			      <el-option label="无法选择" value="0"></el-option>
 			      <el-option label="确定结果" value="1"></el-option>
 			    </el-select>
@@ -41,6 +41,11 @@
 	const util = require('../../../util.js')
 	export default {
 		data() {
+			var checkCode = (rule, value, callback) => {
+				if (!this.$data.ruleForm.code && !this.$data.ruleForm.agencyName) {
+					callback(new Error('意向经销商代码或名称不能为空'));
+				}
+			}
 			return {
 				ruleForm: {
 					name: '',
@@ -53,13 +58,8 @@
 					remark: ''
 				},
 				rules: {
-					code: [
-						{required: true, message: '意向经销商代码或名称不能为空', trigger: 'blur'}
-					],
-					agencyName: [
-						{required: true, message: '意向经销商代码或名称不能为空', trigger: 'blur'}
-					]
-				}
+						
+					}
 			}
 		},
 		created: function() {
@@ -99,6 +99,28 @@
 						return false;
 					}
 				})
+			},
+			selectChange() {
+				if (this.$data.ruleForm.callback == 1) {
+						var checkCode = (rule, value, callback) => {
+							if (!this.$data.ruleForm.code && !this.$data.ruleForm.agencyName) {
+								callback(new Error('意向经销商代码或名称不能为空'));
+							}else{
+								callback();
+							}
+						}
+					this.$data.rules = {
+										code: [
+												{ validator: checkCode, trigger: 'blur'}
+											],
+										agencyName: [
+											{ validator: checkCode, trigger: 'blur'}
+										]
+									}
+		
+				}else{
+					this.$data.rules = {};
+				}
 			}
 		}
 	}
