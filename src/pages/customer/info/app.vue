@@ -31,7 +31,7 @@
 		</el-form>
 		<el-row class="m-fix-btn">
 			<el-col :span="6" :offset="9">
-				<el-button type="primary" @click="save" class="u-maxwidth-btn">保存</el-button>
+				<el-button type="primary" @click="save" class="u-maxwidth-btn">提交</el-button>
 			</el-col>
 		</el-row>
 	</div>
@@ -89,7 +89,7 @@
 							}else{
 								this.$message({
 									showClose: true,
-									message: '保存成功',
+									message: '提交成功',
 									type: 'success'
 								})
 							}

@@ -13,6 +13,7 @@
 			</el-form-item>
 			<el-form-item label="性别" prop="gender">
 				<el-select v-model="ruleForm.gender" placeholder="请选择性别">
+					<el-option label="请选择" value=""></el-option>
 					<el-option label="男" value="0"></el-option>
 					<el-option label="女" value="1"></el-option>
 				</el-select>
@@ -61,6 +62,9 @@
 			<el-form-item label="意向车型" porp="inten_model">
 				<el-input v-model.trim="ruleForm.inten_model"></el-input>
 			</el-form-item>
+			<el-form-item label="客户关注颜色" porp="inten_color">
+				<el-input v-model.trim="ruleForm.inten_color"></el-input>
+			</el-form-item>
 			<el-form-item label="备注" prop="remark">
 			    <el-input type="textarea" v-model.trim="ruleForm.remark"></el-input>
 			</el-form-item>
@@ -73,7 +77,7 @@
 		</el-form>
 		<el-row class="m-fix-btn">
 			<el-col :span="6" :offset="9">
-				<el-button type="primary" @click="save" class="u-maxwidth-btn">保存</el-button>
+				<el-button type="primary" @click="save" class="u-maxwidth-btn">提交</el-button>
 			</el-col>
 		</el-row>
 	</div>
@@ -102,6 +106,7 @@
 					predict_drive_date: '',
 					predict_repair_date: '',
 					inten_model: '',
+					inten_color: '',
 					remark: '',
 					member_cust_no:'',
 					recommender_id:''
@@ -153,7 +158,7 @@
 								_$$this.$data.ruleForm.source_no = _ret.body.result;
 								this.$message({
 									showClose: true,
-									message: '保存成功',
+									message: '提交成功',
 									type: 'success'
 								})
 							}
