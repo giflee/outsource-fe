@@ -3,7 +3,7 @@
 		<el-row>
 			<el-col :span="22" :offset="1">
 				<el-input placeholder="客户中心编号/手机号码/VIN号/车牌号" v-model="keyword" class="u-ipt">
-					<el-select v-model="key" placeholder="请选择" slot="prepend" class="u-sel">
+					<el-select v-model.trim="key" placeholder="请选择" slot="prepend" class="u-sel">
 						<el-option label="客户中心编号" value="cust_no"></el-option>
 						<el-option label="vin号" value="vin"></el-option>
 						<el-option label="手机号码" value="tel"></el-option>
@@ -18,66 +18,74 @@
 				<el-tab-pane label="用户信息" name="first">
 					<el-form :label-position="POSITION_WAY" label-width="140px">
 						<el-form-item label="数据中心编号">
-							<el-input v-model="userInfo.cust_no" @blur="updateInfo('cust_no', userInfo.cust_no)"></el-input>
+							<span>{{userInfo.cust_no}}</span>
 						</el-form-item>
 						<el-form-item label="姓名">
-							<el-input v-model="userInfo.cust_name" @blur="updateInfo('cust_name', userInfo.cust_name)"></el-input>
+							<el-input v-model.trim="userInfo.cust_name" @blur="updateInfo('cust_name', userInfo.cust_name)"></el-input>
 						</el-form-item>
 						<el-form-item label="性别">
-							<el-input v-model="userInfo.gender" @blur="updateInfo('gender', userInfo.gender)"></el-input>
+							<el-select v-model="userInfo.gender" placeholder="请选择性别" @change="updateInfo('gender', userInfo.gender)">
+								<el-option label="男" :value="genderMap.man"></el-option>
+								<el-option label="女" :value="genderMap.woman"></el-option>
+							</el-select>
 						</el-form-item>
 						<el-form-item label="电话">
-							<el-input v-model="userInfo.tel" @blur="updateInfo('tel', userInfo.tel)"></el-input>
+							<span>{{userInfo.tel}}</span>
 						</el-form-item>
 						<el-form-item label="客户来源">
-							<el-input v-model="userInfo.source_from" @blur="updateInfo('source_from', userInfo.source_from)"></el-input>
+							<el-input v-model.trim="userInfo.source_from" @blur="updateInfo('source_from', userInfo.source_from)"></el-input>
 						</el-form-item>
 						<el-form-item label="固定电话">
-							<el-input v-model="userInfo.fixed_tel" @blur="updateInfo('fixed_tel', userInfo.fixed_tel)"></el-input>
+							<el-input v-model.trim="userInfo.fixed_tel" @blur="updateInfo('fixed_tel', userInfo.fixed_tel)"></el-input>
 						</el-form-item>
 						<el-form-item label="微信号">
-							<el-input v-model="userInfo.weixin" @blur="updateInfo('weixin', userInfo.weixin)"></el-input>
+							<el-input v-model.trim="userInfo.weixin" @blur="updateInfo('weixin', userInfo.weixin)"></el-input>
 						</el-form-item>
 						<el-form-item label="QQ号">
-							<el-input v-model="userInfo.qq" @blur="updateInfo('qq', userInfo.qq)"></el-input>
+							<el-input v-model.trim="userInfo.qq" @blur="updateInfo('qq', userInfo.qq)"></el-input>
 						</el-form-item>
 						<el-form-item label="邮箱">
-							<el-input v-model="userInfo.email" @blur="updateInfo('email', userInfo.email)"></el-input>
+							<el-input v-model.trim="userInfo.email" @blur="updateInfo('email', userInfo.email)"></el-input>
 						</el-form-item>
 						<el-form-item label="省份">
-							<el-input v-model="userInfo.province" @blur="updateInfo('province', userInfo.province)"></el-input>
+							<el-input v-model.trim="userInfo.province" @blur="updateInfo('province', userInfo.province)"></el-input>
 						</el-form-item>
 						<el-form-item label="城市">
-							<el-input v-model="userInfo.city" @blur="updateInfo('city', userInfo.city)"></el-input>
+							<el-input v-model.trim="userInfo.city" @blur="updateInfo('city', userInfo.city)"></el-input>
 						</el-form-item>
 						<el-form-item label="区/县">
-							<el-input v-model="userInfo.county" @blur="updateInfo('county', userInfo.county)"></el-input>
+							<el-input v-model.trim="userInfo.county" @blur="updateInfo('county', userInfo.county)"></el-input>
 						</el-form-item>
 						<el-form-item label="使用性质">
-							<el-input v-model="userInfo.use_nature" @blur="updateInfo('use_nature', userInfo.use_nature)"></el-input>
+							<el-input v-model.trim="userInfo.use_nature" @blur="updateInfo('use_nature', userInfo.use_nature)"></el-input>
 						</el-form-item>
 						<el-form-item label="行业">
-							<el-input v-model="userInfo.industry" @blur="updateInfo('industry', userInfo.industry)"></el-input>
+							<el-input v-model.trim="userInfo.industry" @blur="updateInfo('industry', userInfo.industry)"></el-input>
 						</el-form-item>
 						<el-form-item label="文化水平">
-							<el-input v-model="userInfo.education" @blur="updateInfo('education', userInfo.education)"></el-input>
+							<el-input v-model.trim="userInfo.education" @blur="updateInfo('education', userInfo.education)"></el-input>
 						</el-form-item>
 						<el-form-item label="证件类型">
-							<el-input v-model="userInfo.certificate_type" @blur="updateInfo('certificate_type', userInfo.certificate_type)"></el-input>
+							<el-select v-model="userInfo.certificate_type" placeholder="请选择性别" @change="updateInfo('certificate_type', userInfo.certificate_type)">
+								<el-option label="身份证" :value="idMap.a"></el-option>
+								<el-option label="组织结构代码" :value="idMap.b"></el-option>
+								<el-option label="税号" :value="idMap.c"></el-option>
+								<el-option label="其他特殊证件" :value="idMap.d"></el-option>
+							</el-select>
 						</el-form-item>
 						<el-form-item label="证件号码">
-							<el-input v-model="userInfo.certificate_no" @blur="updateInfo('certificate_no', userInfo.certificate_no)"></el-input>
+							<el-input v-model.trim="userInfo.certificate_no" @blur="updateInfo('certificate_no', userInfo.certificate_no)"></el-input>
 						</el-form-item>
 						<el-form-item label="详细地址">
-							<el-input v-model="userInfo.addr" @blur="updateInfo('addr', userInfo.addr)"></el-input>
+							<el-input v-model.trim="userInfo.addr" @blur="updateInfo('addr', userInfo.addr)"></el-input>
 						</el-form-item>
 						<el-form-item label="建档日期">
-							<span>{{userInfo.build_date}}</span>
+							<span>{{userInfo.build_date | formatDate}}</span>
 						</el-form-item>
 					</el-form>
 				</el-tab-pane>
 				<el-tab-pane label="车辆信息" name="second">
-					<el-collapse accordion v-for="(item, index) in userInfo.details" v-model="initShowIndex" v-show="hasCar">
+					<el-collapse accordion v-for="(item, index) in userInfo.details" v-model.trim="initShowIndex" v-show="hasCar">
 						<el-collapse-item :title="item.license_no" :name="index">
 							<el-form :label-position="POSITION_WAY" label-width="140px">
 								<el-form-item label="销售经销商代码">
@@ -235,6 +243,7 @@
 
 <script>
 	const util = require('../../../util.js')
+	const moment = require('moment')
 	export default {
 		data() {
 			return {
@@ -271,11 +280,51 @@
 					details: [
 						
 					]
+				},
+				userInfoInit: {
+					cust_no: '',
+					cust_name: '',
+					gender: '',
+					tel: '',
+					source_from: '',
+					fixed_tel: '',
+					weixin: '',
+					qq: '',
+					email: '',
+					province: '',
+					city: '',
+					county: '',
+					use_nature: '',
+					industry: '',
+					education: '',
+					certificate_type: '',
+					certificate_no: '',
+					addr: '',
+					build_date: '',
+					details: [
+						
+					]
+				},
+				genderMap: {
+					man: 0,
+					woman: 1
+				},
+				idMap: {
+					a: 0,
+					b: 1,
+					c: 2,
+					d: 3
 				}
 			}
 		},
 		created: function() {
 			this.init();
+		},
+		filters:{
+		  	formatDate: function(value) {
+		  		if (!value)  return '';
+		  		return moment(value,"YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss');
+		  	}
 		},
 		methods: {
 			init() {
@@ -303,13 +352,18 @@
 							message: _ret.body.message,
 							type: 'error'
 						})
+						return;
 					}
-					_.merge(_$$this.$data.userInfo, _ret.body.result[0], true);
-					if (_ret.body.result[0].details.length > 0) {
-						_$$this.$data.hasCar = true;
+					if (_ret.body.result.length == 0) {
+						_.merge(_$$this.$data.userInfo, _$$this.$data.userInfoInit)
+						return;
 					}else{
-						_$$this.$data.hasCar = false;
+						_.merge(_$$this.$data.userInfo, _ret.body.result[0], true);
+						if (_ret.body.result[0].details) {
+							_ret.body.result[0].details.length > 0 ? _$$this.$data.hasCar = true : _$$this.$data.hasCar = false;
+						}
 					}
+		
 				}).catch((_err) => {
 					_$$this.$message({
 						shoeClose: true,
@@ -348,14 +402,18 @@
 							type: 'error'
 						})
 					})
+				}else{
+					this.getUserInfo();
 				}
 			},
 			updateInfo(type, value) {
 				var filter = {
 					key: type,
-					value: value
+					value: value,
+					searchKey: this.key,
+					keyWord: this.keyword || ''
 				}
-				this.$http.post('/api/user/update', filter).then((_ret) => {
+				this.$http.post('/api/user/update', this.$data.userInfo).then((_ret) => {
 					console.log(_ret);
 					if (_ret.body.code != 200) {
 						this.$message({
@@ -378,6 +436,6 @@
 
 <style lang="css">
 	.u-sel{
-		width: 111px;
+		width: 141px;
 	}
 </style>

@@ -10,5 +10,11 @@ Vue.use(vueResource)
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  filters:{
+  	trim: function(value) {
+  		if (!value) return '';
+  		return value.trim();
+  	}
+  }
 })

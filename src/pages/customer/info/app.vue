@@ -2,32 +2,31 @@
 	<div id="app">
 		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
 			<el-form-item label="客户姓名" prop="name">
-				<el-input v-model="ruleForm.name"></el-input>
+				<el-input v-model.trim="ruleForm.name"></el-input>
 			</el-form-item>
 			<el-form-item label="手机" prop="phone">
-				<el-input v-model="ruleForm.phone"></el-input>
+				<el-input v-model.trim="ruleForm.phone"></el-input>
 			</el-form-item>
 			<el-form-item label="省份" prop="province">
-				<el-input v-model="ruleForm.province"></el-input>
+				<el-input v-model.trim="ruleForm.province"></el-input>
 			</el-form-item>
 			<el-form-item label="城市" prop="city">
-				<el-input v-model="ruleForm.city"></el-input>
+				<el-input v-model.trim="ruleForm.city"></el-input>
 			</el-form-item>
 			<el-form-item label="反馈结果" prop="callback">
 			    <el-select v-model="ruleForm.callback" placeholder="请选择反馈结果">
-			      <el-option label="请选择反馈结果" value="2"></el-option>
 			      <el-option label="无法选择" value="0"></el-option>
 			      <el-option label="确定结果" value="1"></el-option>
 			    </el-select>
 			</el-form-item>
 			<el-form-item label="意向经销商代码" prop="code">
-				<el-input v-model="ruleForm.code"></el-input>
+				<el-input v-model.trim="ruleForm.code"></el-input>
 			</el-form-item>
 			<el-form-item label="意向经销商名称" prop="agencyName">
-				<el-input v-model="ruleForm.agencyName"></el-input>
+				<el-input v-model.trim="ruleForm.agencyName"></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
-			    <el-input type="textarea" v-model="ruleForm.remark"></el-input>
+			    <el-input type="textarea" v-model.trim="ruleForm.remark"></el-input>
 			</el-form-item>
 		</el-form>
 		<el-row class="m-fix-btn">
@@ -48,7 +47,7 @@
 					phone: '',
 					province: '',
 					city: '',
-					callback: '',
+					callback: '0',
 					code: '',
 					agencyName: '',
 					remark: ''

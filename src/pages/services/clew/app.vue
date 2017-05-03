@@ -2,13 +2,13 @@
 	<div id="app">
 		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px">
 			<el-form-item label="线索编码" prop="source_no">
-				<el-input v-model="ruleForm.source_no"></el-input>
+				<el-input v-model.trim="ruleForm.source_no"></el-input>
 			</el-form-item>
 			<el-form-item label="客户姓名" prop="cust_name">
-				<el-input v-model="ruleForm.cust_name"></el-input>
+				<el-input v-model.trim="ruleForm.cust_name"></el-input>
 			</el-form-item>
 			<el-form-item label="手机" prop="tel">
-				<el-input v-model="ruleForm.tel"></el-input>
+				<el-input v-model.trim="ruleForm.tel"></el-input>
 			</el-form-item>
 			<el-form-item label="性别" prop="gender">
 				<el-select v-model="ruleForm.gender" placeholder="请选择性别">
@@ -17,25 +17,25 @@
 				</el-select>
 			</el-form-item>
 			<el-form-item label="来源渠道" prop="source_from">
-				<el-input v-model="ruleForm.source_from"></el-input>
+				<el-input v-model.trim="ruleForm.source_from"></el-input>
 			</el-form-item>
 			<el-form-item label="子渠道" prop="source_from_point">
-				<el-input v-model="ruleForm.source_from_point"></el-input>
+				<el-input v-model.trim="ruleForm.source_from_point"></el-input>
 			</el-form-item>
 			<el-form-item label="来源活动" prop="source_activity">
-				<el-input v-model="ruleForm.source_activity"></el-input>
+				<el-input v-model.trim="ruleForm.source_activity"></el-input>
 			</el-form-item>
 			<el-form-item label="省份" prop="province">
-				<el-input v-model="ruleForm.province"></el-input>
+				<el-input v-model.trim="ruleForm.province"></el-input>
 			</el-form-item>
 			<el-form-item label="城市" prop="city">
-				<el-input v-model="ruleForm.city"></el-input>	
+				<el-input v-model.trim="ruleForm.city"></el-input>	
 			</el-form-item>
 			<el-form-item label="意向经销商代码" prop="owner_dealer_code">
-				<el-input v-model="ruleForm.owner_dealer_code"></el-input>
+				<el-input v-model.trim="ruleForm.owner_dealer_code"></el-input>
 			</el-form-item>
 			<el-form-item label="意向经销商名称" prop="owner_dealer_name">
-				<el-input v-model="ruleForm.owner_dealer_name"></el-input>
+				<el-input v-model.trim="ruleForm.owner_dealer_name"></el-input>
 			</el-form-item>
 			<el-form-item label="线索获取时间" porp="get_date">
 				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.get_date" :editable="disabled">
@@ -58,16 +58,16 @@
 				</el-date-picker>
 			</el-form-item>
 			<el-form-item label="意向车型" porp="inten_model">
-				<el-input v-model="ruleForm.inten_model"></el-input>
+				<el-input v-model.trim="ruleForm.inten_model"></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
-			    <el-input type="textarea" v-model="ruleForm.remark"></el-input>
+			    <el-input type="textarea" v-model.trim="ruleForm.remark"></el-input>
 			</el-form-item>
 			<el-form-item label="会员客户编号" porp="member_cust_no">
-				<el-input v-model="ruleForm.member_cust_no"></el-input>
+				<el-input v-model.trim="ruleForm.member_cust_no"></el-input>
 			</el-form-item>
 			<el-form-item label="推荐人会员ID" porp="recommender_id">
-				<el-input v-model="ruleForm.recommender_id"></el-input>
+				<el-input v-model.trim="ruleForm.recommender_id"></el-input>
 			</el-form-item>
 		</el-form>
 		<el-row class="m-fix-btn">
