@@ -81,7 +81,7 @@
 
 				}).catch((_err) => {
 					this.$message({
-						shoeClose: true,
+						showClose: true,
 						message: _err.body.message,
 						type: 'error'
 					})
@@ -98,7 +98,7 @@
 					_.merge(this.$data.services, _ret.body.result, true);
 				})).catch((_err) => {
 					this.$message({
-						shoeClose: true,
+						showClose: true,
 						message: _err.body.message,
 						type: 'error'
 					})

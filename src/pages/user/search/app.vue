@@ -348,7 +348,7 @@
 					console.log(_ret);
 					if (_ret.body.code != 200) {
 						this.$message({
-							shoeClose: true,
+							showClose: true,
 							message: _ret.body.message,
 							type: 'error'
 						})
@@ -366,7 +366,7 @@
 		
 				}).catch((_err) => {
 					_$$this.$message({
-						shoeClose: true,
+						showClose: true,
 						message: _err.body.message || '',
 						type: 'error'
 					})
@@ -385,7 +385,7 @@
 						_.merge(_$$this.$data.ruleForm, _ret.body.result, true);
 						if (_ret.body.code != 200) {
 							this.$message({
-								shoeClose: true,
+								showClose: true,
 								message: _ret.body.message || '',
 								type: 'error'
 							})
@@ -397,7 +397,7 @@
 						}
 					}).catch((_err) => {
 						_$$this.$message({
-							shoeClose: true,
+							showClose: true,
 							message: _err.body.message,
 							type: 'error'
 						})
@@ -417,14 +417,14 @@
 					console.log(_ret);
 					if (_ret.body.code != 200) {
 						this.$message({
-							shoeClose: true,
+							showClose: true,
 							message: _ret.body.message || '',
 							type: 'error'
 						})
 					}
 				}).catch((_err) => {
 					this.$message({
-						shoeClose: true,
+						showClose: true,
 						message: _err.body.message,
 						type: 'error'
 					})

@@ -2,7 +2,8 @@
 	<div id="app">
 		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px">
 			<el-form-item label="线索编码" prop="source_no">
-				<el-input v-model.trim="ruleForm.source_no"></el-input>
+				<!-- <el-input v-model.trim="ruleForm.source_no"></el-input> -->
+				<span>{{ruleForm.source_no}}</span>
 			</el-form-item>
 			<el-form-item label="客户姓名" prop="cust_name">
 				<el-input v-model.trim="ruleForm.cust_name"></el-input>
@@ -125,21 +126,41 @@
 		methods: {
 			save() {
 				var _$$this = this;
+				var filter = {
+					get_date: '',
+					predict_buy_date: '',
+					predict_drive_date: '',
+					predict_repair_date: '',
+				}
+				_.merge(filter, _$$this.$data.ruleForm, true);
+				_.forIn(filter, function(value, key){
+					if (value && (key == 'get_date' || key == 'predict_buy_date' || key == 'predict_drive_date' || key == 'predict_repair_date')) {
+						filter[key] = moment(new Date(value).getTime()).format('YYYYMMDDHHmmss');
+					}
+				})
+				
 				_$$this.$refs['ruleForm'].validate((valid) => {
 					if (valid) {
-						_$$this.$http.post('/api/lead/add',_$$this.$data.ruleForm).then((_ret) => {
+						_$$this.$http.post('/api/lead/add',filter).then((_ret) => {
 							console.log(_ret);
 							if (_ret.body.code != 200) {
 								this.$message({
-									shoeClose: true,
+									showClose: true,
 									message: _ret.body.message,
 									type: 'error'
+								})
+							}else{
+								_$$this.$data.ruleForm.source_no = _ret.body.result;
+								this.$message({
+									showClose: true,
+									message: '保存成功',
+									type: 'success'
 								})
 							}
 						}).catch((_err) => {
 							console.log(_err);
 							this.$message({
-								shoeClose: true,
+								showClose: true,
 								message: _err.body.message,
 								type: 'error'
 							})

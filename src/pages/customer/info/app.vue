@@ -82,7 +82,7 @@
 							console.log(_ret);
 							if (_ret.body.code != 200) {
 								this.$message({
-									shoeClose: true,
+									showClose: true,
 									message: _ret.body.message,
 									type: 'error'
 								})
@@ -90,7 +90,7 @@
 						}).catch((_err) => {
 							console.log(_err);
 							this.$message({
-								shoeClose: true,
+								showClose: true,
 								message: _err.body.message,
 								type: 'error'
 							})
