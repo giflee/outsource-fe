@@ -7,7 +7,7 @@
 						<el-option label="客户中心编号" value="cust_no"></el-option>
 						<el-option label="vin号" value="vin"></el-option>
 						<el-option label="手机号码" value="tel"></el-option>
-						<el-option label="车牌号" value="memberId"></el-option>
+						<el-option label="会员用户ID" value="memberId"></el-option>
 					</el-select>
 					<el-button slot="append" icon="search" @click="getUserInfo"></el-button>
 				</el-input>
