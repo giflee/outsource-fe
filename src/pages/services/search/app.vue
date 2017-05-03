@@ -14,28 +14,28 @@
 		<div class="m-result">
 			<el-row v-show="hasData">
 				<el-form label-position="left" label-width="150px" v-for="(item, index) in services">
-					<el-form-item label="业务大区">
+					<el-form-item label="业务大区" v-show="item.area">
 						<span>{{item.area}}</span>
 					</el-form-item>
-					<el-form-item label="服务商代码">
+					<el-form-item label="服务商(经销商)代码" v-show="item.dealerCode">
 						<span>{{item.dealerCode}}</span>
 					</el-form-item>
-					<el-form-item label="服务商名称">
+					<el-form-item label="服务商(经销商)名称" v-show="item.dealerName">
 						<span>{{item.dealerName}}</span>
 					</el-form-item>
-					<el-form-item label="服务站号">
+					<el-form-item label="服务站号" v-show="item.serviceNo">
 						<span>{{item.serviceNo}}</span>
 					</el-form-item>
-					<el-form-item label="分厂">
+					<el-form-item label="分厂" v-show="item.childNo">
 						<span>{{item.childNo}}</span>
 					</el-form-item>
-					<el-form-item label="联系人">
+					<el-form-item label="联系人" v-show="item.linkMan">
 						<span>{{item.linkMan}}</span>
 					</el-form-item>
-					<el-form-item label="联系电话">
+					<el-form-item label="联系电话" v-show="item.tel">
 						<span>{{item.tel}}</span>
 					</el-form-item>
-					<el-form-item label="经营地址">
+					<el-form-item label="经营地址" v-show="item.addr">
 						<span>{{item.addr}}</span>
 					</el-form-item>
 				</el-form>
@@ -44,7 +44,7 @@
 				<span>抱歉，搜索不到相关信息</span>
 			</el-row>
 			<el-row class="text-center" v-show="firstSearch">
-				<span>请输入关键字进行查找</span>
+				<!-- <span>请输入关键字进行查找</span> -->
 			</el-row>
 		</div>
 	</div>
