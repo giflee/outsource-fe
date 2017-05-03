@@ -86,6 +86,12 @@
 									message: _ret.body.message,
 									type: 'error'
 								})
+							}else{
+								this.$message({
+									showClose: true,
+									message: '保存成功',
+									type: 'success'
+								})
 							}
 						}).catch((_err) => {
 							console.log(_err);
