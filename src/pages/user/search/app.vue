@@ -220,7 +220,7 @@
 									<span>{{item.item_details[0].unit_price}}</span>
 								</el-form-item>
 								<el-form-item label="费用类别/收费方式">
-									<span>{{item.item_details[0].const_type}}</span>
+									<span>{{item.item_details[0].cost_type}}</span>
 								</el-form-item>
 								<el-form-item label="操作代码">
 									<span>{{item.item_details[0].operation_code}}</span>
