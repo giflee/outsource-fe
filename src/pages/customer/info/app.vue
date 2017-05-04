@@ -58,7 +58,18 @@
 					remark: ''
 				},
 				rules: {
-						
+						name: [
+							{required: true, message: '客户姓名不能为空', trigger: 'blur'}
+						],
+						phone: [
+							{required: true, message: '手机不能为空', trigger: 'blur'}
+						],
+						province: [
+							{required: true, message: '省份不能为空', trigger: 'blur'}
+						],
+						city: [
+							{required: true, message: '城市不能为空', trigger: 'blur'}
+						]
 					}
 			}
 		},
@@ -115,7 +126,8 @@
 								callback();
 							}
 						}
-					this.$data.rules = {
+			
+					var prorules = {
 										code: [
 												{ validator: checkCode, trigger: 'blur'}
 											],
@@ -123,9 +135,24 @@
 											{ validator: checkCode, trigger: 'blur'}
 										]
 									}
+					_.merge(this.$data.rules, prorules);
 		
 				}else{
-					this.$data.rules = {};
+					var prorules = {
+									name: [
+										{required: true, message: '客户姓名不能为空', trigger: 'blur'}
+									],
+									phone: [
+										{required: true, message: '手机不能为空', trigger: 'blur'}
+									],
+									province: [
+										{required: true, message: '省份不能为空', trigger: 'blur'}
+									],
+									city: [
+										{required: true, message: '城市不能为空', trigger: 'blur'}
+									]
+								}
+					this.$data.rules = prorules;
 				}
 			}
 		}

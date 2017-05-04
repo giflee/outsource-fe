@@ -8,7 +8,7 @@
 						<el-option label="vin号" value="vin"></el-option>
 						<el-option label="手机号码" value="tel"></el-option>
 					</el-select>
-					<el-button slot="append" icon="search" @click="getUserInfo"></el-button>
+					<el-button slot="append" icon="search" @click="search"></el-button>
 				</el-input>
 			</el-col>
 		</el-row>
@@ -343,6 +343,10 @@
 
 				this.getUserInfo();
 			},
+			search() {
+				this.getUserInfo();
+				this.getWorkorderInfo();
+			},
 			getUserInfo() {
 				var _$$this = this;
 
@@ -539,5 +543,9 @@
 	.el-collapse-item__header{
 		height:34px;
 		line-height: 34px;
+	}
+
+	.el-tabs__content{
+
 	}
 </style>
