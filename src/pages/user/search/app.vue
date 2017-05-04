@@ -1,13 +1,12 @@
 <template>
 	<div id="app">
-		<el-row>
+		<el-row class="u-ipt-con">
 			<el-col :span="22" :offset="1">
-				<el-input placeholder="客户中心编号/手机号码/VIN号/车牌号" v-model="keyword" class="u-ipt">
+				<el-input placeholder="客户中心编号/手机号码/VIN号/车牌号" v-model.trim="keyword" class="u-ipt">
 					<el-select v-model.trim="key" placeholder="请选择" slot="prepend" class="u-sel">
 						<el-option label="客户中心编号" value="cust_no"></el-option>
 						<el-option label="vin号" value="vin"></el-option>
 						<el-option label="手机号码" value="tel"></el-option>
-						<el-option label="会员用户ID" value="memberId"></el-option>
 					</el-select>
 					<el-button slot="append" icon="search" @click="getUserInfo"></el-button>
 				</el-input>
@@ -66,7 +65,7 @@
 							<el-input v-model.trim="userInfo.education" @blur="updateInfo('education', userInfo.education)"></el-input>
 						</el-form-item>
 						<el-form-item label="证件类型">
-							<el-select v-model="userInfo.certificate_type" placeholder="请选择性别" @change="updateInfo('certificate_type', userInfo.certificate_type)">
+							<el-select v-model="userInfo.certificate_type" placeholder="请选择类型" @change="updateInfo('certificate_type', userInfo.certificate_type)">
 								<el-option label="身份证" :value="idMap.a"></el-option>
 								<el-option label="组织结构代码" :value="idMap.b"></el-option>
 								<el-option label="税号" :value="idMap.c"></el-option>
@@ -85,7 +84,7 @@
 					</el-form>
 				</el-tab-pane>
 				<el-tab-pane label="车辆信息" name="second">
-					<el-collapse accordion v-for="(item, index) in userInfo.details" v-model.trim="initShowIndex" v-show="hasCar">
+					<el-collapse accordion v-for="(item, index) in userInfo.details" v-model.trim="initShowIndex" v-show="hasCar" class="car-info">
 						<el-collapse-item :title="item.license_no" :name="index">
 							<el-form :label-position="POSITION_WAY" label-width="140px">
 								<el-form-item label="销售经销商代码">
@@ -121,12 +120,12 @@
 							</el-form>
 						</el-collapse-item>
 					</el-collapse>
-					<el-row v-show="!hasCar">
+					<el-row v-show="!hasCar" class="no-data">
 						<span>抱歉，搜索不到相关信息</span>
 					</el-row>
 				</el-tab-pane>
 				<el-tab-pane label="维保工单" name="third" class="scroll-content">
-					<el-collapse accordion v-show="hasWorkorder">
+					<el-collapse accordion v-show="hasWorkorder" class="car-info">
 						<el-collapse-item :title="item.in_date" name="1" v-for="(item, index) in ruleForm">
 							<h3>基础信息</h3>
 							<el-form :label-position="POSITION_WAY" label-width="140px">
@@ -232,7 +231,7 @@
 							</el-form>
 						</el-collapse-item>
 					</el-collapse>
-					<el-row v-show="!hasWorkorder">
+					<el-row v-show="!hasWorkorder" class="no-data">
 						<span>抱歉，搜索不到相关信息</span>
 					</el-row>
 				</el-tab-pane>
@@ -339,6 +338,8 @@
 			},
 			getUserInfo() {
 				var _$$this = this;
+
+				if (!(_$$this.$data.keyword)) return;
 				var filter = {
 					key: _$$this.key,
 					keyWord: _$$this.keyword || ''
@@ -375,36 +376,41 @@
 			},
 			selectTab(tab, event) {
 				var _$$this = this;
+				if (tab.index == 2) {
+					_$$this.getWorkorderInfo();
+				}else{
+					this.getUserInfo();
+				}
+			},
+			getWorkorderInfo() {
+				var _$$this = this;
+				if (!(_$$this.$data.keyword)) return;
 				var filter = {
 					key: _$$this.key,
 					keyWord: _$$this.keyword || ''
 				}
-				if (tab.index == 2) {
-					_$$this.$http.post('/api/user/workorder/search',filter).then((_ret) => {
-						console.log(_ret);
-						_.merge(_$$this.$data.ruleForm, _ret.body.result, true);
-						if (_ret.body.code != 200) {
-							this.$message({
-								showClose: true,
-								message: _ret.body.message || '',
-								type: 'error'
-							})
-						}
-						if (_ret.body.result.length > 0) {
-							_$$this.$data.hasWorkorder = true;
-						}else{
-							_$$this.$data.hasWorkorder = false;
-						}
-					}).catch((_err) => {
-						_$$this.$message({
+				_$$this.$http.post('/api/user/workorder/search',filter).then((_ret) => {
+					console.log(_ret);
+					_.merge(_$$this.$data.ruleForm, _ret.body.result, true);
+					if (_ret.body.code != 200) {
+						this.$message({
 							showClose: true,
-							message: _err.body.message,
+							message: _ret.body.message || '',
 							type: 'error'
 						})
+					}
+					if (_ret.body.result.length > 0) {
+						_$$this.$data.hasWorkorder = true;
+					}else{
+						_$$this.$data.hasWorkorder = false;
+					}
+				}).catch((_err) => {
+					_$$this.$message({
+						showClose: true,
+						message: _err.body.message,
+						type: 'error'
 					})
-				}else{
-					this.getUserInfo();
-				}
+				})
 			},
 			updateInfo(type, value) {
 				var filter = {
@@ -437,5 +443,50 @@
 <style lang="css">
 	.u-sel{
 		width: 141px;
+	}
+	#app{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.el-tabs__nav{
+		width: 100%;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.el-tabs__item{
+		width: 33.333%;
+		text-align: center;
+	}
+	.el-tabs__active-bar{
+		width: 33.333%;
+	}
+	.u-ipt-con{
+		padding-top: 20px;
+		padding-bottom: 15px;
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		background-color: #fff;
+		z-index: 100;
+
+	}
+	.el-tabs__header{
+		position: fixed;
+		top: 64px;
+		left: 0px;
+		width: 100%;
+		background-color: #fff;
+		z-index: 100;
+	}
+	.el-tabs__content{
+		margin-top: 115px;
+		z-index: 0;
+	}
+	.car-info .el-form-item{
+		margin-bottom: 0px;
+	}
+	.no-data{
+		text-align: center;
+		margin-top: 100px;
 	}
 </style>
