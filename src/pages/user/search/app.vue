@@ -124,14 +124,15 @@
 						<span>抱歉，搜索不到相关信息</span>
 					</el-row>
 				</el-tab-pane>
-				<el-tab-pane label="维保工单" name="third" class="scroll-content">
+				<el-tab-pane label="维保工单" name="third" class="scroll-content u-last">
 					<el-collapse accordion v-show="hasWorkorder" class="car-info">
-						<el-collapse-item :title="item.in_date" :name="index" v-for="(item, index) in ruleForm">
+						<el-collapse-item :title="item.in_date" :name="index" v-for="(item, index) in ruleForm" class="u-last">
 							<h3>基础信息</h3>
 							<el-form :label-position="POSITION_WAY" label-width="140px">
 								<el-form-item label="工单号">
 									<span>{{item.workorder_no}}</span>
 								</el-form-item>
+								<hr>
 								<el-form-item label="业务大区">
 									<span>{{item.area}}</span>
 								</el-form-item>
@@ -156,21 +157,24 @@
 								<el-form-item label="分厂">
 									<span>{{item.child_no}}</span>
 								</el-form-item>
+								<hr>
 								<el-form-item label="送修人/维修人">
 									<span>{{item.send_man}}</span>
 								</el-form-item>
 								<el-form-item label="送修人/维修人电话">
 									<span>{{item.send_man_tel}}</span>
 								</el-form-item>
+								<hr>
 								<el-form-item label="维修类型">
 									<span>{{item.repeat_type}}</span>
 								</el-form-item>
 								<el-form-item label="维修耗时">
-									<span>{{item.user_times}}</span>
+									<span>{{item.use_times}}</span>
 								</el-form-item>
 								<el-form-item label="VIN号">
 									<span>{{item.vin}}</span>
 								</el-form-item>
+								<hr>
 								<el-form-item label="行驶/进站里程">
 									<span>{{item.mileage}}</span>
 								</el-form-item>
@@ -180,6 +184,7 @@
 								<el-form-item label="进站日期">
 									<span>{{item.in_date}}</span>
 								</el-form-item>
+								<hr>
 								<el-form-item label="用户中心客户编号">
 									<span>{{item.cust_no}}</span>
 								</el-form-item>
@@ -187,6 +192,7 @@
 									<span>{{item.cust_name}}</span>
 								</el-form-item>
 							</el-form>
+							<hr>
 							<h3>工单配件明细</h3>
 							<el-form :label-position="POSITION_WAY" label-width="140px">
 								<el-form-item label="配件号">
@@ -205,6 +211,7 @@
 									<span>{{item.part_details[0].cost_type}}</span>
 								</el-form-item>
 							</el-form>
+							<hr>
 							<h3>工单维修项目明细</h3>
 							<el-form :label-position="POSITION_WAY" label-width="140px;">
 								<el-form-item label="维修项目代码">
@@ -440,7 +447,7 @@
 	}
 </script>
 
-<style lang="css">
+<style lang="sass">
 	.u-sel{
 		width: 141px;
 	}
@@ -461,13 +468,13 @@
 		width: 33.333%;
 	}
 	.u-ipt-con{
-		padding-top: 20px;
+		padding-top: 15px;
 		padding-bottom: 15px;
 		position: fixed;
 		top: 0px;
 		left: 0px;
-		background-color: #fff;
 		z-index: 100;
+		background-color: #f9f9f9;
 
 	}
 	.el-tabs__header{
@@ -477,9 +484,43 @@
 		width: 100%;
 		background-color: #fff;
 		z-index: 100;
+		padding-top: 22px;
+		padding-bottom: 22px;
+		.el-tabs__nav-wrap{
+			width:360px;
+			margin: 0 auto;
+			height: 34px;
+			border: 1px solid #ccc;
+			border-right: 0px;
+			.el-tabs__item{
+				line-height: 34px;
+				height: 34px;
+				border-right: 1px solid #ccc;
+			}
+			.el-form-item:last-child{
+				border-right: 1px solid red;
+			}
+			.el-tabs__active-bar{
+				display: none;
+			}
+		}
+		.el-tabs__nav{
+			margin: 0px;
+			.is-active{
+				background-color: #5092e1;
+				color: #fff;
+			}
+		}
+		.u-lat{
+			.el-tabs__item{
+				line-height: 34px;
+				height: 34px;
+				border-right: 0;
+			}
+		}
 	}
 	.el-tabs__content{
-		margin-top: 115px;
+		margin-top: 156px;
 		z-index: 0;
 	}
 	.car-info .el-form-item{
@@ -488,5 +529,15 @@
 	.no-data{
 		text-align: center;
 		margin-top: 100px;
+	}
+	hr{
+		border-top: 1px solid #e9e9e9;
+		border-bottom: 0px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.el-collapse-item__header{
+		height:34px;
+		line-height: 34px;
 	}
 </style>

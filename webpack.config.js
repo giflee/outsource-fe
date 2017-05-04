@@ -55,7 +55,7 @@ const config = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'postcss-loader'],
+          use: ['css-loader', 'postcss-loader', 'sass-loader'],
           fallback: 'style-loader'
         })
       },
