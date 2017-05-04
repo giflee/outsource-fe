@@ -126,7 +126,7 @@
 				</el-tab-pane>
 				<el-tab-pane label="维保工单" name="third" class="scroll-content">
 					<el-collapse accordion v-show="hasWorkorder" class="car-info">
-						<el-collapse-item :title="item.in_date" name="1" v-for="(item, index) in ruleForm">
+						<el-collapse-item :title="item.in_date" :name="index" v-for="(item, index) in ruleForm">
 							<h3>基础信息</h3>
 							<el-form :label-position="POSITION_WAY" label-width="140px">
 								<el-form-item label="工单号">

@@ -14,28 +14,28 @@
 		<div class="m-result">
 			<el-row v-show="hasData">
 				<el-form label-position="left" label-width="150px" v-for="(item, index) in services">
-					<el-form-item label="业务大区" v-show="item.area">
+					<el-form-item label="业务大区">
 						<span>{{item.area}}</span>
 					</el-form-item>
-					<el-form-item label="服务商(经销商)代码" v-show="item.dealerCode">
+					<el-form-item label="服务商(经销商)代码">
 						<span>{{item.dealerCode}}</span>
 					</el-form-item>
-					<el-form-item label="服务商(经销商)名称" v-show="item.dealerName">
+					<el-form-item label="服务商(经销商)名称">
 						<span>{{item.dealerName}}</span>
 					</el-form-item>
-					<el-form-item label="服务站号" v-show="item.serviceNo">
+					<el-form-item label="服务站号">
 						<span>{{item.serviceNo}}</span>
 					</el-form-item>
-					<el-form-item label="分厂" v-show="item.childNo">
+					<el-form-item label="分厂" v-show="show">
 						<span>{{item.childNo}}</span>
 					</el-form-item>
-					<el-form-item label="联系人" v-show="item.linkMan">
+					<el-form-item label="联系人" v-show="show">
 						<span>{{item.linkMan}}</span>
 					</el-form-item>
-					<el-form-item label="联系电话" v-show="item.tel">
+					<el-form-item label="联系电话">
 						<span>{{item.tel}}</span>
 					</el-form-item>
-					<el-form-item label="经营地址" v-show="item.addr">
+					<el-form-item label="经营地址">
 						<span>{{item.addr}}</span>
 					</el-form-item>
 				</el-form>
@@ -66,7 +66,8 @@
 					}
 				],
 				hasData: false,
-				firstSearch: true
+				firstSearch: true,
+				show: true
 			}
 		},
 		methods: {
@@ -85,7 +86,10 @@
 						message: _err.body.message,
 						type: 'error'
 					})
+				}).finally(() => {
+					
 				})
+				this.$data.show = false;
 				this.$data.firstSearch = false;
 			},
 			searchService() {
@@ -102,7 +106,10 @@
 						message: _err.body.message,
 						type: 'error'
 					})
+				}).finally(() => {
+					
 				})
+				this.$data.show = true;
 				this.$data.firstSearch = false;
 			}
 		}
@@ -123,5 +130,8 @@
 	.margin-15-row{
 		margin-top: 15px;
 		margin-bottom: 15px;	
+	}
+	.m-result .el-form-item{
+		margin-bottom: 0px;
 	}
 </style>
