@@ -18,9 +18,9 @@
 					<el-option label="女" value="1"></el-option>
 				</el-select>
 			</el-form-item>
-			<el-form-item label="来源渠道" prop="source_from">
+			<!-- <el-form-item label="来源渠道" prop="source_from">
 				<el-input v-model.trim="ruleForm.source_from"></el-input>
-			</el-form-item>
+			</el-form-item> -->
 			<el-form-item label="子渠道" prop="source_from_point">
 				<el-input v-model.trim="ruleForm.source_from_point"></el-input>
 			</el-form-item>
@@ -94,7 +94,7 @@
 					cust_name: '',
 					tel: '',
 					gender: '',
-					source_from: '',
+					source_from: '呼叫中心',
 					source_from_point: '',
 					source_activity: '',
 					province: '',

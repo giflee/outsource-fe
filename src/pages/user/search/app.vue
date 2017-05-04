@@ -29,7 +29,8 @@
 							</el-select>
 						</el-form-item>
 						<el-form-item label="电话">
-							<span>{{userInfo.tel}}</span>
+							<!-- <span>{{userInfo.tel}}</span> -->
+							<el-input v-model.trim="userInfo.tel" @blur="updateInfo('tel', userInfo.tel)"></el-input>
 						</el-form-item>
 						<el-form-item label="客户来源">
 							<el-input v-model.trim="userInfo.source_from" @blur="updateInfo('source_from', userInfo.source_from)"></el-input>
