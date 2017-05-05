@@ -7,6 +7,13 @@
 			<el-form-item label="手机" prop="phone">
 				<el-input v-model.trim="ruleForm.phone"></el-input>
 			</el-form-item>
+			<el-form-item label="性别" prop="gender">
+				<el-select v-model="ruleForm.gender" placeholder="请选择性别">
+					<el-option label="请选择" value=""></el-option>
+					<el-option label="男" value="0"></el-option>
+					<el-option label="女" value="1"></el-option>
+				</el-select>
+			</el-form-item>
 			<el-form-item label="省份" prop="province">
 				<el-input v-model.trim="ruleForm.province"></el-input>
 			</el-form-item>
@@ -55,7 +62,8 @@
 					callback: '0',
 					code: '',
 					agencyName: '',
-					remark: ''
+					remark: '',
+					gender: ''
 				},
 				rules: {
 						name: [

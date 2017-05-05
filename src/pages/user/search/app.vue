@@ -15,20 +15,20 @@
 		<el-row>
 			<el-tabs v-model="activeName" @tab-click="selectTab">
 				<el-tab-pane label="用户信息" name="first">
-					<el-form :label-position="POSITION_WAY" label-width="140px">
+					<el-form :label-position="POSITION_WAY" label-width="140px" :model="userInfo" :rules="rules" ref="ruleForm">
 						<el-form-item label="数据中心编号">
 							<span>{{userInfo.cust_no}}</span>
 						</el-form-item>
-						<el-form-item label="姓名">
+						<el-form-item label="姓名" prop="cust_name">
 							<el-input v-model.trim="userInfo.cust_name" @blur="updateInfo('cust_name', userInfo.cust_name)"></el-input>
 						</el-form-item>
 						<el-form-item label="性别">
-							<el-select v-model="userInfo.gender" placeholder="请选择性别" @handleOptionClick="updateInfo('gender', userInfo.gender)">
+							<el-select v-model="userInfo.gender" placeholder="请选择性别" @visible-change="changeSelect">
 								<el-option label="男" :value="genderMap.man"></el-option>
 								<el-option label="女" :value="genderMap.woman"></el-option>
 							</el-select>
 						</el-form-item>
-						<el-form-item label="电话">
+						<el-form-item label="电话" prop="tel">
 							<!-- <span>{{userInfo.tel}}</span> -->
 							<el-input v-model.trim="userInfo.tel" @blur="updateInfo('tel', userInfo.tel)"></el-input>
 						</el-form-item>
@@ -66,7 +66,7 @@
 							<el-input v-model.trim="userInfo.education" @blur="updateInfo('education', userInfo.education)"></el-input>
 						</el-form-item>
 						<el-form-item label="证件类型">
-							<el-select v-model="userInfo.certificate_type" placeholder="请选择类型" @handleOptionClick="updateInfo('certificate_type', userInfo.certificate_type)">
+							<el-select v-model="userInfo.certificate_type" placeholder="请选择类型" @visible-change="changeType">
 								<el-option label="身份证" :value="idMap.a"></el-option>
 								<el-option label="组织结构代码" :value="idMap.b"></el-option>
 								<el-option label="税号" :value="idMap.c"></el-option>
@@ -288,6 +288,14 @@
 						
 					]
 				},
+				rules:{
+					cust_name: [
+						{required: true, message: '姓名不能为空', trigger: 'blur'}
+					],
+					tel: [
+						{required: true, message: '手机不能为空', trigger: 'blur'}
+					]
+				},
 				userInfoInit: {
 					cust_no: '',
 					cust_name: '',
@@ -431,6 +439,7 @@
 					searchKey: this.key,
 					keyWord: this.keyword || ''
 				}
+
 				this.$http.post('/api/user/update', this.$data.userInfo).then((_ret) => {
 					console.log(_ret);
 					if (_ret.body.code != 200) {
@@ -447,6 +456,16 @@
 						type: 'error'
 					})
 				})
+			},
+			changeSelect(_flag) {
+				if (!_flag) {
+					this.updateInfo('gender', this.$data.userInfo.gender);
+				}
+			},
+			changeType(_flag) {
+				if (!_flag) {
+					this.updateInfo('certificate_type', this.$data.userInfo.certificate_type);
+				}
 			}
 		}
 	}
