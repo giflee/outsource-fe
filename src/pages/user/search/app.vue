@@ -2,20 +2,20 @@
 	<div id="app">
 		<el-row class="u-ipt-con">
 			<el-col :span="22" :offset="1">
-				<el-input placeholder="客户中心编号/手机号码/VIN号/车牌号" v-model.trim="keyword" class="u-ipt">
+				<el-input placeholder="请输入关键字" v-model.trim="keyword" class="u-ipt" @keyup.enter.native="search">
 					<el-select v-model.trim="key" placeholder="请选择" slot="prepend" class="u-sel">
 						<el-option label="客户中心编号" value="cust_no"></el-option>
 						<el-option label="vin号" value="vin"></el-option>
 						<el-option label="手机号码" value="tel"></el-option>
 					</el-select>
-					<el-button slot="append" icon="search" @click="search"></el-button>
+					<!-- <el-button slot="append" icon="search" @click="search"></el-button> -->
 				</el-input>
 			</el-col>
 		</el-row>
 		<el-row>
 			<el-tabs v-model="activeName" @tab-click="selectTab">
 				<el-tab-pane label="用户信息" name="first">
-					<el-form :label-position="POSITION_WAY" label-width="140px" :model="userInfo" :rules="rules" ref="ruleForm">
+					<el-form :label-position="POSITION_WAY" label-width="100px" :model="userInfo" :rules="rules" ref="ruleForm">
 						<el-form-item label="数据中心编号">
 							<span>{{userInfo.cust_no}}</span>
 						</el-form-item>
@@ -255,7 +255,7 @@
 		data() {
 			return {
 				activeName: 'first',
-				POSITION_WAY: 'left',
+				POSITION_WAY: 'right',
 				initShowIndex: '0',
 				key: 'tel',
 				hasCar: false,

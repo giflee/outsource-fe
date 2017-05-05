@@ -67,16 +67,16 @@
 				},
 				rules: {
 						name: [
-							{required: true, message: '客户姓名不能为空', trigger: 'blur'}
+							{required: true, message: '客户姓名不能为空', trigger: 'change'}
 						],
 						phone: [
-							{required: true, message: '手机不能为空', trigger: 'blur'}
+							{required: true, message: '手机不能为空', trigger: 'change'}
 						],
 						province: [
-							{required: true, message: '省份不能为空', trigger: 'blur'}
+							{required: true, message: '省份不能为空', trigger: 'change'}
 						],
 						city: [
-							{required: true, message: '城市不能为空', trigger: 'blur'}
+							{required: true, message: '城市不能为空', trigger: 'change'}
 						]
 					}
 			}
@@ -148,16 +148,16 @@
 				}else{
 					var prorules = {
 									name: [
-										{required: true, message: '客户姓名不能为空', trigger: 'blur'}
+										{required: true, message: '客户姓名不能为空', trigger: 'change'}
 									],
 									phone: [
-										{required: true, message: '手机不能为空', trigger: 'blur'}
+										{required: true, message: '手机不能为空', trigger: 'change'}
 									],
 									province: [
-										{required: true, message: '省份不能为空', trigger: 'blur'}
+										{required: true, message: '省份不能为空', trigger: 'change'}
 									],
 									city: [
-										{required: true, message: '城市不能为空', trigger: 'blur'}
+										{required: true, message: '城市不能为空', trigger: 'change'}
 									]
 								}
 					this.$data.rules = prorules;

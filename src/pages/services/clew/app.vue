@@ -114,13 +114,13 @@
 				disabled: false,
 				rules: {
 					cust_name: [
-						{required: true, message: '客户姓名不能为空', trigger: 'blur'}
+						{required: true, message: '客户姓名不能为空', trigger: 'change'}
 					],
 					tel: [
-						{required: true, message: '手机不能为空', trigger:'blur'}
+						{required: true, message: '手机不能为空', trigger: 'change'}
 					],
 					source_from: [
-						{required: true, message: '来源渠道不能为空', trigger: 'blur'}
+						{required: true, message: '来源渠道不能为空', trigger: 'change'}
 					]
 				}
 			}
