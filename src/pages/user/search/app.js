@@ -8,6 +8,7 @@ import _ from 'lodash'
 Vue.use(ElementUI)
 Vue.use(vueResource)
 
+
 new Vue({
   el: '#app',
   render: h => h(App)

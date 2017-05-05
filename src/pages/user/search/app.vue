@@ -23,7 +23,7 @@
 							<el-input v-model.trim="userInfo.cust_name" @blur="updateInfo('cust_name', userInfo.cust_name)"></el-input>
 						</el-form-item>
 						<el-form-item label="性别">
-							<el-select v-model="userInfo.gender" placeholder="请选择性别" @change="updateInfo('gender', userInfo.gender)">
+							<el-select v-model="userInfo.gender" placeholder="请选择性别" @handleOptionClick="updateInfo('gender', userInfo.gender)">
 								<el-option label="男" :value="genderMap.man"></el-option>
 								<el-option label="女" :value="genderMap.woman"></el-option>
 							</el-select>
@@ -66,7 +66,7 @@
 							<el-input v-model.trim="userInfo.education" @blur="updateInfo('education', userInfo.education)"></el-input>
 						</el-form-item>
 						<el-form-item label="证件类型">
-							<el-select v-model="userInfo.certificate_type" placeholder="请选择类型" @change="updateInfo('certificate_type', userInfo.certificate_type)">
+							<el-select v-model="userInfo.certificate_type" placeholder="请选择类型" @handleOptionClick="updateInfo('certificate_type', userInfo.certificate_type)">
 								<el-option label="身份证" :value="idMap.a"></el-option>
 								<el-option label="组织结构代码" :value="idMap.b"></el-option>
 								<el-option label="税号" :value="idMap.c"></el-option>
