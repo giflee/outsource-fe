@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
 			<el-form-item label="客户姓名" prop="name">
 				<el-input v-model.trim="ruleForm.name"></el-input>
 			</el-form-item>
@@ -159,8 +159,11 @@
 	}
 </script>
 
-<style lang="postcss">
+<style lang="sass">
 	.u-maxwidth-btn{
 		width: 100%;
+	}
+	#app{
+		padding-top: 15px;
 	}
 </style>
