@@ -173,7 +173,7 @@
 									<span>{{item.use_times}}</span>
 								</el-form-item>
 								<el-form-item label="VIN号">
-									<span v-bind:title="item.vin">{{item.vin}}</span>
+									<span v-bind:title="item.vin" class="min-width">{{item.vin}}</span>
 								</el-form-item>
 								<hr>
 								<el-form-item label="行驶/进站里程">
@@ -567,5 +567,12 @@
 
 	.el-tabs__content{
 
+	}
+	.min-width{
+		display: inline-block;
+		max-width: 155px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 </style>
