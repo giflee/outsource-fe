@@ -75,7 +75,7 @@
 				var filter = {
 					keyWord: this.$data.keyword
 				}
-				this.$http.post('/api/dealer/query', filter).then((_ret) => {
+				this.$http.post('/wl2/api/dealer/query', filter).then((_ret) => {
 					console.log(_ret);
 					_ret.body.result.length > 0 ? this.$data.hasData = true : this.$data.hasData = false;
 					_.merge(this.$data.services, _ret.body.result, true);
@@ -96,7 +96,7 @@
 				var filter = {
 					keyWord: this.$data.keyword
 				}
-				this.$http.post('/api/facilitator/query', filter).then((_ret => {
+				this.$http.post('/wl2/api/facilitator/query', filter).then((_ret => {
 					console.log(_ret);
 					_ret.body.result.length > 0 ? this.$data.hasData = true : this.$data.hasData = false;
 					_.merge(this.$data.services, _ret.body.result, true);

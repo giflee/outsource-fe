@@ -365,7 +365,7 @@
 					keyWord: _$$this.keyword || ''
 				}
 				console.log(filter);
-				_$$this.$http.post('/api/user/search', filter).then((_ret) => {
+				_$$this.$http.post('/wl2/api/user/search', filter).then((_ret) => {
 					console.log(_ret);
 					if (_ret.body.code != 200) {
 						this.$message({
@@ -409,7 +409,7 @@
 					key: _$$this.key,
 					keyWord: _$$this.keyword || ''
 				}
-				_$$this.$http.post('/api/user/workorder/search',filter).then((_ret) => {
+				_$$this.$http.post('/wl2/api/user/workorder/search',filter).then((_ret) => {
 					console.log(_ret);
 					_.merge(_$$this.$data.ruleForm, _ret.body.result, true);
 					if (_ret.body.code != 200) {
@@ -440,7 +440,7 @@
 					keyWord: this.keyword || ''
 				}
 
-				this.$http.post('/api/user/update', this.$data.userInfo).then((_ret) => {
+				this.$http.post('/wl2/api/user/update', this.$data.userInfo).then((_ret) => {
 					console.log(_ret);
 					if (_ret.body.code != 200) {
 						this.$message({

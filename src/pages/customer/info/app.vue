@@ -97,7 +97,7 @@
 				var _$$this = this;
 				_$$this.$refs['ruleForm'].validate((valid) => {
 					if (valid) {
-						_$$this.$http.post('/api/customer/update',_$$this.$data.ruleForm).then((_ret) => {
+						_$$this.$http.post('/wl2/api/customer/update',_$$this.$data.ruleForm).then((_ret) => {
 							console.log(_ret);
 							if (_ret.body.code != 200) {
 								this.$message({

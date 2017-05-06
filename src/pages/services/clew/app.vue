@@ -146,7 +146,7 @@
 				
 				_$$this.$refs['ruleForm'].validate((valid) => {
 					if (valid) {
-						_$$this.$http.post('/api/lead/add',filter).then((_ret) => {
+						_$$this.$http.post('/wl2/api/lead/add',filter).then((_ret) => {
 							console.log(_ret);
 							if (_ret.body.code != 200) {
 								this.$message({
