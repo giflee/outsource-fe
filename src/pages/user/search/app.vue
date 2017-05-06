@@ -173,7 +173,7 @@
 									<span>{{item.use_times}}</span>
 								</el-form-item>
 								<el-form-item label="VIN号">
-									<span>{{item.vin}}</span>
+									<span v-bind:title="item.vin">{{item.vin}}</span>
 								</el-form-item>
 								<hr>
 								<el-form-item label="行驶/进站里程">
@@ -214,7 +214,7 @@
 							</el-form>
 							<hr>
 							<h3>工单维修项目明细</h3>
-							<el-form :label-position="POSITION_WAY" label-width="140px;">
+							<el-form :label-position="POSITION_WAY" label-width="140px">
 								<el-form-item label="维修项目代码">
 									<span>{{item.item_details[0].item_code}}</span>
 								</el-form-item>

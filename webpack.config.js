@@ -99,7 +99,7 @@ const config = {
     historyApiFallback: false,
     noInfo: true,
     proxy: {
-      '/api/*': {
+      '/wl2/api/*': {
         target: 'http://59.111.98.6:8080'
       }
     }
