@@ -450,6 +450,7 @@
 							type: 'error'
 						})
 					}
+					this.$data.userInfo.cust_no = _ret.body.result;
 				}).catch((_err) => {
 					this.$message({
 						showClose: true,
