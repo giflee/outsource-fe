@@ -24,6 +24,7 @@
 						</el-form-item>
 						<el-form-item label="性别">
 							<el-select v-model="userInfo.gender" placeholder="请选择性别" @visible-change="changeSelect">
+								<el-option label="请选择" value=""></el-option>
 								<el-option label="男" :value="genderMap.man"></el-option>
 								<el-option label="女" :value="genderMap.woman"></el-option>
 							</el-select>
