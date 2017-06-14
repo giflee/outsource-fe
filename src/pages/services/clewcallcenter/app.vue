@@ -8,7 +8,7 @@
 				<span>{{ruleForm.cust_hot}}</span>
 			</el-form-item>
 			<el-form-item label="厂家线索渠道" prop="source_from">
-				<span>{{ruleForm.source_form}}</span>
+				<span>{{ruleForm.source_from}}</span>
 			</el-form-item>
 			<el-form-item label="意向经销商编号" prop="dealer_code">
 				<span>{{ruleForm.dealer_code}}</span>
@@ -28,18 +28,18 @@
 			<el-form-item label="性别" prop="gender">
 				<el-select v-model="ruleForm.gender" placeholder="请选择性别" @visible-change="save()">
 					<el-option label="请选择" value=""></el-option>
-					<el-option label="男" value="0"></el-option>
-					<el-option label="女" value="1"></el-option>
+					<el-option label="男" :value="genderMap.man"></el-option>
+					<el-option label="女" :value="genderMap.woman"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="来源活动" prop="source_activity">
 				<span>{{ruleForm.source_activity}}</span>
 			</el-form-item>
 			<el-form-item label="线索获取时间" prop="get_date">
-				<span>{{ruleForm.get_date}}</span>
+				<span>{{ruleForm.get_date | formatDate}}</span>
 			</el-form-item>
 			<el-form-item label="预约购车时间" prop="predict_buy_date">
-				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_buy_date" :editable="disabled">
+				<el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.predict_buy_date" :editable="disabled" @change="save()"> 
 				</el-date-picker>
 			</el-form-item>
 			<el-form-item label="省份" prop="province">
@@ -95,22 +95,23 @@
 			rules: {
 				cust_name: [
 					{required: true, message: '客户姓名不能为空', trigger: 'change'}
-				],
-				cust_hot: [
-					{required: true, message: '客户热度不能为空', trigger: 'change'}
-				],
-				source_from: [
-					{required: true, message: '线索渠道不能为空', trigger: 'change'}
-				],
-				dealer_name: [
-					{required: true, message: '经销商名称不能为空', trigger: 'change'}
 				]
-			}
+			},
+			genderMap: {
+				man: 0,
+				woman: 1
+			},
 		}
 		},
 		created: function() {
 			this.init();
 			this.getInitInfo();
+		},
+		filters:{
+		  	formatDate: function(value) {
+		  		if (!value)  return '';
+		  		return moment(value,"YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss');
+		  	}
 		},
 		methods: {
 			init() {
@@ -120,7 +121,7 @@
 			getInitInfo() {
 				var _$$this = this;
 				var filter = {
-					tel: _$$this.$data.ruleForm.tel || '13029339077'
+					tel: _$$this.$data.ruleForm.tel || ''
 				}
 				_$$this.$http.post('/wl2/api/callout/query',filter).then((_ret) => {
 					if (_ret.body.code != 200) {
@@ -131,6 +132,9 @@
 						})
 					}else{
 						_.merge(_$$this.$data.ruleForm, _ret.body.result)
+						if (_$$this.$data.ruleForm.predict_buy_date) {
+							_$$this.$data.ruleForm.predict_buy_date = moment(_$$this.$data.ruleForm.predict_buy_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
+						}
 					}
 				}).catch((_err) => {
 					console.log(_err);
