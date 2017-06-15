@@ -44,7 +44,7 @@
 			</el-form-item>
 			<el-form-item label="省份" prop="provinceArr">
 				<!-- <el-input v-model.trim="ruleForm.province" @blur="save()"></el-input> -->
-				<el-select v-model="ruleForm.province" placeholder="请选择省份" @visible-change="changeType">
+				<el-select v-model="ruleForm.province" placeholder="请选择省份" @visible-change="changeTypeProvince">
 					<el-option :label="item" :value="item" v-for="item in provinceArr"></el-option>
 				</el-select>
 			</el-form-item>
@@ -678,6 +678,14 @@
 			changeType(_flag) {
 				if (!_flag) {
 					this.save();
+				}
+			},
+			changeTypeProvince(_flag) {
+				if (!_flag) {
+					if (this.$data.ruleForm.province) {
+						var province = this.$data.ruleForm.province;
+						this.$data.ruleForm.city = this.$data.cityArr[province][0];
+					}
 				}
 			}
 		}
