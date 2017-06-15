@@ -97,7 +97,8 @@
 					remark_one: '',
 					remark_two: ''
 				},
-				disabled: false,
+				disabled: false,	
+				isFirst: false,
 				rules: {
 					cust_name: [
 						{required: true, message: '客户姓名不能为空', trigger: 'change'}
@@ -587,8 +588,9 @@
 		},
 		created: function() {
 			this.init();
-			this.getInitInfo();
-			// this.formatProvince();
+			if (this.$data.ruleForm.tel) {
+				this.getInitInfo();
+			}
 		},
 		filters:{
 		  	formatDate: function(value) {
@@ -614,6 +616,8 @@
 							type: 'error'
 						})
 					}else{
+						// 第一次加载标志位
+						_$$this.$data.isFirst = true;
 						_.merge(_$$this.$data.ruleForm, _ret.body.result)
 						if (_$$this.$data.ruleForm.predict_buy_date) {
 							_$$this.$data.ruleForm.predict_buy_date = moment(_$$this.$data.ruleForm.predict_buy_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
@@ -630,6 +634,10 @@
 			},
 			save() {
 				var _$$this = this;
+				if (_$$this.$data.isFirst) {
+					_$$this.$data.isFirst = false;
+					return;
+				}
 				var filter = {
 					predict_buy_date: ''
 				}
