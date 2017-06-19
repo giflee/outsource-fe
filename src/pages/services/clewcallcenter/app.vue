@@ -64,11 +64,11 @@
 			    <el-input type="textarea" v-model.trim="ruleForm.remark_two" @blur="save()"></el-input>
 			</el-form-item>
 		</el-form>
-		<!-- <el-row class="m-fix-btn">
+		<el-row class="m-fix-btn">
 			<el-col :span="6" :offset="9">
-				<el-button type="primary" @click="save" class="u-maxwidth-btn">提交</el-button>
+				<el-button type="primary" @click="save(true)" class="u-maxwidth-btn">提交</el-button>
 			</el-col>
-		</el-row> -->
+		</el-row>
 	</div>
 </template>
 
@@ -632,7 +632,7 @@
 					})
 				})	
 			},
-			save() {
+			save(isFromBth) {
 				var _$$this = this;
 				if (_$$this.$data.isFirst) {
 					_$$this.$data.isFirst = false;
@@ -648,7 +648,19 @@
 					}
 				})
 
-				_$$this.$http.post('/wl2/api/callout/update', filter).then((_ret) => {
+				if (isFromBth) {
+					var params = {
+						actionFrom: 1,
+						info: filter
+					}
+				}else{
+					var params = {
+						actionFrom: 0,
+						info: filter
+					}
+				}
+
+				_$$this.$http.post('/wl2/api/callout/update', params).then((_ret) => {
 						if (_ret.body.code != 200) {
 							_$$this.$message({
 								showClose: true,
