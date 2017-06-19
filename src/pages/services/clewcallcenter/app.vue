@@ -649,18 +649,12 @@
 				})
 
 				if (isFromBth) {
-					var params = {
-						actionFrom: 1,
-						info: filter
-					}
+					filter.status = 2;
 				}else{
-					var params = {
-						actionFrom: 0,
-						info: filter
-					}
+					filter.status = 1;
 				}
 
-				_$$this.$http.post('/wl2/api/callout/update', params).then((_ret) => {
+				_$$this.$http.post('/wl2/api/callout/update', filter).then((_ret) => {
 						if (_ret.body.code != 200) {
 							_$$this.$message({
 								showClose: true,
