@@ -94,10 +94,11 @@ const config = {
     })
   ],
   devServer: {
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     port: 8010,
     historyApiFallback: false,
     noInfo: true,
+    disableHostCheck: true,
     proxy: {
       '/wl2/api/*': {
         target: 'http://59.111.98.6:8080'
