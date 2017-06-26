@@ -1,0 +1,132 @@
+{
+    "statistic": [
+        {
+            "data": [
+                "TBBs9zusj0",
+                "ScBPcw9uhO",
+                "lhYIce8vRU"
+            ],
+            "name": "t8WFDjwvww"
+        },
+        {
+            "data": [
+                89058,
+                true,
+                false
+            ],
+            "name": "VmuxQCIMHR"
+        },
+        {
+            "data": [
+                48973,
+                true,
+                false
+            ],
+            "name": "l5xNgWuQqQ"
+        }
+    ],
+    "status": {
+        "sessionCount": 17806,
+        "kefuCount": 6976,
+        "queueCount": 65234,
+        "totalSessionCount": 68966,
+        "averageWaitingTime": 1498447641335,
+        "averageServiceTime": 1498447178739,
+        "leaveSessionCount": 35177,
+        "servicePercent": 62277,
+        "relativeSatisfactionPercent": 2784,
+        "evaluatePercent": 99521
+    },
+    "queue": 78707,
+    "list": [
+        {
+            "name": "ZFwlXTBZi6",
+            "sessions": "rtdXo8bcdY",
+            "messages": "8GrWhfddeo",
+            "firstReponseTime": 1498447306657,
+            "responseTime": 1498446901140,
+            "users": 94460,
+            "loginDuration": 76309,
+            "id": 72280,
+            "onlineStatus": 3477,
+            "isformal": 204,
+            "firstLoginTime": 1498446611731,
+            "sessionDuration": 17988,
+            "loginSumDuration": 59901,
+            "role": 92180,
+            "email": "qhEcc9SF@Kptyz.ewq",
+            "groupIds": [
+                46983,
+                41238,
+                5510
+            ],
+            "onlineTime": 1498446448864
+        },
+        {
+            "name": "CQ2xkeZ1Hy",
+            "sessions": "qQ8gPrYFJL",
+            "messages": "mkTEfISUZF",
+            "firstReponseTime": 1498448171799,
+            "responseTime": 1498446694440,
+            "users": 70043,
+            "loginDuration": 53903,
+            "id": 72554,
+            "onlineStatus": 29807,
+            "isformal": 10110,
+            "firstLoginTime": 1498447702381,
+            "sessionDuration": 79067,
+            "loginSumDuration": 47101,
+            "role": 94568,
+            "email": "ichVzw7BD@CB88m.yhu",
+            "groupIds": [
+                49390,
+                25513,
+                2492
+            ],
+            "onlineTime": 1498446934467
+        },
+        {
+            "name": "FoH5uXDW4R",
+            "sessions": "gTw6V3ghuw",
+            "messages": "eYCvSSJMKm",
+            "firstReponseTime": 1498446950476,
+            "responseTime": 1498447279615,
+            "users": 39208,
+            "loginDuration": 46522,
+            "id": 73057,
+            "onlineStatus": 59044,
+            "isformal": 33749,
+            "firstLoginTime": 1498448276387,
+            "sessionDuration": 21927,
+            "loginSumDuration": 46424,
+            "role": 41566,
+            "email": "dCK5Ek@Donab.fum",
+            "groupIds": [
+                31590,
+                23456,
+                23628
+            ],
+            "onlineTime": 1498447148795
+        }
+    ],
+    "callqueue": [
+        {
+            "groupName": "jymqXzdxSy",
+            "queueCount": 42645,
+            "inserviceCount": 22448,
+            "freeCount": 43157
+        },
+        {
+            "groupName": "xMLN6oYExg",
+            "queueCount": 3655,
+            "inserviceCount": 25018,
+            "freeCount": 33204
+        },
+        {
+            "groupName": "7MvJq5C3R6",
+            "queueCount": 15738,
+            "inserviceCount": 76098,
+            "freeCount": 80335
+        }
+    ]
+}

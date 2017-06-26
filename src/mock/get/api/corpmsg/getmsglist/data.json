@@ -1,0 +1,40 @@
+{
+    "code": 200,
+    "message": "lgtZN0qqiW",
+    "result": [
+        {
+            "id": 92240,
+            "staffName": "HN5NI1rSU1",
+            "createTime": 1498447163069,
+            "title": "6wfxj3uWbv",
+            "content": "QYkI9PJztI",
+            "sendCount": 41709,
+            "receiveCount": 69512,
+            "readCount": 2624,
+            "readRatio": 219
+        },
+        {
+            "id": 92492,
+            "staffName": "oMq23lnOKN",
+            "createTime": 1498448463553,
+            "title": "HY5sZrynhF",
+            "content": "vNhE8YWe1J",
+            "sendCount": 70131,
+            "receiveCount": 33142,
+            "readCount": 99171,
+            "readRatio": 65657
+        },
+        {
+            "id": 92899,
+            "staffName": "I3KgxjfmKv",
+            "createTime": 1498448405615,
+            "title": "HTVQf34Hvh",
+            "content": "2nlVRfV2Eq",
+            "sendCount": 87163,
+            "receiveCount": 51913,
+            "readCount": 43412,
+            "readRatio": 23987
+        }
+    ],
+    "total": 3
+}

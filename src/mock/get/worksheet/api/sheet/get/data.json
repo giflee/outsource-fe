@@ -1,0 +1,70 @@
+{
+    "code": 200,
+    "message": "qohLhf2Wsh",
+    "result": {
+        "id": 67593,
+        "title": "b7JXbmHdPK",
+        "actionStatus": 42785,
+        "originPerson": "g4fvJaXzMG",
+        "target": "PGu2JFxtr2",
+        "createTime": "1498446629649",
+        "modifyTime": "1498448253653",
+        "isRead": true,
+        "ext": "HwDP5aNwXZ",
+        "content": "BzhFT3HELj",
+        "realname": "XNpjDNap3c",
+        "mobile": 85480,
+        "email": "ivVj6qJ7b@IakDe.fbd",
+        "isHolding": false,
+        "attachs": [
+            {
+                "name": "PrHlQtdPaY",
+                "url": "http://zii.gmesowkhwk.szel",
+                "size": 96353
+            },
+            {
+                "name": "epK0DdE7Yc",
+                "url": "http://msv.tqpfrgtkxfu.eohns",
+                "size": 13819
+            },
+            {
+                "name": "8SMDVWptHH",
+                "url": "http://gyw.rtzeczkr.glqf",
+                "size": 78955
+            }
+        ],
+        "canPick": false,
+        "isCreator": true,
+        "priority": 99624,
+        "customField": [
+            {
+                "value": "3hXBHkAvV0",
+                "id": 68475,
+                "name": "ZShJYH3M2v",
+                "description": "5gGUVVTsZZ",
+                "type": 24612,
+                "required": 6087
+            },
+            {
+                "value": "4Vj6XHE9hY",
+                "id": 68838,
+                "name": "NpC7AJ7ew2",
+                "description": "wwmzK48goU",
+                "type": 17585,
+                "required": 45839
+            },
+            {
+                "value": "MTIY636WFp",
+                "id": 69496,
+                "name": "Y7WXUIiNFJ",
+                "description": "gihCdpBRwG",
+                "type": 59292,
+                "required": 41790
+            }
+        ],
+        "templateName": "工单模板1",
+        "sessionId": 69671,
+        "sessionType": 48451,
+        "flowStatus": 2
+    }
+}

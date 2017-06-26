@@ -1,0 +1,13 @@
+{
+    "code": 200,
+    "message": "38sALGMBQh",
+    "result": {
+        "appID": "asdfasdf",
+        "appSecret": "fasdfasdfdas",
+        "tokenUrl": "http://www.baidu.com",
+        "onlineUrl": "http://www.baidu.com",
+        "callUrl": "http://www.baidu.com",
+        "sheetUrl": "http://www.baidu.com",
+        "callSheetUrl": "http://jsv.qulyrcyjxek.dxxt"
+    }
+}

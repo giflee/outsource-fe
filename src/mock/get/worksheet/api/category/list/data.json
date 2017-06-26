@@ -1,0 +1,24 @@
+{
+    "code": 200,
+    "message": "8Rk9KHRgZK",
+    "result": [
+        {
+            "id": 80665,
+            "name": "eswzbIRPzW",
+            "parent": 95992,
+            "pinyin": "HgHuWGRiIg"
+        },
+        {
+            "id": 80752,
+            "name": "TutG56EDD4",
+            "parent": 24484,
+            "pinyin": "56jRGck47I"
+        },
+        {
+            "id": 81115,
+            "name": "JjdoaJTypB",
+            "parent": 62432,
+            "pinyin": "nJ488B68fw"
+        }
+    ]
+}

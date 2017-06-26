@@ -1,0 +1,28 @@
+{
+    "code": 200,
+    "message": "hJpXshgtcD",
+    "result": [
+        {
+            "username": "FgmOzjt2tf",
+            "startTime": 1498447676088,
+            "endTime": 1498448620170,
+            "status": 83283,
+            "duration": 94978
+        },
+        {
+            "username": "y7ph8GHqoj",
+            "startTime": 1498446605541,
+            "endTime": 1498446729999,
+            "status": 76833,
+            "duration": 70807
+        },
+        {
+            "username": "MqUT5gZYgz",
+            "startTime": 1498447888244,
+            "endTime": 1498448455232,
+            "status": 7158,
+            "duration": 37862
+        }
+    ],
+    "total": 26954
+}

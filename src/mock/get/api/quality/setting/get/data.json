@@ -1,0 +1,37 @@
+{
+    "code": 200,
+    "message": "HGAMH5LJJU",
+    "result": {
+        "banItems": [
+            {
+                "label": "辱骂客户",
+                "isDone": 0
+            },
+            {
+                "label": "辱骂客户",
+                "isDone": 0
+            },
+            {
+                "label": "辱骂客户",
+                "isDone": 0
+            }
+        ],
+        "scoreItems": [
+            {
+                "label": "服务态度",
+                "max": 10,
+                "value": 0
+            },
+            {
+                "label": "服务态度",
+                "max": 10,
+                "value": 0
+            },
+            {
+                "label": "服务态度",
+                "max": 10,
+                "value": 0
+            }
+        ]
+    }
+}

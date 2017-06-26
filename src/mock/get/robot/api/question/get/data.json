@@ -1,0 +1,30 @@
+{
+    "code": 200,
+    "message": "JSUZuQ8qHB",
+    "result": {
+        "standard": "NdvM9GrkPf",
+        "similars": [
+            "93UkfPubR9",
+            "3vsLQpFXlj",
+            "ItKQuVaAyS"
+        ],
+        "answer": "SVsMtwGsX1",
+        "categoryId": 99958,
+        "id": 100296,
+        "relatives": [
+            {
+                "name": "1La9yAN3jJ",
+                "id": 100885
+            },
+            {
+                "name": "RVM5qoblFA",
+                "id": 101388
+            },
+            {
+                "name": "6G8wtix5Zk",
+                "id": 101697
+            }
+        ],
+        "isAnswerRich": 30240
+    }
+}

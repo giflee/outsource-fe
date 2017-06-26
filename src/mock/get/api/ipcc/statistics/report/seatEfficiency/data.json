@@ -1,0 +1,49 @@
+{
+    "code": 200,
+    "message": "oHmIZObMkc",
+    "result": [
+        {
+            "username": "gbATw74of3",
+            "onlineDuration": 77529,
+            "talkingDuration": 34456,
+            "dealingDurationdealingDuration": 97422,
+            "dealingRatio": 28594,
+            "restDuration": 46,
+            "restRatio": 8192,
+            "freeTimeTotal": 46844,
+            "pendDuration": 59380,
+            "pendRatio": 52167,
+            "onMobileDuration": 25477,
+            "onSipDuration": 25635
+        },
+        {
+            "username": "PI8byXMnfi",
+            "onlineDuration": 85026,
+            "talkingDuration": 64612,
+            "dealingDurationdealingDuration": 43949,
+            "dealingRatio": 50798,
+            "restDuration": 17372,
+            "restRatio": 86069,
+            "freeTimeTotal": 86938,
+            "pendDuration": 49747,
+            "pendRatio": 34356,
+            "onMobileDuration": 82090,
+            "onSipDuration": 1781
+        },
+        {
+            "username": "eaaUmGZNux",
+            "onlineDuration": 93082,
+            "talkingDuration": 41151,
+            "dealingDurationdealingDuration": 32675,
+            "dealingRatio": 4735,
+            "restDuration": 54467,
+            "restRatio": 14060,
+            "freeTimeTotal": 99450,
+            "pendDuration": 85035,
+            "pendRatio": 80262,
+            "onMobileDuration": 15496,
+            "onSipDuration": 94863
+        }
+    ],
+    "total": 3255
+}

@@ -1,0 +1,11 @@
+{
+    "code": 200,
+    "message": "RdKTybOzMt",
+    "result": {
+        "busyStaffCount": 77875,
+        "idleStaffCount": 99944,
+        "queueSize": 11327,
+        "answeredRatio": 54412,
+        "relativeSatisfactionRatio": 32508
+    }
+}

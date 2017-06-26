@@ -1,0 +1,49 @@
+{
+    "code": 200,
+    "message": "6gJCCb1pv7",
+    "result": [
+        {
+            "timestamp": 71123,
+            "inTotal": 36898,
+            "inAnswered": 66916,
+            "inAnsweredRatio": 59865,
+            "evaluatedRatio": 931,
+            "relativeSatisfactionRatio": 35293,
+            "avgQueueingMillis": 8051,
+            "avgTalkingMillis": 51466,
+            "avgDealingMillis": 61754,
+            "avgPickCallLength": 43433,
+            "satisfied": 88078,
+            "evaluated": 72017
+        },
+        {
+            "timestamp": 36101,
+            "inTotal": 2560,
+            "inAnswered": 64176,
+            "inAnsweredRatio": 96623,
+            "evaluatedRatio": 84754,
+            "relativeSatisfactionRatio": 19798,
+            "avgQueueingMillis": 37734,
+            "avgTalkingMillis": 34361,
+            "avgDealingMillis": 7618,
+            "avgPickCallLength": 81663,
+            "satisfied": 35396,
+            "evaluated": 57774
+        },
+        {
+            "timestamp": 35605,
+            "inTotal": 9815,
+            "inAnswered": 1484,
+            "inAnsweredRatio": 16609,
+            "evaluatedRatio": 86123,
+            "relativeSatisfactionRatio": 73827,
+            "avgQueueingMillis": 72354,
+            "avgTalkingMillis": 92384,
+            "avgDealingMillis": 27331,
+            "avgPickCallLength": 95485,
+            "satisfied": 52639,
+            "evaluated": 32648
+        }
+    ],
+    "total": 53811
+}
