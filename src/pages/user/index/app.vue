@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-card class="index-card">
+    <!-- <el-card class="index-card">
       <el-button type="primary" @click="gogogo">To Customer Home Page</el-button>
       <el-button type="primary" plain @click="tototo">To User Login Page</el-button>
     </el-card>
@@ -63,7 +63,13 @@
         <br>
         <el-button plain @click="get6">get</el-button>
         <el-button plain @click="clear6">clear</el-button>
-        <p>{{mockData}}</p>
+        <p>{{mockData}}</p> -->
+        <ul
+          v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="loading"
+          infinite-scroll-distance="10">
+          <li v-for="item in list">{{ item }}</li>
+        </ul>
     </div>
 </template>
 
@@ -100,12 +106,27 @@
           }]
         },
         value2: '',
-        mockData: ''
+        mockData: '',
+        topStatus: '',
+        list: [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
         }
       },
+    created: function(){
+      // this.getList();
+    },
     methods: {
       gogogo () {
         location.assign('../customer/home.html')
+      },
+      created() {
+        // this.getList();
       },
       tototo () {
         location.assign('../user/login.html')
@@ -154,6 +175,22 @@
       clear6() {
         var _$$this = this;
         _$$this.$data.tableData = [];
+      },
+      loadMore() {
+        this.loading = true;
+        setTimeout(() => {
+          let last = this.list[this.list.length - 1];
+          for (let i = 1; i <= 10; i++) {
+            this.list.push(last + i);
+          }
+          this.loading = false;
+        }, 2500);
+      },
+      getList() {
+        this.$http.get('/robot/api/question/list').then((_ret => {
+          console.log(_ret);
+          this.$data.list = _ret.body.result;
+        }))
       }
     }
   }

@@ -105,6 +105,9 @@ const config = {
       },
       '/api/*': {
         target: 'http://127.0.0.1:8003'
+      },
+      '/robot/api/*': {
+        target: 'http://127.0.0.1:8003'
       }
     }
   },

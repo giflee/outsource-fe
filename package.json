@@ -10,6 +10,7 @@
   "dependencies": {
     "element-ui": "^1.2.8",
     "lodash": "^4.17.4",
+    "mint-ui": "^2.2.7",
     "moment": "^2.18.1",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
