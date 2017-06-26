@@ -63,6 +63,7 @@
         <br>
         <el-button plain @click="get6">get</el-button>
         <el-button plain @click="clear6">clear</el-button>
+        <p>{{mockData}}</p>
     </div>
 </template>
 
@@ -98,7 +99,8 @@
             }
           }]
         },
-        value2: ''
+        value2: '',
+        mockData: ''
         }
       },
     methods: {
@@ -140,12 +142,12 @@
 
       get6() {
         var _$$this = this;
-        this.$http.get('/api/cn_goods').then((ret => {
+        this.$http.get('/api/session/get').then((ret => {
             console.log(ret);
-            _$$this.$data.tableData = ret.body;
+            _$$this.$data.mockData = ret.body;
         }, (err) => {
             console.log(err);
-            _$$this.$data.tableData = err.body;
+            _$$this.$data.mockData = err.body;
         }))
       },
 
