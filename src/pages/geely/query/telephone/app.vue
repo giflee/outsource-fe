@@ -2,7 +2,7 @@
 	<div id="app" class="g-main">
 		<el-row :gutter="20">
 			<el-col :span="24">
-				<el-input placeholder="请输入手机号码" v-model.number="mobile" @change="checkMobile"></el-input>
+				<el-input placeholder="请输入手机号码" v-model="mobile" @input.native="checkMobile" :maxlength="11"></el-input>
 			</el-col>
 		</el-row>
 		<br>
@@ -40,10 +40,7 @@
 
 			},
 			checkMobile() {
-				this.$data.mobileTemp = (isNaN(parseInt(this.$data.mobile)) || this.$data.mobile==0)?'':parseInt(this.$data.mobile);
-				this.$data.mobile = this.$data.mobileTemp;
-				this.$forceUpdate();
-				console.log(this.$data.mobile);
+				this.$data.mobile = (isNaN(parseInt(this.$data.mobile)) || this.$data.mobile==0)?'':parseInt(this.$data.mobile);
 			}
 		}
 	}
