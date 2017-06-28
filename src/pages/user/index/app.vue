@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <el-card class="index-card">
+    <el-card class="index-card">
       <el-button type="primary" @click="gogogo">To Customer Home Page</el-button>
       <el-button type="primary" plain @click="tototo">To User Login Page</el-button>
     </el-card>
@@ -63,12 +63,13 @@
         <br>
         <el-button plain @click="get6">get</el-button>
         <el-button plain @click="clear6">clear</el-button>
-        <p>{{mockData}}</p> -->
-        <ul
+<!--         <p>{{mockData}}</p>
+ -->        
+ <ul
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="10">
-          <li v-for="item in list">{{ item }}</li>
+          <li v-for="item in list">{{ item.time }} {{ item.name }}  {{ item.status }}</li>
         </ul>
     </div>
 </template>
@@ -114,7 +115,7 @@
             3,
             4,
             5,
-            6
+            6,
           ]
         }
       },
@@ -184,7 +185,7 @@
             this.list.push(last + i);
           }
           this.loading = false;
-        }, 2500);
+        }, 1500);
       },
       getList() {
         this.$http.get('/robot/api/question/list').then((_ret => {
