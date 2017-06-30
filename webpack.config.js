@@ -103,8 +103,8 @@ const config = {
       '/wl2/api/*': {
         target: 'http://59.111.98.6:8080'
       },
-      '/api/*': {
-        target: 'http://127.0.0.1:8003'
+      '/geely/api/*': {
+        target: 'http://59.111.98.6:8081'
       },
       '/robot/api/*': {
         target: 'http://127.0.0.1:8003'
