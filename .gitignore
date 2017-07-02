@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 dist/
+geelyDist/
 nei.15834.6243c41944a6258fa3c1c2d7b057a0de/json
 nei.15834.6243c41944a6258fa3c1c2d7b057a0de/server.config.js
 src/mock/*
