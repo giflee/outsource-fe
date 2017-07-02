@@ -42,6 +42,7 @@
 					params: filter
 				}).then((_ret) => {
 					console.log(_ret);
+					debugger;
 					if(_ret.body.code == 200){
 						location.href = '/geely/worksheet/details.html?id=' + id
 					}
@@ -60,11 +61,12 @@
 <style lang="sass">
 .g-main {
 	margin: 0 auto;
-	display: table-cell;
-	vertical-align: middle; 
+    display: table-cell;
+    vertical-align: middle;
     position: absolute;
-    left: 15%;
-    top: 25%;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
 }
 .m-bind-btn {
 	width: 265px;

@@ -3,12 +3,15 @@
 	<div class="m-status">
 		<div class="m-circle">
          	<span class="m-number">1</span>
+         	<span class="m-text">未受理</span>
     	</div>
     	<div class="m-circle">
     		<span class="m-number">2</span>
+    		<span>受理中</span>
     	</div>
     	<div class="m-circle">
     		<span class="m-number">3</span>
+    		<span>已完成</span>
     	</div>
 	</div>
 	<hr>
@@ -150,17 +153,24 @@
 <style>
 .m-circle{
 	display: inline-block;
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 	border: 4px solid #2fab1a;
+	margin: 0 12px
 }
 .m-number{
 	display: block;
 	text-align: center;
-	height: 40px;
-	line-height: 40px;
+	height: 50px;
+	line-height: 50px;
 	color: #2fab1a;
+}
+.m-status{
+	margin: 0 12px;
+}
+.m-text{
+	width:40px;
 }
 .m-details .el-form-item{
 	margin: 0 12px;
@@ -176,33 +186,15 @@
 	left: 25%;
 	margin:0 -12px;
 }
-.m-details{
-	margin-bottom: 0;
-}
-.m-details input{
-	height: 25px;
-	margin-bottom: 0
-}
 .m-usermsg{
 	height:110px;
 }
-.f-usermsg .el-input{width:120px;}
-.f-usermsg .el-form-item{margin: 0;}
 .el-rate{
 	margin-top: 7px;
 }
 .el-button{
 	margin: 11px 0;
 	width: 200px;
-}
-.el-input{
-	width: 200px;
-}
-.m-circle{
-	margin: 0 15px
-}
-.m-status{
-	margin: 0 15px;
 }
 
 </style>

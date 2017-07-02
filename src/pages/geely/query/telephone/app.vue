@@ -34,7 +34,7 @@
 	export default {
 		data() {
 			return {
-				mobile: 13088883333,
+				mobile: '18668221937',
 				code: '8743',
 				getCodeResult: false,
 				codeCheckResult: false
@@ -56,6 +56,7 @@
 					params: filter
 				}).then((_ret) =>{
 					console.log(_ret);
+					debugger;
 					if(!_ret.body.result){
 						_$$this.$data.getCodeResult = true;
 					}
@@ -77,6 +78,7 @@
 					params: filter
 				}).then((_ret) =>{
 					console.log(_ret);
+					debugger;
 					if (!_ret.body.result) {
 						_$$this.$data.codeCheckResult = true;
 					}else{
@@ -111,11 +113,12 @@
 <style lang="sass">
 .g-main {
 	margin: 0 auto;
-	display: table-cell;
-	vertical-align: middle; 
+    display: table-cell;
+    vertical-align: middle;
     position: absolute;
-    left: 15%;
-    top: 25%;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
 }
 .m-bind-btn {
 	width: 265px;
