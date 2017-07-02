@@ -9,7 +9,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
 const entries = {}
 const chunks = []
 glob.sync('./src/pages/geely/**/app.js').forEach(path => {
-  const chunk = path.split('./src/pages/')[1].split('/app.js')[0]
+  const chunk = path.split('./src/pages')[1].split('/app.js')[0]
   entries[chunk] = path
   chunks.push(chunk)
 })
@@ -114,7 +114,7 @@ const config = {
   devtool: '#eval-source-map'
 }
 
-glob.sync('./src/pages/**/*.html').forEach(path => {
+glob.sync('./src/pages/geely/**/*.html').forEach(path => {
   const chunk = path.split('./src/pages/')[1].split('/app.html')[0]
   const filename = chunk + '.html'
   const htmlConf = {

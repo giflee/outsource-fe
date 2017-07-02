@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build_geely": "cross-env NODE_ENV=production webpack --config webpack.geely.config.js --progress --hide-modules"
   },
   "dependencies": {
     "element-ui": "^1.2.8",
