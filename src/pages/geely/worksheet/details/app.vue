@@ -1,9 +1,10 @@
 <template>
 <div id="app" class="g-main">
 	<div class="m-status">
+		<div class="m-line"></div>
 		<div class="m-circle">
          	<span class="m-number">1</span>
-         	<span class="m-text">未受理</span>
+         	<span>未受理</span>
     	</div>
     	<div class="m-circle">
     		<span class="m-number">2</span>
@@ -38,7 +39,7 @@
 				<span>{{ worksheetResult }}</span>
 			</el-form-item>
 			<el-form-item label="用户信息" class="m-usermsg">
-				<el-form class="f-usermsg">
+				<el-form class="f-usermsg" label-position="left">
 					<el-form-item label="姓名" label-width="68px">
 						<span>{{ userName }}</span>
 					</el-form-item>
@@ -168,26 +169,37 @@
 }
 .m-status{
 	margin: 0 12px;
+	text-align: center;
+	vertical-align: center;
+	position: relative;
 }
-.m-text{
-	width:40px;
+.m-line{
+    position: absolute;
+    left: 10%;
+    top: 40%;
+    z-index: -5;
+	width:80%;
+	height:10px;
+	background: #eee;
 }
 .m-details .el-form-item{
 	margin: 0 12px;
 }
-.f-evaluate{
-	left: 25%;
-    position: absolute;
-    width: 200px;
-}
-.f-usermsg{
-	position: absolute;
-	width: 200px;
-	left: 25%;
-	margin:0 -12px;
+.el-form-item__content{
+	margin-left: 68px; 
+	word-wrap:break-word;
 }
 .m-usermsg{
 	height:110px;
+}
+.f-usermsg{
+	margin: 0 -12px;
+}
+.m-evaluate{
+	margin: 0 12px;
+}
+.m-evaluate textarea{
+	width: 200px;
 }
 .el-rate{
 	margin-top: 7px;
@@ -196,5 +208,4 @@
 	margin: 11px 0;
 	width: 200px;
 }
-
 </style>

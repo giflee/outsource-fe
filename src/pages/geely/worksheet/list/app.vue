@@ -2,7 +2,7 @@
 	<div id="app"  class="g-main">
 		<el-table
 		:data="tableData"
-		@row-click="worksheetquery()">
+		@row-click="worksheetquery">
       		<el-table-column  label="创建时间">
       			<template scope="scope">
       				<span>{{ scope.row.createTime }}</span>
@@ -45,7 +45,6 @@ export default {
 		},
 		methods: {
 			worksheetQuery() {
-				console.log(index)
 				var _$$this = this;
 				var filter = {
 					id: _$$this.$data.worksheetno,

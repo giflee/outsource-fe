@@ -78,7 +78,6 @@
 					params: filter
 				}).then((_ret) =>{
 					console.log(_ret);
-					debugger;
 					if (!_ret.body.result) {
 						_$$this.$data.codeCheckResult = true;
 					}else{

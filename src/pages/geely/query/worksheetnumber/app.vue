@@ -42,7 +42,6 @@
 					params: filter
 				}).then((_ret) => {
 					console.log(_ret);
-					debugger;
 					if(_ret.body.code == 200){
 						location.href = '/geely/worksheet/details.html?id=' + id
 					}
