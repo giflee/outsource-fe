@@ -5,22 +5,22 @@
 		@row-click="worksheetQuery">
       		<el-table-column  label="创建时间">
       			<template scope="scope">
-      				<span>{{ scope.row.createTime }}</span>
+      				<span>{{ scope.row.createTime | time}}</span>
       			</template>
       		</el-table-column>
       		<el-table-column label="工单号">
       			<template scope="scope">
-      				<span>{{ scope.row.worksheetno }}</span>
+      				<span>{{ scope.row.id }}</span>
       			</template>
       		</el-table-column>
       		<el-table-column label="工单状态">
       			<template scope="scope">
-      				<span>{{ scope.row.status }}</span>
+      				<span>{{ scope.row.actionStatus | status}}</span>
       			</template>
       		</el-table-column>
       		<el-table-column label="评价状态">
       			<template scope="scope">
-      				<span>{{ scope.row.evaluate }}</span>
+      				<span>{{ scope.row.isEvaluated | evaluated}}</span>
       			</template>
       		</el-table-column> 
 		</el-table>
@@ -29,49 +29,72 @@
 
 <script>
 const util = require('../../../../util.js')
+const moment = require('moment')
 export default {
 	data() {
 		return {
-			tableData:[{
-				createTime:'111111',
-				worksheetno: "2718282374122",
-				status: '0',
-				evaluate: '1'
-			},
-			{
-				createTime:'111111',
-				worksheetno: "2718282374122",
-				status: '0',
-				evaluate: '1'
-			}
+			tableData:[
+
 			]
 		}
 	},
 	created: function() {
 			this.init();
+			this.getList();
 		},
-		methods: {
-			worksheetQuery(val) {
-				var _$$this = this;
-		        var filter = {
-						id: val.worksheetno
-					};
-		        _$$this.$http.get('/geely/api/ticket/get/',{
-						emulateJSON: true,
-						params: filter
-					}).then((_ret) => {
-						if(_ret.body.code == 200){
-							debugger;
-							window.location.href = '../worksheet/details.html?id=' + val.worksheetno
-						}
-					}).catch((_err) => {
-						console.log(_err);
-					})
-	      },
-			init() {
-				var urlObj = util.parseQueryString(location.search);
-			}
+	methods: {
+		worksheetQuery(val) {
+			var _$$this = this;
+	        var filter = {
+					id: val.id
+				};
+	        _$$this.$http.get('/geely/api/ticket/get/',{
+					emulateJSON: true,
+					params: filter
+				}).then((_ret) => {
+					if(_ret.body.code == 200){
+						window.location.href = '../worksheet/details.html?id=' + val.id
+					}
+				}).catch((_err) => {
+					console.log(_err);
+				})
+      },
+		init() {
+			var urlObj = util.parseQueryString(location.search);
+			this.$data.mobile = urlObj.mobile;
+		},
+		getList() {
+			var _$$this = this;
+			this.$http.get('/geely/api/worksheet/list', {
+				emulateJSON: true
+			}).then((_ret => {
+				if (_ret.body.code == 200) {
+					_.merge(_$$this.$data.tableData, _ret.body.result, true);
+				}
+			}))
 		}
+	},
+	filters: {
+		time: function(value) {
+			return moment(value).format('YYYY-MM-DD HH:mm:ss');
+		},
+		status: function(value) {
+			var map = {
+				5 : '未受理',
+				10 : '受理中',
+				20 : '已完结',
+				25 : '已驳回'
+			}
+			return map[value];
+		},
+		evaluated: function(value) {
+			var map = {
+				false : '未评价',
+				true : '已评价'
+			}
+			return map[value];
+		}
+	}
 }
 
 </script>

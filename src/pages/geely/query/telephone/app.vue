@@ -34,8 +34,8 @@
 	export default {
 		data() {
 			return {
-				mobile: '18668221937',
-				code: '8743',
+				mobile: '',
+				code: '',
 				getCodeResult: false,
 				codeCheckResult: false,
 				codeBtnText: '验证码',
@@ -85,22 +85,8 @@
 					if (!_ret.body.result) {
 						_$$this.$data.codeCheckResult = true;
 					}else{
-						//绑定手机号成功，请求手机号绑定的订单列表
-						_$$this.$http.get('/geely/api/worksheet/list/',{
-							emulateJSON: true,
-							params: _$$this.$data.mobile
-						}).then((_ret) =>{
-							console.log(_ret);
-							if (!_ret.body.result) {
-								//根据错误码，反馈对应的错误信息
-								console.log("sorry!!!")
-							}else{
-								//请求列表成功，跳转到对应的列表页面
-								location.href = '/geely/worksheet/list.html'
-							}
-						}).catch((_err) =>{
-							console.log(_err);
-						})
+						// 验证成功跳转
+						location.href = '/geely/worksheet/list.html?mobile=' + _$$this.$data.mobile;
 					}
 				}).catch((_err) =>{
 					console.log(_err);
