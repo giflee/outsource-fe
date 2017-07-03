@@ -37,6 +37,7 @@
 			return {
 				mobile: '',
 				code: '',
+				phoneCheckResult: false,
 				codeCheckResult: false,
 				codeBtnText: '验证码',
 				canCode: false
@@ -57,7 +58,6 @@
 				}).then((_ret) =>{
 					console.log(_ret);
 					if(!_ret.body.result){
-						_$$this.$data.codeCheckResult = true;
 					}
 					else{
 						console.log("success");

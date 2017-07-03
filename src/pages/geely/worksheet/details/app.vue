@@ -20,31 +20,34 @@
 		<el-form>
 			<el-form-item label="工单编号">
 				<template>
-					<span>{{ worksheetno }}</span>
+					<span>{{ detailsData.id }}</span>
       			</template>
 			</el-form-item>
 			<el-form-item label="创建时间">
-				<span>{{ createTime }}</span>
+				<span>{{ detailsData.createTime | time}}</span>
 			</el-form-item>
 			<el-form-item label="工单分类">
-				<span>{{ worksheetType }}</span>
+				<span>{{ detailsData.typeStr }}</span>
 				</el-form-item>
 			<el-form-item label="工单状态">
-				<span>{{ worksheetStatus }}</span>
+				<span>{{ detailsData.status | status}}</span>
 			</el-form-item>
 			<el-form-item label="工单详情">
-				<span>{{ worksheetDetails }}</span>
+				<span>{{ detailsData.content }}</span>
+			</el-form-item>
+			<el-form-item label="处理结果">
+				<span>{{ detailsData.comment }}</span>
 			</el-form-item>
 			<el-form-item label="用户信息" class="m-usermsg">
 				<el-form class="f-usermsg" label-position="left">
 					<el-form-item label="姓名" label-width="68px">
-						<span>{{ userName }}</span>
+						<span>{{ detailsData.userName }}</span>
 					</el-form-item>
 					<el-form-item label="手机号码" label-width="68px">
-						<span>{{ userPhone }}</span>
+						<span>{{ detailsData.userMobile }}</span>
 					</el-form-item>
 					<el-form-item label="邮箱" label-width="68px">
-						<span>{{ userMail }}</span>
+						<span>{{ detailsData.userMail }}</span>
 					</el-form-item>
 				</el-form>
 			</el-form-item>
@@ -57,19 +60,19 @@
 				<el-form class="f-evaluate">
 					<el-form-item label="处理结果">
 						<el-rate 
-						v-model="resValue" 
+						v-model="detailsData.resValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
 						</el-rate>
 					</el-form-item>
 					<el-form-item label="处理时效">
 						<el-rate 
-						v-model="effValue" 
+						v-model="detailsData.effValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
 						</el-rate>
 					</el-form-item>
 					<el-form-item label="服务态度">
 						<el-rate 
-						v-model="attValue" 
+						v-model="detailsData.attValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
 						</el-rate>
 					</el-form-item>
@@ -78,7 +81,7 @@
 						type="textarea"
 						:autosize="{ minRows: 2, maxRows: 4}"
 						placeholder="其他建议或意见"
-						v-model="advValue">
+						v-model="detailsData.advValue">
 						</el-input>
 					</el-form-item>
 					<el-row>
@@ -103,24 +106,17 @@
 	export default {
 		data() {
 			return {
-				unCmp: true,
-				worksheetno: '',
-				createTime: '',
-				worksheetType: '',
-				worksheetStatus: '',
-				worksheetDetails: '',
-				userName: '',
-				userPhone: '18223323333',
-				userMail: '',
-				resValue: 1,
-				effValue: 3,
-				attValue: 5,
-				advValue: 'rrbgfb'
+				detailsData: {
+					userMobile: '',
+					worksheetType: '',
+				},
+				unCmp: true
 			}
 
 		},
 		created: function() {
 			this.init();
+			// debugger;
 			this.getInitInfo();
 		},
 		methods: {
@@ -138,8 +134,14 @@
 						params: filter
 					}).then((_ret) => {
 						if(_ret.body.code == 200){
-							_$$this.$data.createTime = moment(_ret.body.result.createTime).format('YYYY-MM-DD HH:mm:ss');
-							_$$this.$data.worksheetno = urlObj.id						
+							_$$this.$data.detailsData.id = urlObj.id
+							_$$this.$data.detailsData.comment = _ret.body.result.comments[0];
+							_.merge(_$$this.$data.detailsData, _ret.body.result, true);
+							if(_ret.body.result.typeStr == ""){
+								_$$this.$data.detailsData.typeStr = '未分类';
+							}else{
+								_$$this.$data.detailsData.typeStr = _ret.body.result.typeStr;
+							}						
 						}else{}
 					}).catch((_err) => {					
 					})						
@@ -162,7 +164,27 @@
 					console.log(_err);
 				})
 			}
-		}
+		},
+		filters: {
+				time: function(value) {
+					return moment(value).format('YYYY-MM-DD HH:mm:ss');
+				},
+				status: function(value) {
+					var map = {
+						5 : '受理中',
+						10 : '受理中',
+						20 : '已完结',
+						25 : '受理中'
+					}
+					return map[value];
+				},
+				// type: function(value) {
+				// 	var map = {
+				// 		"" : '未分类',
+				// 	}
+				// 	return map[value];
+				// }
+			}
 	}
 </script>
 
@@ -180,6 +202,7 @@
 	height: 50px;
 	border-radius: 50%;
 	margin: 0 12px;
+	background-color: #ffffff;
 	border: 4px solid #2fab1a;
 }
 .m-status .m-circle3{
