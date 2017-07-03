@@ -99,6 +99,7 @@
 
 <script>
 	const util = require('../../../../util.js')
+	const moment = require('moment')
 	export default {
 		data() {
 			return {
@@ -137,11 +138,13 @@
 						params: filter
 					}).then((_ret) => {
 						if(_ret.body.code == 200){
-							_$$this.$data.createTime = _ret.body.result.createTime;
-							_$$this.$data.worksheetno = urlObj.id
-							
+							_$$this.$data.createTime = moment(_ret.body.result.createTime).format('YYYY-MM-DD HH:mm:ss');
+							_$$this.$data.worksheetno = urlObj.id						
+						}else{
+
 						}
 					}).catch((_err) => {
+						
 					})						
 			},
 			evaluate() {
