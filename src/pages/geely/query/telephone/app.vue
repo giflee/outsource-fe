@@ -8,10 +8,13 @@
 		<el-row v-if="phoneCheckResult">
 			<span class="tips">输入手机号码有误</span>
 		</el-row>
+		<el-row v-if="getCodeError">
+			<span class="tips">验证码获取失败，请稍后再试</span>
+		</el-row>
 		<br>
 		<el-row :gutter="20">
 			<el-col :span="16">
-				<el-input v-model="code" placeholder="短信验证码"></el-input>
+				<el-input v-model="code" placeholder="短信验证码" @input.native="checkCode" :maxlength="6"></el-input>
 			</el-col>
 			<el-col :span="8">
 				<el-button id="btnSendCode" @click="getCode" :disabled="canCode">{{codeBtnText}}</el-button>
@@ -40,7 +43,9 @@
 				phoneCheckResult: false,
 				codeCheckResult: false,
 				codeBtnText: '验证码',
-				canCode: false
+				canCode: false,
+				codeCheckLength: false,
+				getCodeError: false
 			}
 		},
 		methods: {
@@ -58,10 +63,12 @@
 				}).then((_ret) =>{
 					console.log(_ret);
 					if(!_ret.body.result){
+						_$$this.$data.getCodeError = true;
 					}
 					else{
 						console.log("success");
 						this.codeSucc();
+						_$$this.$data.getCodeError = false;
 					}
 				}).catch((_err) => {
 					console.log(_err);
@@ -75,8 +82,11 @@
 					phone: _$$this.$data.mobile,
 					code: _$$this.$data.code
 				};
-				debugger;
+				
 				if(_$$this.$data.code == 0){
+					_$$this.$data.codeCheckResult = true;
+				}
+				if (_$$this.$data.code.toString.length < 6) {
 					_$$this.$data.codeCheckResult = true;
 				}
 				_$$this.$http.get('/geely/api/codeCheck/',{
@@ -110,6 +120,9 @@
 			},
 			checkMobile() {
 				this.$data.mobile = (isNaN(parseInt(this.$data.mobile)) || this.$data.mobile==0)?'':parseInt(this.$data.mobile);
+			},
+			checkCode() {
+				this.$data.code = (isNaN(parseInt(this.$data.code)) || this.$data.code==0)?'':parseInt(this.$data.code);
 			}
 		}
 	}

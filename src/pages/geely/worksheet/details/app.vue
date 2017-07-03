@@ -60,19 +60,19 @@
 				<el-form class="f-evaluate">
 					<el-form-item label="处理结果">
 						<el-rate 
-						v-model="detailsData.resValue" 
+						v-model="resValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
 						</el-rate>
 					</el-form-item>
 					<el-form-item label="处理时效">
 						<el-rate 
-						v-model="detailsData.effValue" 
+						v-model="effValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
 						</el-rate>
 					</el-form-item>
 					<el-form-item label="服务态度">
 						<el-rate 
-						v-model="detailsData.attValue" 
+						v-model="attValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
 						</el-rate>
 					</el-form-item>
@@ -88,7 +88,7 @@
 						<el-col :span="6">
 							<el-button
 							type="parmiary"
-							size=""  @click="evaluate">
+							size=""  @click="evaluate" :disabled="canSubmit">
 							提交评价
 							</el-button>
 						</el-col>
@@ -110,9 +110,11 @@
 					userMobile: '',
 					worksheetType: '',
 				},
-				unCmp: true
+				unCmp: true,
+				resValue: 0,
+				attValue: 0,
+				effValue: 0
 			}
-
 		},
 		created: function() {
 			this.init();
@@ -142,8 +144,13 @@
 							}else{
 								_$$this.$data.detailsData.typeStr = _ret.body.result.typeStr;
 							}						
-						}else{}
+						}else{
+
+						}
 					}).catch((_err) => {					
+
+					}).finally((_ret) => {
+						this.shuxingxing();
 					})						
 			},
 			evaluate() {
@@ -162,6 +169,15 @@
 					console.log(_ret);
 				}).catch((_err) => {
 					console.log(_err);
+				})
+			},
+			shuxingxing() {
+				var _$$this = this;
+				debugger;
+				this.$data.detailsData.custom.forEach(function(item){
+					if (item.name == '处理结果') _$$this.$data.resValue = item.value.length;
+					if (item.name == '服务态度') _$$this.$data.attValue = item.value.length;
+					if (item.name == '处理时效') _$$this.$data.effValue = item.value.length;
 				})
 			}
 		},
