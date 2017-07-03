@@ -11,7 +11,7 @@
 				<el-input v-model="code" placeholder="短信验证码"></el-input>
 			</el-col>
 			<el-col :span="8">
-				<el-button id="btnSendCode" @click="getCode">验证码</el-button>
+				<el-button id="btnSendCode" @click="getCode" :disabled="canCode">{{codeBtnText}}</el-button>
 			</el-col>
 		</el-row>
 		<el-row v-if="getCodeResult">
@@ -37,7 +37,9 @@
 				mobile: '18668221937',
 				code: '8743',
 				getCodeResult: false,
-				codeCheckResult: false
+				codeCheckResult: false,
+				codeBtnText: '验证码',
+				canCode: false
 			}
 		},
 		methods: {
@@ -48,6 +50,7 @@
 				// el.setAttribute("disabled","true" );//设置按钮为禁用状态
 				// el.value="请在" + curCount + "后重新获取";//更改按钮文字
 				// InterValObj = window.setInterval(SetRemainTime, 1000); // 启动计时器timer处理函数，1秒执行一次
+
 				var filter = {
 					phone: _$$this.$data.mobile,
 				}
@@ -56,12 +59,13 @@
 					params: filter
 				}).then((_ret) =>{
 					console.log(_ret);
-					debugger;
 					if(!_ret.body.result){
 						_$$this.$data.getCodeResult = true;
 					}
 					else{
 						console.log("success");
+						this.codeSucc();
+						_$$this.$data.getCodeResult = false;
 					}
 				}).catch((_err) => {
 					console.log(_err);
@@ -101,6 +105,20 @@
 				}).catch((_err) =>{
 					console.log(_err);
 				})
+			},
+			codeSucc () {
+				var _$$this = this;
+				_$$this.$data.canCode = true;
+				_$$this.$data.maxTime = 60;
+				var timer = setInterval(function(){
+					_$$this.$data.maxTime--;
+					_$$this.$data.codeBtnText = _$$this.$data.maxTime + 's';
+					if (_$$this.$data.maxTime === 0){
+						_$$this.$data.codeBtnText = '验证码';
+						clearInterval(timer);
+						_$$this.$data.canCode = false;
+					}
+				}, 1000)
 			},
 			checkMobile() {
 				this.$data.mobile = (isNaN(parseInt(this.$data.mobile)) || this.$data.mobile==0)?'':parseInt(this.$data.mobile);
