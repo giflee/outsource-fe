@@ -43,7 +43,7 @@
 				}).then((_ret) => {
 					console.log(_ret);
 					if(_ret.body.code == 200){
-						location.href = '/geely/worksheet/details.html?id=' + id
+						location.href = '../worksheet/details.html?id=' + id
 					}
 				}).catch((_err) => {
 					console.log(_err);

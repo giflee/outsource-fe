@@ -2,7 +2,7 @@
 	<div id="app"  class="g-main">
 		<el-table
 		:data="tableData"
-		@row-click="worksheetquery">
+		@row-click="worksheetQuery">
       		<el-table-column  label="创建时间">
       			<template scope="scope">
       				<span>{{ scope.row.createTime }}</span>
@@ -34,34 +34,42 @@ export default {
 		return {
 			tableData:[{
 				createTime:'111111',
-				worksheetno: "1234555",
+				worksheetno: "2718282374122",
 				status: '0',
 				evaluate: '1'
-			}]
+			},
+			{
+				createTime:'111111',
+				worksheetno: "2718282374122",
+				status: '0',
+				evaluate: '1'
+			}
+			]
 		}
 	},
 	created: function() {
 			this.init();
 		},
 		methods: {
-			worksheetQuery() {
+			worksheetQuery(val) {
 				var _$$this = this;
-				var filter = {
-					id: _$$this.$data.worksheetno,
-				};
-				_$$this.$http.get('/geely/api/ticket/get/',{
-					emulateJSON: true,
-					params: filter
-				}).then((_ret) => {
-					console.log(_ret);
-				}).catch((_err) => {
-					console.log(_err);
-				})
-			},
+		        var filter = {
+						id: val.worksheetno
+					};
+		        _$$this.$http.get('/geely/api/ticket/get/',{
+						emulateJSON: true,
+						params: filter
+					}).then((_ret) => {
+						if(_ret.body.code == 200){
+							debugger;
+							window.location.href = '../worksheet/details.html?id=' + val.worksheetno
+						}
+					}).catch((_err) => {
+						console.log(_err);
+					})
+	      },
 			init() {
 				var urlObj = util.parseQueryString(location.search);
-				console.log("hhahhhhaaa");
-				console.log(urlObj);
 			}
 		}
 }
