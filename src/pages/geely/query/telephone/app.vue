@@ -5,6 +5,9 @@
 				<el-input placeholder="请输入手机号码" v-model="mobile" @input.native="checkMobile" :maxlength="11"></el-input>
 			</el-col>
 		</el-row>
+		<el-row v-if="phoneCheckResult">
+			<span class="tips">输入手机号码有误</span>
+		</el-row>
 		<br>
 		<el-row :gutter="20">
 			<el-col :span="16">
@@ -14,8 +17,8 @@
 				<el-button id="btnSendCode" @click="getCode" :disabled="canCode">{{codeBtnText}}</el-button>
 			</el-col>
 		</el-row>
-		<el-row v-if="getCodeResult">
-			<span>短信验证码发送失败，请重新发送</span>
+		<el-row v-if="codeCheckResult">
+			<span class="tips">输入验证码有误</span>
 		</el-row>
 		<p>*首次用手机号码查询将自动为您绑定</p>
 		<br>
@@ -24,9 +27,7 @@
 				<el-button type="primary" @click="bindMobile" class="m-bind-btn">绑定手机号码</el-button>
 			</el-col>
 		</el-row>
-		<el-row v-if="codeCheckResult">
-			<span>短信验证码不正确，请重新输入</span>
-		</el-row>
+		
 	</div>
 </template>
 
@@ -36,7 +37,6 @@
 			return {
 				mobile: '',
 				code: '',
-				getCodeResult: false,
 				codeCheckResult: false,
 				codeBtnText: '验证码',
 				canCode: false
@@ -45,31 +45,29 @@
 		methods: {
 			getCode() {
 				var _$$this = this;
-				// curCount = count;
-				// const el = document.getElementById("btnSendCode");
-				// el.setAttribute("disabled","true" );//设置按钮为禁用状态
-				// el.value="请在" + curCount + "后重新获取";//更改按钮文字
-				// InterValObj = window.setInterval(SetRemainTime, 1000); // 启动计时器timer处理函数，1秒执行一次
-
 				var filter = {
 					phone: _$$this.$data.mobile,
 				}
-				_$$this.$http.get('/geely/api/getCode/', {
+				if(_$$this.$data.mobile == 0 || (_$$this.$data.mobile.toString()).length < 11){
+					_$$this.$data.phoneCheckResult = true;
+				}else{
+					_$$this.$http.get('/geely/api/getCode/', {
 					emulateJSON: true,
 					params: filter
 				}).then((_ret) =>{
 					console.log(_ret);
 					if(!_ret.body.result){
-						_$$this.$data.getCodeResult = true;
+						_$$this.$data.codeCheckResult = true;
 					}
 					else{
 						console.log("success");
 						this.codeSucc();
-						_$$this.$data.getCodeResult = false;
 					}
 				}).catch((_err) => {
 					console.log(_err);
 				})
+				}
+				
 			},
 			bindMobile() {
 				var _$$this = this;
@@ -77,6 +75,10 @@
 					phone: _$$this.$data.mobile,
 					code: _$$this.$data.code
 				};
+				debugger;
+				if(_$$this.$data.code == 0){
+					_$$this.$data.codeCheckResult = true;
+				}
 				_$$this.$http.get('/geely/api/codeCheck/',{
 					emulateJSON: true,
 					params: filter
@@ -126,6 +128,9 @@
 .m-bind-btn {
 	width: 265px;
 	height: 36px;
+}
+.tips{
+	color:red;
 }
 		
 </style>

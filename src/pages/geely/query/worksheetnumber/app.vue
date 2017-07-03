@@ -6,7 +6,7 @@
 			</el-col>
 		</el-row>
 		<el-row v-if="getworksheet">
-			<span>此工单号不存在，请重新输入</span>
+			<span class="tips">输入工单号有误</span>
 		</el-row>
 		<br>
 		<br>
@@ -37,6 +37,9 @@
 				var filter = {
 					id: _$$this.$data.worksheetno,
 				};
+				if(_$$this.$data.worksheetno==0 || isNaN(this.$data.worksheetno)){
+					_$$this.$data.getworksheet = true;
+				}
 				_$$this.$http.get('/geely/api/ticket/get/',{
 					emulateJSON: true,
 					params: filter
@@ -44,6 +47,8 @@
 					console.log(_ret);
 					if(_ret.body.code == 200){
 						location.href = '../worksheet/details.html?id=' + id
+					}else if(_ret.body.code == 903){
+						_$$this.$data.getworksheet = true;
 					}
 				}).catch((_err) => {
 					console.log(_err);
@@ -70,5 +75,8 @@
 .m-bind-btn {
 	width: 265px;
 	height: 36px;
-}		
+}	
+.tips{
+	color: red;
+}	
 </style>
