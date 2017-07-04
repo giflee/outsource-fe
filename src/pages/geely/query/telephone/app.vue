@@ -86,7 +86,8 @@
 				if(_$$this.$data.code == 0){
 					_$$this.$data.codeCheckResult = true;
 				}
-				if (_$$this.$data.code.toString.length < 6) {
+				debugger;
+				if ((_$$this.$data.code.toString()).length < 6) {
 					_$$this.$data.codeCheckResult = true;
 				}
 				_$$this.$http.get('/geely/api/codeCheck/',{
@@ -98,7 +99,7 @@
 						_$$this.$data.codeCheckResult = true;
 					}else{
 						// 验证成功跳转
-						location.href = '/geely/worksheet/list.html?mobile=' + _$$this.$data.mobile;
+						location.href = '../worksheet/list.html?mobile=' + _$$this.$data.mobile;
 					}
 				}).catch((_err) =>{
 					console.log(_err);
