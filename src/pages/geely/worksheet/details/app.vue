@@ -208,6 +208,7 @@
 		},
 		filters: {
 				time: function(value) {
+					if (!value)  return '';
 					return moment(value).format('YYYY-MM-DD HH:mm:ss');
 				},
 				status: function(value) {
@@ -224,6 +225,9 @@
 </script>
 
 <style>
+.g-main{
+	margin-top: 10px;
+}
 .m-status{
 	margin: 0 12px;
 	text-align: center;
@@ -249,6 +253,7 @@
 	height: 50px;
 	line-height: 50px;
 	color: #2fab1a;
+	font-size: 26px;
 }
 .m-status .m-number3{
 	color: #eee;
@@ -256,6 +261,8 @@
 
 .m-status span.m-text{
 	color: #2fab1a;
+	display: inline-block;
+	margin-top: 8px; 
 }
 .m-status span.m-text3{
 	color: #eeeeee;
@@ -264,7 +271,7 @@
     position: absolute;
     z-index: -5;
     left: 10%;
-    top: 40%;
+    top: 30%;
 	width:80%;
 	height:10px;
 	background: #eee;
