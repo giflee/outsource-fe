@@ -137,7 +137,13 @@
 					}).then((_ret) => {
 						if(_ret.body.code == 200){
 							_$$this.$data.detailsData.id = urlObj.id
-							_$$this.$data.advValue = _ret.body.result.custom[3].value
+							if (_ret.body.result.custom) {
+								if (_ret.body.result.custom.length) {
+									if (_ret.body.result.custom[3]) {
+										_$$this.$data.advValue = _ret.body.result.custom[3].value
+									}
+								}
+							}
 							if (_ret.body.result.comments.length > 0) {
 								_$$this.$data.detailsData.comment = _ret.body.result.comments[(_ret.body.result.comments).length-1].comment;
 							}
