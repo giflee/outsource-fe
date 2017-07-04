@@ -88,7 +88,7 @@
 						<el-col :span="6">
 							<el-button
 							type="parmiary"
-							size=""  @click="evaluate" :disabled="canSubmit">
+							size=""  @click="evaluate" :disabled="!detailsData.canEvaluate">
 							提交评价
 							</el-button>
 						</el-col>
@@ -118,8 +118,8 @@
 		},
 		created: function() {
 			this.init();
-			// debugger;
 			this.getInitInfo();
+			// Toast('提示信息');
 		},
 		methods: {
 			init() {
@@ -148,7 +148,7 @@
 								_$$this.$data.detailsData.typeStr = '未分类';
 							}else{
 								_$$this.$data.detailsData.typeStr = _ret.body.result.typeStr;
-							}						
+							}					
 						}else{
 
 						}
@@ -161,11 +161,11 @@
 			evaluate() {
 				var _$$this = this;
 				var filter = {
-					id: _$$this.$data.worksheetno,
+					id: _$$this.$data.detailsData.id,
 					consequence:_$$this.$data.resValue,
 					effiency: _$$this.$data.effValue,
 					attitude: _$$this.$data.attValue,
-					advice: _$$this.$data.advValue
+					advice: _$$this.$data.detailsData.advValue
 				};
 				_$$this.$http.get('/geely/api/worksheet/evaluate/', {
 					emulateJSON: true,
@@ -178,7 +178,6 @@
 			},
 			shuxingxing() {
 				var _$$this = this;
-				debugger;
 				this.$data.detailsData.custom.forEach(function(item){
 					if (item.name == '处理结果') _$$this.$data.resValue = item.value.length;
 					if (item.name == '服务态度') _$$this.$data.attValue = item.value.length;
