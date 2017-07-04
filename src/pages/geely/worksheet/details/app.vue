@@ -159,10 +159,10 @@
 								_$$this.$data.detailsData.typeStr = _ret.body.result.typeStr;
 							}					
 						}else{
-
+							_$$this.$toast(_ret.body.message);
 						}
 					}).catch((_err) => {					
-
+						_$$this.$toast('服务器出错');
 					}).finally((_ret) => {
 						this.shuxingxing();
 					})						
@@ -178,18 +178,21 @@
 					consequence:_$$this.$data.resValue,
 					effiency: _$$this.$data.effValue,
 					attitude: _$$this.$data.attValue,
-					advice: _$$this.$data.detailsData.advValue
+					advice: _$$this.$data.advValue
 				};
 				_$$this.$http.get('/geely/api/worksheet/evaluate/', {
 					emulateJSON: true,
 					params: filter
 				}).then((_ret) => {
-					console.log(_ret);
-					_$$this.$data.detailsData.canEvaluate = false;
-					_$$this.$toast('评价成功');
-					_$$this.$forceUpdate();
+					if (_ret.body.code == 200) {
+						_$$this.$data.detailsData.canEvaluate = false;
+						_$$this.$toast('评价成功');
+						_$$this.$forceUpdate();
+					}else{
+						_$$this.$toast(_ret.body.message);
+					}
 				}).catch((_err) => {
-					console.log(_err);
+					_$$this.$toast('服务器出错');
 				})
 			},
 			shuxingxing() {

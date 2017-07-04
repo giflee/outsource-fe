@@ -67,14 +67,14 @@
 					console.log(_ret);
 					if(!_ret.body.result){
 						_$$this.$data.getCodeError = true;
+						_$$this.$toast(_ret.body.message);
 					}
 					else{
-						console.log("success");
 						this.codeSucc();
 						_$$this.$data.getCodeError = false;
 					}
 				}).catch((_err) => {
-					console.log(_err);
+					_$$this.$toast('服务器出错');
 				})
 				}
 				
@@ -89,7 +89,7 @@
 				if(_$$this.$data.code == 0){
 					_$$this.$data.codeCheckResult = true;
 				}
-				debugger;
+				
 				if ((_$$this.$data.code.toString()).length < 6) {
 					_$$this.$data.codeCheckResult = true;
 				}
@@ -105,7 +105,7 @@
 						location.href = '../worksheet/list.html?mobile=' + _$$this.$data.mobile;
 					}
 				}).catch((_err) =>{
-					console.log(_err);
+					_$$this.$toast('服务器出错');
 				})
 			},
 			codeSucc () {
