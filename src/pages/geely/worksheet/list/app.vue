@@ -5,6 +5,7 @@
 		@row-click="worksheetQuery">
       		<el-table-column  label="创建时间">
       			<template scope="scope">
+      				<span>{{ scope.row.createTime | date}}</span>
       				<span>{{ scope.row.createTime | time}}</span>
       			</template>
       		</el-table-column>
@@ -75,8 +76,11 @@ export default {
 		}
 	},
 	filters: {
+		date: function(value) {
+			return moment(value).format('YYYY-MM-DD');
+		},
 		time: function(value) {
-			return moment(value).format('YYYY-MM-DD HH:mm:ss');
+			return moment(value).format('HH:mm:ss');
 		},
 		status: function(value) {
 			var map = {
@@ -99,5 +103,15 @@ export default {
 
 </script>
 <style>
-	
+.el-table .cell, .el-table th > div {
+    padding-right: 0;
+}
+.el-table td.el-table_1_column_1 .cell{
+	overflow: initial;
+	text-align: center;
+}
+.el-table td.el-table_1_column_1 .cell > span {
+	white-space: nowrap;
+    overflow: auto;
+} 
 </style>
