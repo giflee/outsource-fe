@@ -48,6 +48,9 @@
 				getCodeError: false
 			}
 		},
+		created: function() {
+			this.checkCookie();
+		},
 		methods: {
 			getCode() {
 				var _$$this = this;
@@ -124,6 +127,23 @@
 			},
 			checkCode() {
 				this.$data.code = (isNaN(parseInt(this.$data.code)) || this.$data.code==0)?'':parseInt(this.$data.code);
+			},
+			getCookie(c_name) {
+				if (document.cookie.length>0)
+				  {
+				  var c_start = document.cookie.indexOf(c_name + "=")
+				  if (c_start!=-1)
+				    { 
+				    return true;
+				    } 
+				  }
+				return false;
+			},
+			checkCookie() {
+				var strtoken = this.getCookie('geely_auth_token');
+				if (strtoken) {
+					location.href = '../worksheet/list.html';
+				}
 			}
 		}
 	}

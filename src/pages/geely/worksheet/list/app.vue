@@ -71,6 +71,7 @@ export default {
 			}).then((_ret => {
 				if (_ret.body.code == 200) {
 					_.merge(_$$this.$data.tableData, _ret.body.result, true);
+					this.$forceUpdate();
 				}
 			}))
 		}
