@@ -61,19 +61,19 @@
 					<el-form-item label="处理结果">
 						<el-rate 
 						v-model="resValue" 
-						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
+						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
 					<el-form-item label="处理时效">
 						<el-rate 
 						v-model="effValue" 
-						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
+						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
 					<el-form-item label="服务态度">
 						<el-rate 
 						v-model="attValue" 
-						:colors="['#99A9BF', '#F7BA2A', '#FF9900']">
+						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
 					<el-form-item>
@@ -120,7 +120,6 @@
 		created: function() {
 			this.init();
 			this.getInitInfo();
-			// Toast('提示信息');
 		},
 		methods: {
 			init() {
@@ -139,7 +138,9 @@
 						if(_ret.body.code == 200){
 							_$$this.$data.detailsData.id = urlObj.id
 							_$$this.$data.advValue = _ret.body.result.custom[3].value
-							_$$this.$data.detailsData.comment = _ret.body.result.comments[(_ret.body.result.comments).length-1].comment;
+							if (_ret.body.result.comments.length > 0) {
+								_$$this.$data.detailsData.comment = _ret.body.result.comments[(_ret.body.result.comments).length-1].comment;
+							}
 							if(_ret.body.result.status == 10){
 								_$$this.$data.unCmp = true;
 							}else{
@@ -162,6 +163,10 @@
 			},
 			evaluate() {
 				var _$$this = this;
+				if (!_$$this.$data.resValue || !_$$this.$data.effValue || !_$$this.$data.attValue) {
+					this.$toast('请填写完整的三项评价');
+					return;
+				}
 				var filter = {
 					id: _$$this.$data.detailsData.id,
 					consequence:_$$this.$data.resValue,
@@ -174,17 +179,22 @@
 					params: filter
 				}).then((_ret) => {
 					console.log(_ret);
+					_$$this.$data.detailsData.canEvaluate = false;
+					_$$this.$toast('评价成功');
+					_$$this.$forceUpdate();
 				}).catch((_err) => {
 					console.log(_err);
 				})
 			},
 			shuxingxing() {
 				var _$$this = this;
-				this.$data.detailsData.custom.forEach(function(item){
-					if (item.name == '处理结果') _$$this.$data.resValue = item.value.length;
-					if (item.name == '服务态度') _$$this.$data.attValue = item.value.length;
-					if (item.name == '处理时效') _$$this.$data.effValue = item.value.length;
-				})
+				if (this.$data.detailsData.custom) {
+					this.$data.detailsData.custom.forEach(function(item){
+						if (item.name == '处理结果') _$$this.$data.resValue = item.value.length;
+						if (item.name == '服务态度') _$$this.$data.attValue = item.value.length;
+						if (item.name == '处理时效') _$$this.$data.effValue = item.value.length;
+					})
+				}
 			}
 		},
 		filters: {
