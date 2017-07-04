@@ -58,8 +58,8 @@
 			</el-form-item>
 		</el-form>
 	</div>
-	<hr>
-	<div class="m-evaluate">
+	<hr v-if="noEvaluate">
+	<div class="m-evaluate" v-if="noEvaluate">
 		<el-form>
 			<el-form-item label="工单评价">
 				<el-form class="f-evaluate">
@@ -117,6 +117,7 @@
 					worksheetType: '',
 				},
 				unCmp: true,
+				noEvaluate: false,
 				resValue: 0,
 				attValue: 0,
 				effValue: 0,
@@ -146,17 +147,20 @@
 							if (_ret.body.result.custom) {
 								if (_ret.body.result.custom.length) {
 									if (_ret.body.result.custom[3]) {
+										_$$this.$data.noEvaluate = true;
 										_$$this.$data.advValue = _ret.body.result.custom[3].value
 									}
 								}
+							}else if (_ret.body.result.custom.length == 0) {
+								_$$this.$data.noEvaluate = false;
 							}
 							if (_ret.body.result.comments.length > 0) {
-								_$$this.$data.detailsData.comment = _ret.body.result.comments[(_ret.body.result.comments).length-1].comment;
+								_$$this.$data.detailsData.comment = _ret.body.result.comments[0].comment;
 							}
-							if(_ret.body.result.status == 10){
-								_$$this.$data.unCmp = true;
-							}else{
+							if(_ret.body.result.status == 20){
 								_$$this.$data.unCmp = false;
+							}else{
+								_$$this.$data.unCmp = true;
 							}
 							_.merge(_$$this.$data.detailsData, _ret.body.result, true);
 							if(_ret.body.result.typeStr == ""){
