@@ -18,6 +18,11 @@
 	<hr>
 	<div class="m-details">
 		<el-form>
+			<el-form-item label="工单标题">
+				<template>
+					<span>{{ detailsData.title }}</span>
+      			</template>
+			</el-form-item>
 			<el-form-item label="工单编号">
 				<template>
 					<span>{{ detailsData.id }}</span>
@@ -32,7 +37,7 @@
 			<el-form-item label="工单状态">
 				<span>{{ detailsData.status | status}}</span>
 			</el-form-item>
-			<el-form-item label="工单详情">
+			<el-form-item label="工单内容">
 				<span>{{ detailsData.content }}</span>
 			</el-form-item>
 			<el-form-item label="处理结果">
@@ -47,7 +52,7 @@
 						<span>{{ detailsData.userMobile }}</span>
 					</el-form-item>
 					<el-form-item label="邮箱" label-width="68px">
-						<span>{{ detailsData.userMail }}</span>
+						<span>{{ detailsData.userEmail }}</span>
 					</el-form-item>
 				</el-form>
 			</el-form-item>

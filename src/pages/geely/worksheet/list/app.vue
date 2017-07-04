@@ -3,7 +3,7 @@
 		<el-table
 		:data="tableData"
 		@row-click="worksheetQuery">
-      		<el-table-column  label="创建时间">
+      		<el-table-column  label="创建时间"  width="100">
       			<template scope="scope">
       				<span>{{ scope.row.createTime | date}}</span>
       				<span>{{ scope.row.createTime | time}}</span>
@@ -14,12 +14,12 @@
       				<span>{{ scope.row.id }}</span>
       			</template>
       		</el-table-column>
-      		<el-table-column label="工单状态">
+      		<el-table-column label="工单状态" width="80">
       			<template scope="scope">
       				<span>{{ scope.row.actionStatus | status}}</span>
       			</template>
       		</el-table-column>
-      		<el-table-column label="评价状态">
+      		<el-table-column label="评价状态" width="80">
       			<template scope="scope">
       				<span>{{ scope.row.isEvaluated | evaluated}}</span>
       			</template>
@@ -105,7 +105,7 @@ export default {
 </script>
 <style>
 .el-table .cell, .el-table th > div {
-    padding-right: 0;
+    padding: 0 10px;
 }
 .el-table td.el-table_1_column_1 .cell{
 	overflow: initial;
