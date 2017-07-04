@@ -86,6 +86,7 @@
 						type="textarea"
 						:autosize="{ minRows: 2, maxRows: 4}"
 						placeholder="其他建议或意见"
+						:disabled="!detailsData.canEvaluate"
 						v-model="advValue">
 						</el-input>
 					</el-form-item>
@@ -170,6 +171,7 @@
 						_$$this.$toast('服务器出错');
 					}).finally((_ret) => {
 						this.shuxingxing();
+						this.$forceUpdate();
 					})						
 			},
 			evaluate() {
