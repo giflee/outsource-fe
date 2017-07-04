@@ -137,7 +137,12 @@
 					}).then((_ret) => {
 						if(_ret.body.code == 200){
 							_$$this.$data.detailsData.id = urlObj.id
-							_$$this.$data.detailsData.comment = _ret.body.result.comments[0];
+							_$$this.$data.detailsData.comment = _ret.body.result.comments[(_ret.body.result.comments).length-1].comment;
+							if(_ret.body.result.status == 10){
+								_$$this.$data.unCmp = true;
+							}else{
+								_$$this.$data.unCmp = false;
+							}
 							_.merge(_$$this.$data.detailsData, _ret.body.result, true);
 							if(_ret.body.result.typeStr == ""){
 								_$$this.$data.detailsData.typeStr = '未分类';
