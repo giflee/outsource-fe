@@ -81,7 +81,7 @@
 						type="textarea"
 						:autosize="{ minRows: 2, maxRows: 4}"
 						placeholder="其他建议或意见"
-						v-model="detailsData.advValue">
+						v-model="advValue">
 						</el-input>
 					</el-form-item>
 					<el-row>
@@ -113,7 +113,8 @@
 				unCmp: true,
 				resValue: 0,
 				attValue: 0,
-				effValue: 0
+				effValue: 0,
+				advValue:''
 			}
 		},
 		created: function() {
@@ -137,6 +138,7 @@
 					}).then((_ret) => {
 						if(_ret.body.code == 200){
 							_$$this.$data.detailsData.id = urlObj.id
+							_$$this.$data.advValue = _ret.body.result.custom[3].value
 							_$$this.$data.detailsData.comment = _ret.body.result.comments[(_ret.body.result.comments).length-1].comment;
 							if(_ret.body.result.status == 10){
 								_$$this.$data.unCmp = true;
@@ -197,13 +199,7 @@
 						25 : '受理中'
 					}
 					return map[value];
-				},
-				// type: function(value) {
-				// 	var map = {
-				// 		"" : '未分类',
-				// 	}
-				// 	return map[value];
-				// }
+				}
 			}
 	}
 </script>
