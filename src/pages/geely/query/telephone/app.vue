@@ -123,8 +123,18 @@
 				}, 1000)
 			},
 			checkMobile() {
+				debugger;
 				this.$data.phoneCheckResult = false;
-				this.$data.mobile = (isNaN(parseInt(this.$data.mobile)) || this.$data.mobile==0)?'':parseInt(this.$data.mobile);
+				var partten1 = /^1$/;
+				var partten2 = /^1[3|4|5|7|8]$/;
+				var partten3 = /^1[3|4|5|7|8]\d*\d$/;
+				if(this.$data.mobile != ""){
+					if (partten1.test(this.$data.mobile) || partten2.test(this.$data.mobile) || partten3.test(this.$data.mobile)){
+					this.$data.phoneCheckResult = false;
+					}else{
+						this.$data.phoneCheckResult = true;
+					}
+				}
 			},
 			checkCode() {
 				this.$data.codeCheckResult = false
