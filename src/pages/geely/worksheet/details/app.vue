@@ -294,8 +294,8 @@
 	margin-left: 68px; 
 	word-wrap:break-word;
 }
-.m-usermsg{
-	height:110px;
+.f-usermsg span{
+	display: flex;
 }
 .f-usermsg{
 	margin: 0 -12px;

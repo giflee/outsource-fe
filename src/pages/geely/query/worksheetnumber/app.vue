@@ -2,10 +2,11 @@
 	<div id="app" class="g-main">
 		<el-row :gutter="20">
 			<el-col :span="24">
-				<el-input v-model="worksheetno" placeholder="请输入工单号码"></el-input>
+				<el-input v-model="worksheetno" @input.native="checkWorksheetno" placeholder="请输入工单号码" 
+				:maxlength="13"></el-input>
 			</el-col>
 		</el-row>
-		<el-row v-if="getworksheet">
+		<el-row v-if="worksheetnoCheck">
 			<span class="tips">输入工单号有误</span>
 		</el-row>
 		<br>
@@ -24,7 +25,7 @@
 		data() {
 			return {
 				worksheetno: '',
-				getworksheet: false
+				worksheetnoCheck: false
 			}
 		},
 		created: function() {
@@ -38,26 +39,31 @@
 					id: _$$this.$data.worksheetno,
 				};
 				if(_$$this.$data.worksheetno==0 || isNaN(this.$data.worksheetno)){
-					_$$this.$data.getworksheet = true;
-				}
-				_$$this.$http.get('/geely/api/ticket/get/',{
-					emulateJSON: true,
-					params: filter
-				}).then((_ret) => {
-					console.log(_ret);
-					if(_ret.body.code == 200){
-						location.href = '../worksheet/details.html?id=' + id
-					}else if(_ret.body.code == 903){
-						_$$this.$data.getworksheet = true;
-					}
-				}).catch((_err) => {
-					console.log(_err);
-				})
+					_$$this.$data.worksheetnoCheck = true;
+				}else{
+					_$$this.$http.get('/geely/api/ticket/get/',{
+						emulateJSON: true,
+						params: filter
+					}).then((_ret) => {
+						console.log(_ret);
+						if(_ret.body.code == 200){
+							location.href = '../worksheet/details.html?id=' + id
+						}else if(_ret.body.code == 903){
+							_$$this.$data.worksheetnoCheck = true;
+						}
+					}).catch((_err) => {
+						console.log(_err);
+					})
+				}	
 			},
 			init() {
 				var urlObj = util.parseQueryString(location.search);
 				console.log(urlObj);
-			}
+			},
+			checkWorksheetno() {
+				this.$data.worksheetnoCheck = false;
+				this.$data.worksheetno = (isNaN(parseInt(this.$data.worksheetno)) || this.$data.worksheetno==0)?'':parseInt(this.$data.worksheetno);
+			},
 		}
 	}
 </script> 

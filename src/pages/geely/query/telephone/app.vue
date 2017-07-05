@@ -89,7 +89,7 @@
 				if(_$$this.$data.code == 0){
 					_$$this.$data.codeCheckResult = true;
 				}
-				
+
 				if ((_$$this.$data.code.toString()).length < 6) {
 					_$$this.$data.codeCheckResult = true;
 				}
@@ -123,28 +123,28 @@
 				}, 1000)
 			},
 			checkMobile() {
+				this.$data.phoneCheckResult = false;
 				this.$data.mobile = (isNaN(parseInt(this.$data.mobile)) || this.$data.mobile==0)?'':parseInt(this.$data.mobile);
 			},
 			checkCode() {
-				this.$data.code = (isNaN(parseInt(this.$data.code)) || this.$data.code==0)?'':parseInt(this.$data.code);
+				this.$data.codeCheckResult = false
+				this.$data.code = (isNaN(parseInt(this.$data.code)))?'' : this.$data.code;
 			},
 			getCookie(c_name) {
-				if (document.cookie.length>0)
-				  {
-				  var c_start = document.cookie.indexOf(c_name + "=")
-				  if (c_start!=-1)
-				    { 
-				    return true;
-				    } 
-				  }
-				return false;
-			},
-			checkCookie() {
-				var strtoken = this.getCookie('geely_auth_token');
-				if (strtoken) {
-					location.href = '../worksheet/list.html';
-				}
-			}
+            	if (document.cookie.length>0) {
+                    var c_start = document.cookie.indexOf(c_name + "=")
+                    if (c_start!=-1) {
+            			return true;
+                    }
+                }
+                return false;
+            },
+            checkCookie() {
+                var strtoken = this.getCookie('geely_auth_token');
+                if (strtoken) {
+                    location.href = '../worksheet/list.html';
+                }
+            }
 		}
 	}
 </script> 
