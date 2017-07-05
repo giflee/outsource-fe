@@ -129,6 +129,9 @@
 			checkCode() {
 				this.$data.codeCheckResult = false
 				this.$data.code = (isNaN(parseInt(this.$data.code)))?'' : this.$data.code;
+				if (isNaN(this.$data.code)){
+					this.$data.codeCheckResult = true;
+				}
 			},
 			getCookie(c_name) {
             	if (document.cookie.length>0) {
