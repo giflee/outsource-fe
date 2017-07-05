@@ -122,6 +122,7 @@
 					}
 				}, 1000)
 			},
+			// 手机号验证
 			checkMobile() {
 				debugger;
 				this.$data.phoneCheckResult = false;
@@ -136,6 +137,7 @@
 					}
 				}
 			},
+			// 验证码验证
 			checkCode() {
 				this.$data.codeCheckResult = false
 				this.$data.code = (isNaN(parseInt(this.$data.code)))?'' : this.$data.code;

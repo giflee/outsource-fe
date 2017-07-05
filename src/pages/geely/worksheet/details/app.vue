@@ -144,25 +144,31 @@
 					}).then((_ret) => {
 						if(_ret.body.code == 200){
 							_$$this.$data.detailsData.id = urlObj.id
+							_.merge(_$$this.$data.detailsData, _ret.body.result, true);
+							// 工单评价是否显示以及其他建议值
 							if (_ret.body.result.custom) {
 								if (_ret.body.result.custom.length) {
-									if (_ret.body.result.custom[3]) {
-										_$$this.$data.noEvaluate = true;
-										_$$this.$data.advValue = _ret.body.result.custom[3].value
-									}
+									_$$this.$data.noEvaluate = true;
+									this.$data.detailsData.custom.forEach(function(item){
+										if (item.name == '其他建议或意见'){
+											_$$this.$data.advValue = item.value;
+										}
+									})
 								}
 							}else if (_ret.body.result.custom.length == 0) {
 								_$$this.$data.noEvaluate = false;
 							}
+							// 工单内容
 							if (_ret.body.result.comments.length > 0) {
 								_$$this.$data.detailsData.comment = _ret.body.result.comments[0].comment;
 							}
+							// 工单状态直观显示
 							if(_ret.body.result.status == 20){
 								_$$this.$data.unCmp = false;
 							}else{
 								_$$this.$data.unCmp = true;
 							}
-							_.merge(_$$this.$data.detailsData, _ret.body.result, true);
+							// 工单状态值
 							if(_ret.body.result.typeStr == ""){
 								_$$this.$data.detailsData.typeStr = '未分类';
 							}else{
@@ -198,6 +204,7 @@
 					if (_ret.body.code == 200) {
 						_$$this.$data.detailsData.canEvaluate = false;
 						_$$this.$toast('评价成功');
+						// 评价状态刷新
 						_$$this.$forceUpdate();
 					}else{
 						_$$this.$toast(_ret.body.message);
