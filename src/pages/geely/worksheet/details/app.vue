@@ -63,19 +63,19 @@
 		<el-form>
 			<el-form-item label="工单评价">
 				<el-form class="f-evaluate">
-					<el-form-item label="处理结果">
+					<el-form-item :label="detailsData.custom[0].name">
 						<el-rate 
 						v-model="resValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
-					<el-form-item label="处理时效">
+					<el-form-item :label="detailsData.custom[1].name">
 						<el-rate 
 						v-model="effValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
-					<el-form-item label="服务态度">
+					<el-form-item :label="detailsData.custom[2].name">
 						<el-rate 
 						v-model="attValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
@@ -158,9 +158,11 @@
 							}else if (_ret.body.result.custom.length == 0) {
 								_$$this.$data.noEvaluate = false;
 							}
-							// 工单内容
-							if (_ret.body.result.comments.length > 0) {
+							// 工单内容在未完结时显示为空，完结后显示最近一条操作的内容
+							if(_ret.body.result.status == 20){
 								_$$this.$data.detailsData.comment = _ret.body.result.comments[0].comment;
+							}else {
+								_$$this.$data.detailsData.comment = "";
 							}
 							// 工单状态直观显示
 							if(_ret.body.result.status == 20){
@@ -217,9 +219,9 @@
 				var _$$this = this;
 				if (this.$data.detailsData.custom) {
 					this.$data.detailsData.custom.forEach(function(item){
-						if (item.name == '处理结果') _$$this.$data.resValue = item.value.length;
-						if (item.name == '服务态度') _$$this.$data.attValue = item.value.length;
-						if (item.name == '处理时效') _$$this.$data.effValue = item.value.length;
+						if (item.name.indexOf('处理结果') > -1) _$$this.$data.resValue = item.value.length;
+						if (item.name.indexOf('服务态度') > -1) _$$this.$data.attValue = item.value.length;
+						if (item.name.indexOf('处理时效') > -1) _$$this.$data.effValue = item.value.length;
 					})
 				}
 			}
