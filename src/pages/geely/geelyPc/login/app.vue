@@ -1,7 +1,7 @@
 <template>
 	<div id="app" class="g-main">
 		<el-row>
-		<el-tabs v-model="activeName" @tab-click="selectTab">
+		<el-tabs v-model="activeName" @tab-click="selectTab" type="border-card">
 			<el-tab-pane label="工单查询" name="first">
 				哈哈哈哈哈哈哈哈
 			</el-tab-pane>
@@ -29,3 +29,7 @@
 	}
 
 </script>
+
+<style>
+		
+</style>

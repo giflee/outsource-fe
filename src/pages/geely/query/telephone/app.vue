@@ -59,23 +59,23 @@
 				}
 				if(_$$this.$data.mobile == 0 || (_$$this.$data.mobile.toString()).length < 11){
 					_$$this.$data.phoneCheckResult = true;
-				}else{
+				}else if(!_$$this.$data.phoneCheckResult){
 					_$$this.$http.get('/geely/api/getCode/', {
-					emulateJSON: true,
-					params: filter
-				}).then((_ret) =>{
-					console.log(_ret);
-					if(!_ret.body.result){
-						_$$this.$data.getCodeError = true;
-						_$$this.$toast(_ret.body.message);
-					}
-					else{
-						this.codeSucc();
-						_$$this.$data.getCodeError = false;
-					}
-				}).catch((_err) => {
-					_$$this.$toast('服务器出错');
-				})
+						emulateJSON: true,
+						params: filter
+					}).then((_ret) =>{
+						console.log(_ret);
+						if(!_ret.body.result){
+							_$$this.$data.getCodeError = true;
+							_$$this.$toast(_ret.body.message);
+						}
+						else{
+							this.codeSucc();
+							_$$this.$data.getCodeError = false;
+						}
+					}).catch((_err) => {
+						_$$this.$toast('服务器出错');
+					})
 				}
 				
 			},
@@ -85,28 +85,31 @@
 					phone: _$$this.$data.mobile,
 					code: _$$this.$data.code
 				};
-				
-				if(_$$this.$data.code == 0){
-					_$$this.$data.codeCheckResult = true;
-				}
-
-				if ((_$$this.$data.code.toString()).length < 6) {
-					_$$this.$data.codeCheckResult = true;
-				}
-				_$$this.$http.get('/geely/api/codeCheck/',{
-					emulateJSON: true,
-					params: filter
-				}).then((_ret) =>{
-					console.log(_ret);
-					if (!_ret.body.result) {
+				if(_$$this.$data.mobile == 0 || (_$$this.$data.mobile.toString()).length < 11){
+					_$$this.$data.phoneCheckResult = true;
+					// 如果手机号提示错误就不检验验证码错误了，不发接口
+				}else if(!_$$this.$data.phoneCheckResult){
+					if(_$$this.$data.code == 0){
 						_$$this.$data.codeCheckResult = true;
-					}else{
-						// 验证成功跳转
-						location.href = '../worksheet/list.html?mobile=' + _$$this.$data.mobile;
+					}else if((_$$this.$data.code.toString()).length < 6) {
+						_$$this.$data.codeCheckResult = true;
+					}else {
+						_$$this.$http.get('/geely/api/codeCheck/',{
+						emulateJSON: true,
+						params: filter
+						}).then((_ret) =>{
+							console.log(_ret);
+							if (!_ret.body.result) {
+								_$$this.$data.codeCheckResult = true;
+							}else{
+								// 验证成功跳转
+								location.href = '../worksheet/list.html?mobile=' + _$$this.$data.mobile;
+							}
+						}).catch((_err) =>{
+							_$$this.$toast('服务器出错');
+						})
 					}
-				}).catch((_err) =>{
-					_$$this.$toast('服务器出错');
-				})
+					}
 			},
 			codeSucc () {
 				var _$$this = this;
@@ -124,7 +127,6 @@
 			},
 			// 手机号验证
 			checkMobile() {
-				debugger;
 				this.$data.phoneCheckResult = false;
 				var partten1 = /^1$/;
 				var partten2 = /^1[3|4|5|7|8]$/;
