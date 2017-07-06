@@ -159,10 +159,12 @@
 								_$$this.$data.noEvaluate = false;
 							}
 							// 工单内容在未完结时显示为空，完结后显示最近一条操作的内容
-							if(_ret.body.result.status == 20){
-								_$$this.$data.detailsData.comment = _ret.body.result.comments[0].comment;
-							}else {
-								_$$this.$data.detailsData.comment = "";
+							if(_ret.body.result.comments.length > 0){
+								if(_ret.body.result.status == 20){
+									_$$this.$data.detailsData.comment = _ret.body.result.comments[0].comment;
+								}else {
+									_$$this.$data.detailsData.comment = "";
+								}
 							}
 							// 工单状态直观显示
 							if(_ret.body.result.status == 20){

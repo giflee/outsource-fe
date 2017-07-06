@@ -85,10 +85,10 @@ export default {
 		},
 		status: function(value) {
 			var map = {
-				5 : '未受理',
+				5 : '受理中',
 				10 : '受理中',
 				20 : '已完结',
-				25 : '已驳回'
+				25 : '受理中'
 			}
 			return map[value];
 		},
