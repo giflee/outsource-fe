@@ -62,7 +62,7 @@ export default {
 	},
 	created: function() {
 			this.init();
-			this.getList();
+			this.getList(1,10);
 		},
 	methods: {
 		worksheetQuery(val) {
@@ -85,24 +85,8 @@ export default {
 			var urlObj = util.parseQueryString(location.search);
 			this.$data.mobile = urlObj.mobile;
 		},
-		getList() {
-			var _$$this = this;
-			this.$http.get('/geely/api/worksheet/list', {
-				emulateJSON: true
-			}).then((_ret => {
-				if (_ret.body.code == 200) {
-					_.merge(_$$this.$data.tableData, _ret.body.result, true);
-					if(_ret.body.result.length){
-						_$$this.$data.total = _ret.body.result.length;
-					}else{
-						_$$this.$data.total = 0;
-					}
-					this.$forceUpdate();
-				}
-			}))
-		},
 		// 读取
-		loadData: function(pageNum, pageSize){
+		getList: function(pageNum, pageSize){
 			var _$$this = this;  
             _$$this.$http.get('/geely/api/worksheet/list',{
             	pageNum:pageNum, 
@@ -125,12 +109,12 @@ export default {
 		//  每页显示数据量变更
 		handleSizeChange(val) {
 	        this.pageSize = val; // 每页的条数
-            this.loadData(this.currentPage, this.pageSize);
+            this.getList(this.currentPage, this.pageSize);
 	    },
 	    //  页码变更
 	    handleCurrentChange(val) {
 	   	    this.currentPage = val; //当前的页码
-            this.loadData(this.currentPage, this.pageSize);
+            this.getList(this.currentPage, this.pageSize);
 	    }
 	},
 	filters: {
