@@ -25,6 +25,7 @@
 				</el-col>
 			</el-row>
 		</div>
+		
 		<div class="m-list">
 			<el-row :gutter="20">
 				<el-col :span="8">
