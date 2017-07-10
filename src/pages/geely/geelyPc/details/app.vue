@@ -90,44 +90,41 @@
 						<el-col :span="8">
 							<label>{{ detailsData.custom[1].name }}</label>
 							<el-rate 
-								v-model="resValue" 
+								v-model="effValue" 
 								:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 							</el-rate>
 						</el-col>
 						<el-col :span="8">
 							<label>{{ detailsData.custom[2].name }}</label>
 							<el-rate 
-								v-model="resValue" 
+								v-model="attValue" 
 								:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 							</el-rate>
 						</el-col>
 					</el-row>
 				</div>	
 				<div class="f-evaluate">
-					<el-col>
-						<el-input
-						type="textarea"
-						:autosize="{ minRows: 2, maxRows: 4}"
-						placeholder="其他建议或意见"
-						:disabled="!detailsData.canEvaluate"
-						v-model="advValue">
+					<el-input
+					type="textarea"
+					:autosize="{ minRows: 2, maxRows: 4}"
+					placeholder="其他建议或意见"
+					:disabled="!detailsData.canEvaluate"
+					v-model="advValue">
 						</el-input>
-					</el-col>
 				</div>
 			</el-col>
 		</el-row>
 		<el-row :gutter="20">
 			<el-col :span="4" :offset="8">
 				<el-button
-				type="parmiary"
-				size=""  @click="evaluate" :disabled="!detailsData.canEvaluate">
+				type="primary"
+				@click="evaluate" :disabled="!detailsData.canEvaluate">
 				确认评价
 				</el-button>
 			</el-col>
 			<el-col :span="6">
 				<el-button
-				type="parmiary"
-				size=""  @click="evaluate" :disabled="!detailsData.canEvaluate">
+			    @click="cancel" :disabled="!detailsData.canEvaluate">
 				取消
 				</el-button>
 			</el-col>
@@ -247,6 +244,13 @@
 					_$$this.$toast('服务器出错');
 				})
 			},
+			cancel() {
+				var _$$this = this;
+				_$$this.$data.resValue = null;
+				_$$this.$data.attValue = null;
+				_$$this.$data.effValue = null;
+				_$$this.$data.advValue = "";
+			},
 			shuxingxing() {
 				var _$$this = this;
 				if (this.$data.detailsData.custom) {
@@ -295,13 +299,13 @@ img{
 .m-list{
 	height: 46px;
 	background-color: #fbfdff;
-	margin: 10px 0;
+	margin: 20px 0;
 	border-top: 1px solid #e4e8f1;
 	border-bottom: 1px solid #e4e8f1;
 }
 .m-content, .m-comment{
 	height: 90px;
-	margin: 10px 0;
+	margin: 20px 0;
 }
 .el-row{
 	padding: 12px 0;
@@ -334,7 +338,7 @@ img{
     margin-left: 73px;
 }
 .el-textarea{
-	margin-top: 10px;
+	margin-top: 20px;
 }
 span{
 	margin-left: 5px
