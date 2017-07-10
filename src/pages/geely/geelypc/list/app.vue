@@ -37,7 +37,7 @@
 		      @current-change="handleCurrentChange"
 		      :current-page="currentPage"
 		      :page-sizes="[5,10, 15, 20, 25]"
-		      :page-size="10"
+		      :page-size="pageSize"
 		      layout="total, sizes, prev, pager, next"
 		      :total="$data.total">
 		    </el-pagination>
@@ -56,7 +56,8 @@ export default {
 			 tableData:[
 			
 			],
-	        currentPage: 1
+	        currentPage: 1,
+	        pageSize: 10,
 		}
 	},
 	created: function() {
@@ -100,13 +101,36 @@ export default {
 				}
 			}))
 		},
+		// 读取
+		loadData: function(pageNum, pageSize){
+			var _$$this = this;  
+            _$$this.$http.get('/geely/api/worksheet/list',{
+            	pageNum:pageNum, 
+            	pageSize:pageSize
+            }).then(function(_ret){
+            	if (_ret.body.code == 200) {
+					_.merge(_$$this.$data.tableData, _ret.body.result, true);
+					if(_ret.body.result.length){
+						_$$this.tableData = _ret.data.result.slice((pageNum-1)*pageSize, pageNum*pageSize);
+						_$$this.$data.total = _ret.body.result.length;
+					}else{
+						_$$this.$data.total = 0;
+					}
+       				_$$this.$forceUpdate();
+       			}
+            },function(){
+                console.log('failed');
+            });                 
+        },
+		//  每页显示数据量变更
 		handleSizeChange(val) {
-			debugger;
-	        console.log(`每页 ${val} 条`);
+	        this.pageSize = val; // 每页的条数
+            this.loadData(this.currentPage, this.pageSize);
 	    },
+	    //  页码变更
 	    handleCurrentChange(val) {
-	    	debugger;
-	   	    console.log(`当前页: ${val}`);
+	   	    this.currentPage = val; //当前的页码
+            this.loadData(this.currentPage, this.pageSize);
 	    }
 	},
 	filters: {
