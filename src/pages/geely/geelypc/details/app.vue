@@ -13,15 +13,15 @@
 			<el-row :gutter="20">
 				<el-col :span="8">
 					<label>工单标题</label>
-					<span>{{ detailsData.title }}</span>	
+					<div class="f-list" :title="detailsData.title">{{ detailsData.title }}</div>
 				</el-col>
 				<el-col :span="8">
 					<label>工单编号</label>
-					<span>{{ detailsData.id }}</span>
+					<div class="f-list" :title="detailsData.id">{{ detailsData.id }}</div>
 				</el-col>
 				<el-col :span="8">
 					<label>创建时间</label>
-					<span>{{ detailsData.createTime | time }}</span>
+					<div class="f-list" :title="detailsData.createTime | time">{{ detailsData.createTime | time }}</div>
 				</el-col>
 			</el-row>
 		</div>
@@ -29,19 +29,19 @@
 			<el-row :gutter="20">
 				<el-col :span="8">
 					<label>工单分类</label>
-					<span>{{ detailsData.typeStr }}</span>	
+					<div class="f-list" :title="detailsData.typeStr">{{ detailsData.typeStr }}</div>	
 				</el-col>
 				<el-col :span="8">
 					<label>工单状态</label>
-					<span>{{ detailsData.status | status }}</span>
+					<div class="f-list" :title="detailsData.status | status">{{ detailsData.status | status }}</div>
 				</el-col>
 			</el-row>
 		</div>
 		<div class="m-content">
 			<el-col>
 				<label :span="4">工单内容</label>
-				<div  :span="20" class="f-content">
-					<span>{{ detailsData.content }}</span>	
+				<div :span="20" class="f-content">
+					<div>{{ detailsData.content }}</div>	
 				</div>
 			</el-col>
 		</div>
@@ -49,7 +49,7 @@
 			<el-col>
 				<label>处理结果</label>
 				<div  :span="20" class="f-comment">
-					<span>{{ detailsData.comment }}</span>	
+					<div>{{ detailsData.comment }}</div>	
 				</div>
 			</el-col>
 		</div>
@@ -59,15 +59,15 @@
 					<el-row class="f-usermsg">
 						<el-col :span="8">
 							<label>姓名</label>
-							<span>{{ detailsData.userName }}</span>	
+							<div class="u-usermsg">{{ detailsData.userName }}</div>	
 						</el-col>
 						<el-col :span="8">
 							<label>手机号码</label>
-							<span>{{ detailsData.userMobile }}</span>
+							<div class="u-usermobile">{{ detailsData.userMobile }}</div>
 						</el-col>
 						<el-col :span="8">
 							<label>邮箱</label>
-							<span>{{ detailsData.userEmail | time }}</span>
+							<div class="u-usermsg">{{ detailsData.userEmail | time }}</div>
 						</el-col>
 					</el-row>
 			</el-col>
@@ -285,6 +285,7 @@
 	position: absolute; 
 	width: 76%;
 	left: 12%;
+	min-width: 850px;
 }
 .m-status{
 	margin: 20px 12px;
@@ -303,6 +304,12 @@ img{
 	border-top: 1px solid #e4e8f1;
 	border-bottom: 1px solid #e4e8f1;
 }
+.f-list{
+	margin: -22px 0 0 75px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
 .m-content, .m-comment{
 	height: 90px;
 	margin: 20px 0;
@@ -311,24 +318,43 @@ img{
 	padding: 12px 0;
 }
 .f-content, .f-comment{
-	display: flex;
     height: 88px;
-    margin: -22px 0 0 68px; 
+    margin: -22px 0 0 72px; 
     background-color: #fbfdff;
     border: 1px solid #e4e8f1;
+    overflow-y: auto; 
 }
 .m-usermsg{
 	height: 36px;
 	padding: 10px 0;
 }
 .f-usermsg{
-	margin-left: 68px;
+	margin-left: 72px;
     margin-top: -34px;
     background-color: #fbfdff;
     border: 1px solid #e4e8f1;
 }
 .f-usermsg label, .f-evaluate label{
+	float: left;
 	margin-left: 5px;
+}
+.u-usermsg{
+	float: left;
+	width:80%;
+	min-width: 200px;
+	margin-left: 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.u-usermobile{
+	float: left;
+	width:70%;
+	min-width: 180px;
+	margin-left: 5px; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .f-evaluate{
 	margin: -34px 0 0 68px; 
