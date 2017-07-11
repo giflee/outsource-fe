@@ -87,15 +87,20 @@ export default {
 		},
 		// 读取
 		getList: function(pageNum, pageSize){
-			var _$$this = this;  
+			var _$$this = this; 
+			var filter = {
+				offset:(pageNum-1)*pageSize, 
+            	limit:pageSize
+			}; 
             _$$this.$http.get('/geely/api/worksheet/list',{
-            	pageNum:pageNum, 
-            	pageSize:pageSize
+            	emulateJSON: true,
+				params: filter
             }).then(function(_ret){
             	if (_ret.body.code == 200) {
 					_.merge(_$$this.$data.tableData, _ret.body.result, true);
 					if(_ret.body.result.length){
-						_$$this.tableData = _ret.data.result.slice((pageNum-1)*pageSize, pageNum*pageSize);
+						// _$$this.tableData = _ret.data.result.slice((pageNum-1)*pageSize, pageNum*pageSize);
+						_$$this.tableData = _ret.data.result;
 						_$$this.$data.total = _ret.body.result.length;
 					}else{
 						_$$this.$data.total = 0;
