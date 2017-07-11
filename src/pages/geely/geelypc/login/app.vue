@@ -80,7 +80,9 @@
 			},
 			checkWorksheetno() {
 				this.$data.worksheetnoCheck = false;
-				this.$data.worksheetno = (isNaN(parseInt(this.$data.worksheetno)) || this.$data.worksheetno==0)?'':parseInt(this.$data.worksheetno);
+				if(isNaN(this.$data.worksheetno)){
+					this.$data.worksheetnoCheck = true;
+				}
 			},
 			worksheetQuery() {
 				var _$$this = this;
