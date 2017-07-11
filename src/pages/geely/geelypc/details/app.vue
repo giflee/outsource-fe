@@ -59,15 +59,15 @@
 					<el-row class="f-usermsg">
 						<el-col :span="8">
 							<label>姓名</label>
-							<div class="u-usermsg">{{ detailsData.userName }}</div>	
+							<div class="u-usermsg" :title="detailsData.userName">{{ detailsData.userName }}</div>	
 						</el-col>
 						<el-col :span="8">
 							<label>手机号码</label>
-							<div class="u-usermobile">{{ detailsData.userMobile }}</div>
+							<div class="u-usermobile" :title="detailsData.userMobile">{{ detailsData.userMobile }}</div>
 						</el-col>
 						<el-col :span="8">
 							<label>邮箱</label>
-							<div class="u-usermsg">{{ detailsData.userEmail | time }}</div>
+							<div class="u-usermsg" :title="detailsData.userEmail">{{ detailsData.userEmail }}</div>
 						</el-col>
 					</el-row>
 			</el-col>
@@ -290,12 +290,13 @@
 .m-status{
 	margin: 20px 12px;
 	text-align: center;
-	vertical-align: center;
-	position: relative;
 }
 img{
 	width: 80%;
 	height: 16%;
+}
+label{
+	float: left;
 }
 .m-list{
 	height: 46px;
@@ -305,7 +306,10 @@ img{
 	border-bottom: 1px solid #e4e8f1;
 }
 .f-list{
-	margin: -22px 0 0 75px;
+	float: left;
+	width:70%;
+	min-width: 180px;
+	margin-left: 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
@@ -318,8 +322,11 @@ img{
 	padding: 12px 0;
 }
 .f-content, .f-comment{
+	float: left;
     height: 88px;
-    margin: -22px 0 0 72px; 
+    width: calc(100% - 78px);
+    min-width: 750px;
+    margin-left: 10px;
     background-color: #fbfdff;
     border: 1px solid #e4e8f1;
     overflow-y: auto; 
@@ -329,14 +336,13 @@ img{
 	padding: 10px 0;
 }
 .f-usermsg{
-	margin-left: 72px;
-    margin-top: -34px;
+    float: left;
+    width: calc(100% - 76px);
+    min-width: 750px;
+    margin-left: 10px;
+    margin-top: -12px;
     background-color: #fbfdff;
     border: 1px solid #e4e8f1;
-}
-.f-usermsg label, .f-evaluate label{
-	float: left;
-	margin-left: 5px;
 }
 .u-usermsg{
 	float: left;
@@ -357,16 +363,9 @@ img{
 	overflow: hidden;
 }
 .f-evaluate{
-	margin: -34px 0 0 68px; 
-}
-.el-rate{
-	margin-top: -22px;
-    margin-left: 73px;
+	margin: -15px 0 0 68px; 
 }
 .el-textarea{
 	margin-top: 20px;
-}
-span{
-	margin-left: 5px
 }
 </style>
