@@ -115,7 +115,7 @@
 			</el-col>
 		</el-row>
 		<el-row :gutter="20">
-			<el-col :span="4" :offset="8">
+			<el-col :span="4" :offset="9">
 				<el-button
 				type="primary"
 				@click="evaluate" :disabled="!detailsData.canEvaluate">
@@ -363,7 +363,7 @@ label{
 	overflow: hidden;
 }
 .f-evaluate{
-	margin: -15px 0 0 68px; 
+	margin: -15px 0 0 72px; 
 }
 .el-textarea{
 	margin-top: 20px;

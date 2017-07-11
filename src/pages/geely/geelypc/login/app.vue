@@ -38,7 +38,7 @@
 							<el-input v-model="code" placeholder="短信验证码" @input.native="checkCode" :maxlength="6"></el-input>
 						</el-col>
 						<el-col :span="8">
-							<el-button id="btnSendCode" @click="getCode" :disabled="canCode">{{codeBtnText}}</el-button>
+							<el-button type="primary" id="btnSendCode" @click="getCode" :disabled="canCode">{{codeBtnText}}</el-button>
 						</el-col>
 					</el-row>
 					<el-row v-if="codeCheckResult">
@@ -282,6 +282,11 @@
 		width: 100%;
 		background-color: #2c6fa0;
 		border-color: #2c6fa0;
+	}
+	.el-button--primary:focus, .el-button--primary:hover{
+		background: #3d8cc5;
+    	border-color: #3d8cc5;
+    	color: #fff;
 	}
 	.tips{
 		/*margin-left: 40px;*/

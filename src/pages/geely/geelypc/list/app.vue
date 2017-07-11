@@ -25,7 +25,7 @@
 	      				<span>{{ scope.row.isEvaluated | evaluated}}</span>
 	      			</template>
 	      		</el-table-column> 
-	      		<el-table-column label="订单详情" @click="worksheetQuery">
+	      		<el-table-column label="订单详情">
 	      			<template scope="scope">
 	      				<el-button @click="worksheetQuery" type="text">查看</el-button>
 	      			</template>
@@ -39,7 +39,7 @@
 		      :page-sizes="[5,10, 15, 20, 25]"
 		      :page-size="pageSize"
 		      layout="total, sizes, prev, pager, next"
-		      :total="$data.total">
+		      :total="total">
 		    </el-pagination>
 		  </div>
 		</div>
@@ -53,9 +53,10 @@ const moment = require('moment')
 export default {
 	data() {
 		return {
-			 tableData:[
+			tableData:[
 			
 			],
+			total: 0,
 	        currentPage: 1,
 	        pageSize: 10,
 		}
@@ -99,9 +100,8 @@ export default {
             	if (_ret.body.code == 200) {
 					_.merge(_$$this.$data.tableData, _ret.body.result, true);
 					if(_ret.body.result.length){
-						// _$$this.tableData = _ret.data.result.slice((pageNum-1)*pageSize, pageNum*pageSize);
 						_$$this.tableData = _ret.data.result;
-						_$$this.$data.total = _ret.body.result.length;
+						_$$this.$data.total = _ret.body.total;
 					}else{
 						_$$this.$data.total = 0;
 					}
@@ -153,6 +153,7 @@ export default {
 .m-list{
 	position: absolute;
 	width: 78%;
+	min-width: 1050px;
 	height: 60%;
 	left: 11%;
 	top: 16%
