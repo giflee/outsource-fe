@@ -103,9 +103,10 @@ export default {
 					if(_ret.body.result.length){
 						_$$this.tableData = _ret.data.result;
 						_$$this.$data.total = _ret.body.total;
+						_$$this.$data.noPagination= true;
 					}else{
 						_$$this.$data.total = 0;
-						_$$this.$data.noEvaluate = true;
+						_$$this.$data.noPagination = false;
 					}
        				_$$this.$forceUpdate();
        			}
