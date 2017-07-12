@@ -72,11 +72,9 @@
 		methods: {
 			init() {
 				var urlObj = util.parseQueryString(location.search);
-				console.log(urlObj);
 			},
 			selectTab(tab, event){
 				var _$$this = this;
-				console.log(tab, event);
 			},
 			checkWorksheetno() {
 				this.$data.worksheetnoCheck = false;
@@ -124,6 +122,7 @@
 			},
 			getCode() {
 				var _$$this = this;
+				this.codeSucc();
 				var filter = {
 					phone: _$$this.$data.mobile,
 				}
@@ -137,14 +136,15 @@
 						console.log(_ret);
 						if(!_ret.body.result){
 							_$$this.$data.getCodeError = true;
-							_$$this.$toast(_ret.body.message);
+							_$$this.$message.error('_ret.body.message');
 						}
 						else{
-							this.codeSucc();
+							// this.codeSucc();
 							_$$this.$data.getCodeError = false;
 						}
 					}).catch((_err) => {
-						_$$this.$message.error('服务器出错了哦');
+
+						_$$this.$message.error('服务器出错了');
 					})
 				}
 				
@@ -185,11 +185,12 @@
 								location.href = '../geelypc/list.html?mobile=' + _$$this.$data.mobile;
 							}
 						}).catch((_err) =>{
-							_$$this.$message.error('服务器出错了哦');
+							_$$this.$message.error('服务器出错了');
 						})
 					}
 					}
 			},
+			// 验证码按钮进入倒计时状态
 			codeSucc () {
 				var _$$this = this;
 				_$$this.$data.canCode = true;

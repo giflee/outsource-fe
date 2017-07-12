@@ -109,6 +109,7 @@
 					:autosize="{ minRows: 2, maxRows: 4}"
 					placeholder="其他建议或意见"
 					:disabled="!detailsData.canEvaluate"
+					:maxlength="500"
 					v-model="advValue">
 						</el-input>
 				</div>
@@ -209,7 +210,7 @@
 							_$$this.$message.error(_ret.body.message);
 						}
 					}).catch((_err) => {					
-						_$$this.$message.error('服务器出错了哦');
+						_$$this.$message.error('服务器出错了');
 					}).finally((_ret) => {
 						this.shuxingxing();
 						this.$forceUpdate();
@@ -218,7 +219,7 @@
 			evaluate() {
 				var _$$this = this;
 				if (!_$$this.$data.resValue || !_$$this.$data.effValue || !_$$this.$data.attValue) {
-					this.$toast('请填写完整的三项评价');
+					this.$message('请填写完整的三项评价');
 					return;
 				}
 				var filter = {
@@ -234,7 +235,6 @@
 				}).then((_ret) => {
 					if (_ret.body.code == 200) {
 						_$$this.$data.detailsData.canEvaluate = false;
-						// _$$this.$toast('评价成功');
 						_$$this.$message({
           					message: '非常感谢您对我们的评价，我们将会积极改进',
           					type: 'success'
@@ -245,7 +245,7 @@
 						_$$this.$message.error(_ret.body.message);
 					}
 				}).catch((_err) => {
-					_$$this.$message.error('服务器出错了哦');
+					_$$this.$message.error('服务器出错了');
 				})
 			},
 			cancel() {

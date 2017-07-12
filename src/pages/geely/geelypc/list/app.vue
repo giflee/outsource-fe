@@ -31,7 +31,7 @@
 	      			</template>
 	      		</el-table-column>
 			</el-table>
-			<div class="m-block">
+			<div class="m-block" v-if="noPagination">
 		    <el-pagination
 		      @size-change="handleSizeChange"
 		      @current-change="handleCurrentChange"
@@ -56,6 +56,7 @@ export default {
 			tableData:[
 			
 			],
+			noPagination: false,
 			total: 0,
 	        currentPage: 1,
 	        pageSize: 10,
@@ -104,6 +105,7 @@ export default {
 						_$$this.$data.total = _ret.body.total;
 					}else{
 						_$$this.$data.total = 0;
+						_$$this.$data.noEvaluate = true;
 					}
        				_$$this.$forceUpdate();
        			}
