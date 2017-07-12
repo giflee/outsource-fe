@@ -206,10 +206,10 @@
 								_$$this.$data.detailsData.typeStr = _ret.body.result.typeStr;
 							}					
 						}else{
-							_$$this.$toast(_ret.body.message);
+							_$$this.$message.error(_ret.body.message);
 						}
 					}).catch((_err) => {					
-						_$$this.$toast('服务器出错');
+						_$$this.$message.error('服务器出错了哦');
 					}).finally((_ret) => {
 						this.shuxingxing();
 						this.$forceUpdate();
@@ -234,14 +234,18 @@
 				}).then((_ret) => {
 					if (_ret.body.code == 200) {
 						_$$this.$data.detailsData.canEvaluate = false;
-						_$$this.$toast('评价成功');
+						// _$$this.$toast('评价成功');
+						_$$this.$message({
+          					message: '非常感谢您对我们的评价，我们将会积极改进',
+          					type: 'success'
+        				});
 						// 评价状态刷新
 						_$$this.$forceUpdate();
 					}else{
-						_$$this.$toast(_ret.body.message);
+						_$$this.$message.error(_ret.body.message);
 					}
 				}).catch((_err) => {
-					_$$this.$toast('服务器出错');
+					_$$this.$message.error('服务器出错了哦');
 				})
 			},
 			cancel() {
@@ -286,6 +290,7 @@
 	width: 76%;
 	left: 12%;
 	min-width: 850px;
+	color: #737475;
 }
 .m-status{
 	margin: 20px 12px;
@@ -297,6 +302,7 @@ img{
 }
 label{
 	float: left;
+	color: #222222;
 }
 .m-list{
 	height: 46px;
@@ -309,7 +315,7 @@ label{
 	float: left;
 	width:70%;
 	min-width: 180px;
-	margin-left: 10px;
+	margin-left: 15px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
@@ -331,6 +337,9 @@ label{
     border: 1px solid #e4e8f1;
     overflow-y: auto; 
 }
+.f-content div, .f-comment div{
+	padding-left: 5px;
+}
 .m-usermsg{
 	height: 36px;
 	padding: 10px 0;
@@ -343,6 +352,9 @@ label{
     margin-top: -12px;
     background-color: #fbfdff;
     border: 1px solid #e4e8f1;
+}
+.f-usermsg .el-col{
+	padding-left: 5px;
 }
 .u-usermsg{
 	float: left;
@@ -363,7 +375,10 @@ label{
 	overflow: hidden;
 }
 .f-evaluate{
-	margin: -15px 0 0 72px; 
+	margin: -15px 0 0 75px; 
+}
+.el-rate{
+	margin-left: 75px;
 }
 .el-textarea{
 	margin-top: 20px;

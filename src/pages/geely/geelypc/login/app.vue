@@ -144,7 +144,7 @@
 							_$$this.$data.getCodeError = false;
 						}
 					}).catch((_err) => {
-						_$$this.$toast('服务器出错');
+						_$$this.$message.error('服务器出错了哦');
 					})
 				}
 				
@@ -185,7 +185,7 @@
 								location.href = '../geelypc/list.html?mobile=' + _$$this.$data.mobile;
 							}
 						}).catch((_err) =>{
-							_$$this.$toast('服务器出错');
+							_$$this.$message.error('服务器出错了哦');
 						})
 					}
 					}
