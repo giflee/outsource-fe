@@ -377,6 +377,9 @@ label{
 .f-evaluate{
 	margin: -15px 0 0 75px; 
 }
+.f-evaluate label{
+	margin-right: 8px;
+}
 .el-rate{
 	margin-left: 75px;
 }

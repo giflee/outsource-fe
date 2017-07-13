@@ -92,7 +92,8 @@ export default {
 			var _$$this = this; 
 			var filter = {
 				offset:(pageNum-1)*pageSize, 
-            	limit:pageSize
+            	limit:pageSize,
+            	time: new Date().getTime()
 			}; 
             _$$this.$http.get('/geely/api/worksheet/list',{
             	emulateJSON: true,
