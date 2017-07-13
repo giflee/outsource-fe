@@ -212,20 +212,15 @@
 <style>
 	.g-main{
 		margin: 0 auto;
-		top: 12%;
+		margin-top: 120px;
+		width: 28%;
+		min-width: 400px;
 	}
 	.m-name{
+		width: 100%;
 		text-align: center;
-	}
-	.f-name{
-		position: absolute;
-		display: block;
-		width: 28%;
-		left: 34%;
-		top: 22%;
-		min-width: 400px;
-		height: 40px;
-		
+		margin: 30px auto;
+		margin-bottom: 50px;  
 	}
 	.f-name span {
 		font-size: 34px;
@@ -233,18 +228,10 @@
 		color: #8391a5;
 	}
 	img{
-		position: absolute;
-		width: 28%;
-		min-width: 400px;
-		left: 34%;
-		top: 12%;
+		width: 100%;
 	}
 	.m-query{
-		position: absolute;
-		width: 28%;
-		left: 34%;
-		top: 36%;
-		min-width: 400px;
+		width: 100%;
 		min-height: 240px;
 	}	
 	.el-tabs--border-card{
@@ -291,7 +278,6 @@
     	color: #fff;
 	}
 	.tips{
-		/*margin-left: 40px;*/
 		color: red;
 	}
 </style>

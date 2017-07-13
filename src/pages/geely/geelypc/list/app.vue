@@ -153,18 +153,17 @@ export default {
 	margin: 0 auto;
 }
 .m-list{
-	position: absolute;
 	width: 78%;
 	min-width: 1050px;
-	left: 11%;
-	top: 16%;
-	overflow-x: hidden;
+	margin: 150px auto;
+	overflow: hidden;
+
 }
 .el-table{
 	overflow-x: hidden;
 }
 .m-block{
-	margin-top: 10px;
+	padding-top: 10px;
 }
 .el-table{
 	border-left: 0;
