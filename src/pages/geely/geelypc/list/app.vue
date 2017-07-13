@@ -116,7 +116,11 @@ export default {
 		//  每页显示数据量变更
 		handleSizeChange(val) {
 	        this.pageSize = val; // 每页的条数
-            this.getList(this.currentPage, this.pageSize);
+	        if (this.currentPage != 1) {
+	        	this.currentPage = 1;
+	        }else{
+	        	this.getList(this.currentPage, this.pageSize);
+	        }   
 	    },
 	    //  页码变更
 	    handleCurrentChange(val) {
@@ -171,6 +175,9 @@ export default {
 }
 .el-table::after{
 	width: 0;
+}
+.el-table__body-wrapper{
+	overflow-x: hidden;
 }
 .el-table .cell, .el-table th > div {
     padding: 0 10px;
