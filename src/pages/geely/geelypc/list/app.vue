@@ -100,12 +100,10 @@ export default {
             }).then(function(_ret){
             	if (_ret.body.code == 200) {
 					_.merge(_$$this.$data.tableData, _ret.body.result, true);
-					if(_ret.body.result.length){
-						_$$this.tableData = _ret.data.result;
-						_$$this.$data.total = _ret.body.total;
+					// 无数据不显示分页
+					if(_ret.body.total){
 						_$$this.$data.noPagination= true;
 					}else{
-						_$$this.$data.total = 0;
 						_$$this.$data.noPagination = false;
 					}
        				_$$this.$forceUpdate();
@@ -159,7 +157,11 @@ export default {
 	min-width: 1050px;
 	height: 60%;
 	left: 11%;
-	top: 16%
+	top: 16%;
+	overflow-x: hidden;
+}
+.el-table{
+	overflow-x: hidden;
 }
 .m-block{
 	margin-top: 10px;

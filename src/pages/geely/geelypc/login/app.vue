@@ -122,7 +122,6 @@
 			},
 			getCode() {
 				var _$$this = this;
-				this.codeSucc();
 				var filter = {
 					phone: _$$this.$data.mobile,
 				}
@@ -136,10 +135,10 @@
 						console.log(_ret);
 						if(!_ret.body.result){
 							_$$this.$data.getCodeError = true;
-							_$$this.$message.error('_ret.body.message');
+							_$$this.$message.error(_ret.body.message);
 						}
 						else{
-							// this.codeSucc();
+							this.codeSucc();
 							_$$this.$data.getCodeError = false;
 						}
 					}).catch((_err) => {
