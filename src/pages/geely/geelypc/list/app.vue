@@ -100,6 +100,7 @@ export default {
             }).then(function(_ret){
             	if (_ret.body.code == 200) {
 					_.merge(_$$this.$data.tableData, _ret.body.result, true);
+					_$$this.$data.total = _ret.body.total;
 					// 无数据不显示分页
 					if(_ret.body.total){
 						_$$this.$data.noPagination= true;
