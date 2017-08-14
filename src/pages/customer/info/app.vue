@@ -1,17 +1,17 @@
 <template>
 	<div id="app">
 		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
-			<el-form-item label="客户姓名" prop="name">
-				<el-input v-model.trim="ruleForm.name"></el-input>
+			<el-form-item label="客户姓名" prop="cust_name">
+				<el-input v-model.trim="ruleForm.cust_name"></el-input>
 			</el-form-item>
-			<el-form-item label="手机" prop="phone">
-				<el-input v-model.trim="ruleForm.phone"></el-input>
+			<el-form-item label="手机" prop="tel">
+				<el-input v-model.trim="ruleForm.tel"></el-input>
 			</el-form-item>
 			<el-form-item label="性别" prop="gender">
 				<el-select v-model="ruleForm.gender" placeholder="请选择性别">
 					<el-option label="请选择" value=""></el-option>
-					<el-option label="男" value="0"></el-option>
-					<el-option label="女" value="1"></el-option>
+					<el-option label="男" :value="genderMap.man"></el-option>
+					<el-option label="女" :value="genderMap.woman"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="省份" prop="province">
@@ -22,18 +22,18 @@
 			</el-form-item>
 			<el-form-item label="城市" prop="city">
 				<!-- <el-input v-model.trim="ruleForm.city"></el-input> -->
-				<el-select v-model="ruleForm.city" placeholder="请选择城市" @visible-change="changeType">
+				<el-select v-model="ruleForm.city" placeholder="请选择城市">
 					<el-option :label="item" :value="item" v-for="item in cityArr[ruleForm.province]"></el-option>
 				</el-select>
 			</el-form-item>
-			<el-form-item label="反馈结果" prop="callback">
-			    <el-select v-model="ruleForm.callback" placeholder="请选择反馈结果" @change="selectChange">
-			      <el-option label="无法选择" value="0"></el-option>
-			      <el-option label="确定结果" value="1"></el-option>
+			<el-form-item label="反馈结果" prop="call_result">
+			    <el-select v-model="ruleForm.call_result" placeholder="请选择反馈结果" @change="selectChange">
+			      <el-option label="无法选择" :value="callbackMap.noresult"></el-option>
+			      <el-option label="确定结果" :value="callbackMap.hasresult"></el-option>
 			    </el-select>
 			</el-form-item>
-			<el-form-item label="意向经销商代码" prop="code">
-				<el-input v-model.trim="ruleForm.code"></el-input>
+			<el-form-item label="意向经销商代码" prop="owner_dealer_code">
+				<el-input v-model.trim="ruleForm.owner_dealer_code"></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
 			    <el-input type="textarea" v-model.trim="ruleForm.remark"></el-input>
@@ -53,27 +53,34 @@
 	export default {
 		data() {
 			var checkCode = (rule, value, callback) => {
-				if (!this.$data.ruleForm.code && !this.$data.ruleForm.agencyName) {
+				if (!this.$data.ruleForm.owner_dealer_code) {
 					callback(new Error('意向经销商代码或名称不能为空'));
 				}
 			}
 			return {
 				ruleForm: {
-					name: '',
-					phone: '',
+					cust_name: '',
+					tel: '',
 					province: '',
 					city: '',
-					callback: '0',
-					code: '',
-					agencyName: '',
+					call_result: '0',
+					owner_dealer_code: '',
 					remark: '',
 					gender: ''
 				},
+				genderMap: {
+					man: 0,
+					woman: 1
+				},
+				callbackMap: {
+					noresult: 0,
+					hasresult: 1
+				},
 				rules: {
-						name: [
+						cust_name: [
 							{required: true, message: '客户姓名不能为空', trigger: 'change'}
 						],
-						phone: [
+						tel: [
 							{required: true, message: '手机不能为空', trigger: 'change'}
 						],
 						province: [
@@ -91,6 +98,7 @@
 			this.$data.provinceArr = city_model.provinceArr;
 			this.$data.cityArr = city_model.cityArr;
 			this.init();
+			this.getInitInfo();
 		},
 		methods: {
 			init() {
@@ -98,7 +106,6 @@
 				* 手机号的参数名字必须传tel
 				*/
 				var urlObj = util.parseQueryString(location.search);
-				urlObj.phone = urlObj.tel;
 				_.merge(this.$data.ruleForm, urlObj, true);
 			},
 			save() {
@@ -134,9 +141,9 @@
 				})
 			},
 			selectChange() {
-				if (this.$data.ruleForm.callback == 1) {
+				if (this.$data.ruleForm.call_result == 1) {
 						var checkCode = (rule, value, callback) => {
-							if (!this.$data.ruleForm.code && !this.$data.ruleForm.agencyName) {
+							if (!this.$data.ruleForm.owner_dealer_code) {
 								callback(new Error('意向经销商代码或名称不能为空'));
 							}else{
 								callback();
@@ -144,21 +151,18 @@
 						}
 			
 					var prorules = {
-										code: [
+										owner_dealer_code: [
 												{ validator: checkCode, trigger: 'blur'}
-											],
-										agencyName: [
-											{ validator: checkCode, trigger: 'blur'}
-										]
+											]
 									}
 					_.merge(this.$data.rules, prorules);
 		
 				}else{
 					var prorules = {
-									name: [
+									cust_name: [
 										{required: true, message: '客户姓名不能为空', trigger: 'change'}
 									],
-									phone: [
+									tel: [
 										{required: true, message: '手机不能为空', trigger: 'change'}
 									],
 									province: [
@@ -193,6 +197,8 @@
 						})
 					}else{
 						// 合数据
+						console.log(_ret.body);
+						_.merge(_$$this.$data.ruleForm, _ret.body.result);
 					}
 				})
 

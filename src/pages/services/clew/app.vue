@@ -14,8 +14,8 @@
 			<el-form-item label="性别" prop="gender">
 				<el-select v-model="ruleForm.gender" placeholder="请选择性别">
 					<el-option label="请选择" value=""></el-option>
-					<el-option label="男" value="0"></el-option>
-					<el-option label="女" value="1"></el-option>
+					<el-option label="男" :value="genderMap.man"></el-option>
+					<el-option label="女" :value="genderMap.woman"></el-option>
 				</el-select>
 			</el-form-item>
 			<!-- <el-form-item label="来源渠道" prop="source_from">
@@ -121,6 +121,10 @@
 				provinceArr: '',
 				cityArr: '',
 				disabled: false,
+				genderMap: {
+					man: 0,
+					woman: 1
+				},
 				rules: {
 					cust_name: [
 						{required: true, message: '客户姓名不能为空', trigger: 'change'}
@@ -130,6 +134,12 @@
 					],
 					source_from: [
 						{required: true, message: '来源渠道不能为空', trigger: 'change'}
+					],
+					province: [
+						{required: true, message: '省份不能为空', trigger: 'change'}
+					],
+					city: [
+						{required: true, message: '城市不能为空', trigger: 'change'}
 					]
 				}
 			}
@@ -138,6 +148,13 @@
 			this.$data.provinceArr = city_model.provinceArr;
 			this.$data.cityArr = city_model.cityArr;
 			this.init();
+			this.getInitInfo();
+		},
+		filters:{
+		  	formatDate: function(value) {
+		  		if (!value)  return '';
+		  		return moment(value,"YYYYMMDDHHmmss").format('YYYY-MM-DD HH:mm:ss');
+		  	}
 		},
 		methods: {
 			save() {
@@ -154,7 +171,7 @@
 						filter[key] = moment(new Date(value).getTime()).format('YYYYMMDDHHmmss');
 					}
 				})
-				
+
 				_$$this.$refs['ruleForm'].validate((valid) => {
 					if (valid) {
 						_$$this.$http.post('/wl2/api/lead/add',filter).then((_ret) => {
@@ -206,7 +223,7 @@
 				var filter =  {
 					tel: _$$this.$data.ruleForm.tel || ''
 				}
-				_$$this.$http.post('wl2/api/lead/query', filter).then((_ret) => {
+				_$$this.$http.post('/wl2/api/lead/query', filter).then((_ret) => {
 					if (_ret.body.code != 200) {
 						_$$this.$message({
 							showClose: true,
@@ -215,10 +232,30 @@
 						})
 					}else{
 						// 有数据的时候是一种处理方式
-						if (_ret.body.result) {
+						if (_ret.body.result.source_no) {
+							_.merge(_$$this.$data.ruleForm, _ret.body.result);
+
+						// 预处理时间字段
+						if (_$$this.$data.ruleForm.predict_buy_date) {
+						_$$this.$data.ruleForm.predict_buy_date = moment(_$$this.$data.ruleForm.predict_buy_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
+						}
+
+						if (_$$this.$data.ruleForm.predict_drive_date) {
+						_$$this.$data.ruleForm.predict_drive_date = moment(_$$this.$data.ruleForm.predict_drive_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
+						}
+
+						if (_$$this.$data.ruleForm.predict_repair_date) {
+						_$$this.$data.ruleForm.predict_repair_date = moment(_$$this.$data.ruleForm.predict_repair_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
+						}
+
+						if (_$$this.$data.ruleForm.get_date) {
+						_$$this.$data.ruleForm.get_date = moment(_$$this.$data.ruleForm.get_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
+						}
+
 
 						}else{
 							// 无数据时候的处理方式
+							this.$data.ruleForm.newest = 1;
 						}
 					}
 				})
