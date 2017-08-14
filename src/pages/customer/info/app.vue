@@ -15,10 +15,16 @@
 				</el-select>
 			</el-form-item>
 			<el-form-item label="省份" prop="province">
-				<el-input v-model.trim="ruleForm.province"></el-input>
+				<!-- <el-input v-model.trim="ruleForm.province"></el-input> -->
+				<el-select v-model="ruleForm.province" placeholder="请选择省份" @visible-change="changeTypeProvince">
+					<el-option :label="item" :value="item" v-for="item in provinceArr"></el-option>
+				</el-select>
 			</el-form-item>
 			<el-form-item label="城市" prop="city">
-				<el-input v-model.trim="ruleForm.city"></el-input>
+				<!-- <el-input v-model.trim="ruleForm.city"></el-input> -->
+				<el-select v-model="ruleForm.city" placeholder="请选择城市" @visible-change="changeType">
+					<el-option :label="item" :value="item" v-for="item in cityArr[ruleForm.province]"></el-option>
+				</el-select>
 			</el-form-item>
 			<el-form-item label="反馈结果" prop="callback">
 			    <el-select v-model="ruleForm.callback" placeholder="请选择反馈结果" @change="selectChange">
@@ -28,9 +34,6 @@
 			</el-form-item>
 			<el-form-item label="意向经销商代码" prop="code">
 				<el-input v-model.trim="ruleForm.code"></el-input>
-			</el-form-item>
-			<el-form-item label="意向经销商名称" prop="agencyName">
-				<el-input v-model.trim="ruleForm.agencyName"></el-input>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
 			    <el-input type="textarea" v-model.trim="ruleForm.remark"></el-input>
@@ -46,6 +49,7 @@
 
 <script>
 	const util = require('../../../util.js')
+	const city_model = require('../../../city_model.js')
 	export default {
 		data() {
 			var checkCode = (rule, value, callback) => {
@@ -78,10 +82,14 @@
 						city: [
 							{required: true, message: '城市不能为空', trigger: 'change'}
 						]
-					}
+					},
+				provinceArr: '',
+				cityArr: ''
 			}
 		},
 		created: function() {
+			this.$data.provinceArr = city_model.provinceArr;
+			this.$data.cityArr = city_model.cityArr;
 			this.init();
 		},
 		methods: {
@@ -162,6 +170,32 @@
 								}
 					this.$data.rules = prorules;
 				}
+			},
+			changeTypeProvince(_flag) {
+				if (!_flag) {
+					if (this.$data.ruleForm.province) {
+						var province = this.$data.ruleForm.province;
+						this.$data.ruleForm.city = this.$data.cityArr[province][0];
+					}
+				}
+			},
+			getInitInfo() {
+				var _$$this = this;
+				var filter = {
+					tel: _$$this.$data.ruleForm.tel || ''
+				}
+				_$$this.$http.post('/wl2/api/customer/query',filter).then((_ret) => {
+					if (_ret.body.code != 200) {
+						_$$this.$message({
+							showClose: true,
+							message: _ret.body.message,
+							type: 'error'
+						})
+					}else{
+						// 合数据
+					}
+				})
+
 			}
 		}
 	}

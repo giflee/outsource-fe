@@ -98,7 +98,7 @@ const config = {
     port: 8010,
     historyApiFallback: false,
     noInfo: true,
-    disableHostCheck: true,
+    // disableHostCheck: true,
     proxy: {
       '/wl2/api/*': {
         target: 'http://59.111.98.6:8080'
