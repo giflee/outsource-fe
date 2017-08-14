@@ -63,7 +63,7 @@
 					tel: '',
 					province: '',
 					city: '',
-					call_result: '0',
+					call_result: '',
 					owner_dealer_code: '',
 					remark: '',
 					gender: ''
@@ -76,6 +76,7 @@
 					noresult: 0,
 					hasresult: 1
 				},
+				isFirst: false,
 				rules: {
 						cust_name: [
 							{required: true, message: '客户姓名不能为空', trigger: 'change'}
@@ -141,6 +142,11 @@
 				})
 			},
 			selectChange() {
+				if (this.$data.isFirst) {
+					this.$data.isFirst = false;
+					this.$data.rules = {};
+					return;
+				}
 				if (this.$data.ruleForm.call_result == 1) {
 						var checkCode = (rule, value, callback) => {
 							if (!this.$data.ruleForm.owner_dealer_code) {
@@ -196,8 +202,9 @@
 							type: 'error'
 						})
 					}else{
+						// 第一次加载标志位
+						_$$this.$data.isFirst = true;
 						// 合数据
-						console.log(_ret.body);
 						_.merge(_$$this.$data.ruleForm, _ret.body.result);
 					}
 				})
