@@ -144,7 +144,6 @@
 			selectChange() {
 				if (this.$data.isFirst) {
 					this.$data.isFirst = false;
-					this.$data.rules = {};
 					return;
 				}
 				if (this.$data.ruleForm.call_result == 1) {
@@ -206,6 +205,7 @@
 						_$$this.$data.isFirst = true;
 						// 合数据
 						_.merge(_$$this.$data.ruleForm, _ret.body.result);
+						_$$this.init();
 					}
 				})
 
