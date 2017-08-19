@@ -83,12 +83,6 @@
 						],
 						tel: [
 							{required: true, message: '手机不能为空', trigger: 'change'}
-						],
-						province: [
-							{required: true, message: '省份不能为空', trigger: 'change'}
-						],
-						city: [
-							{required: true, message: '城市不能为空', trigger: 'change'}
 						]
 					},
 				provinceArr: '',
@@ -146,39 +140,40 @@
 					this.$data.isFirst = false;
 					return;
 				}
-				if (this.$data.ruleForm.call_result == 1) {
-						var checkCode = (rule, value, callback) => {
-							if (!this.$data.ruleForm.owner_dealer_code) {
-								callback(new Error('意向经销商代码或名称不能为空'));
-							}else{
-								callback();
-							}
-						}
+				// sb 五菱自己把自己的需求否了
+				// if (this.$data.ruleForm.call_result == 1) {
+				// 		var checkCode = (rule, value, callback) => {
+				// 			if (!this.$data.ruleForm.owner_dealer_code) {
+				// 				callback(new Error('意向经销商代码或名称不能为空'));
+				// 			}else{
+				// 				callback();
+				// 			}
+				// 		}
 			
-					var prorules = {
-										owner_dealer_code: [
-												{ validator: checkCode, trigger: 'blur'}
-											]
-									}
-					_.merge(this.$data.rules, prorules);
+				// 	var prorules = {
+				// 						owner_dealer_code: [
+				// 								{ validator: checkCode, trigger: 'blur'}
+				// 							]
+				// 					}
+				// 	_.merge(this.$data.rules, prorules);
 		
-				}else{
-					var prorules = {
-									cust_name: [
-										{required: true, message: '客户姓名不能为空', trigger: 'change'}
-									],
-									tel: [
-										{required: true, message: '手机不能为空', trigger: 'change'}
-									],
-									province: [
-										{required: true, message: '省份不能为空', trigger: 'change'}
-									],
-									city: [
-										{required: true, message: '城市不能为空', trigger: 'change'}
-									]
-								}
-					this.$data.rules = prorules;
-				}
+				// }else{
+				// 	var prorules = {
+				// 					cust_name: [
+				// 						{required: true, message: '客户姓名不能为空', trigger: 'change'}
+				// 					],
+				// 					tel: [
+				// 						{required: true, message: '手机不能为空', trigger: 'change'}
+				// 					],
+				// 					province: [
+				// 						{required: true, message: '省份不能为空', trigger: 'change'}
+				// 					],
+				// 					city: [
+				// 						{required: true, message: '城市不能为空', trigger: 'change'}
+				// 					]
+				// 				}
+				// 	this.$data.rules = prorules;
+				// }
 			},
 			changeTypeProvince(_flag) {
 				if (!_flag) {

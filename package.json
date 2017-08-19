@@ -9,6 +9,7 @@
     "build_geely": "cross-env NODE_ENV=production webpack --config webpack.geely.config.js --progress --hide-modules"
   },
   "dependencies": {
+    "commander": "^2.11.0",
     "element-ui": "^1.2.8",
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.7",
