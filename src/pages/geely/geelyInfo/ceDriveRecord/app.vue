@@ -1,8 +1,8 @@
 <template>
 	<div id="app"  class="g-main">
-		<el-collapse accordion>
+		<el-collapse v-for="(driveData, index) in driveDatas"  v-model="activeNames" accordion>
 		  	<el-collapse-item title="试驾" name="1">
-			    <el-form>
+			    <el-form class="m-driverecord">
 					<el-form-item label="经销商编码">
 						<template>
 							<span>{{ driveData.dealerCode }}</span>
@@ -83,10 +83,11 @@ const moment = require('moment')
 export default {
 	data() {
 		return {
-			driveData: {
-
-			},
-			
+			driveDatas: [{
+				dealerCode: ''
+			}],
+			activeNames:['1'],
+			mobile:''
 		}
 	},
 	created: function() {
@@ -96,19 +97,19 @@ export default {
 	methods: {
 		init() {
 				var urlObj = util.parseQueryString(location.search);
+				this.$data.mobile = urlObj.mobile;
 		},
 		getDriveInfo() {
 			var _$$this = this;
 			var filter = {
-				phone: '13898701001'
+				phone: this.$data.mobile
 			};
-			_$$this.$http.get('/', {
+			_$$this.$http.get('/gl2/api/ceDriveRecord/query', {
 				emulateJson: true,
 				params: filter
 			}).then((_ret) => {
 				if(_ret.body.code == 200){
-					_.merge(_$$this.$data.driveData,_ret.body.result, true);
-					alert(_$$this.$data.driveData.fullName);
+					_.merge(_$$this.$data.driveDatas,_ret.body.result, true);
 				}else{
 					_$$this.$message.error(_ret.body.message);
 				}
@@ -125,5 +126,21 @@ export default {
 }
 </script>
 
-<style>
+<style  lang="sass">
+.g-main{
+	.el-collapse{
+		.el-collapse-item{
+			.el-collapse-item__wrap{
+				.m-driverecord{
+					.el-form-item{
+						margin-bottom: 0;
+						label{
+							width:110px;
+						}
+					}	
+				}
+			}
+		}
+	}
+}
 </style>

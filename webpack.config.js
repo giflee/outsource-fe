@@ -108,6 +108,9 @@ const config = {
       },
       '/robot/api/*': {
         target: 'http://127.0.0.1:8003'
+        },
+      '/gl2/api/*': {
+        target: 'http://59.111.98.6:8282'
       }
     }
   },

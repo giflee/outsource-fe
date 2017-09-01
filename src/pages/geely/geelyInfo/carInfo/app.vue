@@ -1,6 +1,6 @@
 <template>
 	<div id="app"  class="g-main">
-		<el-collapse accordion>
+		<el-collapse v-for="(carData,index) in carDatas" v-model="activeNames"  accordion>
 		  	<el-collapse-item title="浙AG1234" name="1">
 			    <el-form class="m-car">
 					<el-form-item label="VIN码">
@@ -62,9 +62,11 @@ const moment = require('moment')
 export default {
 	data() {
 		return {
-			carData: {
-
-			},
+			carDatas: [{
+				vin:''
+			}],
+			activeNames:['1'],
+			mobile:''
 			
 		}
 	},
@@ -75,6 +77,7 @@ export default {
 	methods: {
 		init() {
 			var urlObj = util.parseQueryString(location.search);
+			this.$data.mobile = urlObj.mobile;
 		},
 		getCarInfo() {
 			var _$$this = this;
@@ -86,9 +89,8 @@ export default {
 				params: filter
 			}).then((_ret) => {
 				if(_ret.body.code == 200){
-					_.merge(_$$this.$data.carData,_ret.body.result, true);
+					_.merge(_$$this.$data.carDatas,_ret.body.result, true);
 					this.$forceUpdate();
-					// alert(_$$this.$data.carData.fullName)
 
 				}else{
 					_$$this.$message.error(_ret.body.message);
