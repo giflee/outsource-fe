@@ -40,7 +40,8 @@ const config = {
               use: 'css-loader',
               fallback: 'style-loader'
             }),
-            postcss: ExtractTextPlugin.extract({
+              scss: 'vue-style-loader!css-loader!sass-loader',
+              postcss: ExtractTextPlugin.extract({
               use: ['css-loader', 'postcss-loader'],
               fallback: 'style-loader'
             })
