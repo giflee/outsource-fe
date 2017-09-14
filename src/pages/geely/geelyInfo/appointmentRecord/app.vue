@@ -7,7 +7,7 @@
                         <span>{{appointment.appointmentCode}}</span>
                     </el-form-item>
                     <el-form-item label="预约进厂时间">
-                        <span>{{appointment.appointmentAt}}</span>
+                        <span>{{appointment.appointmentAt | dateFilter}}</span>
                     </el-form-item>
                     <el-form-item label="预约来源">
                         <span>{{appointment.appointmentSource}}</span>
@@ -28,10 +28,10 @@
                         <span>{{appointment.mileage}}</span>
                     </el-form-item>
                     <el-form-item label="预约维修开始时间">
-                        <span>{{appointment.maintainStartAt}}</span>
+                        <span>{{appointment.maintainStartAt | dateFilter}}</span>
                     </el-form-item>
                     <el-form-item label="预约维修结束时间">
-                        <span>{{appointment.maintainEndAt}}</span>
+                        <span>{{appointment.maintainEndAt | dateFilter}}</span>
                     </el-form-item>
                     <el-form-item label="取消原因">
                         <span>{{appointment.cancelReason}}</span>
@@ -46,30 +46,33 @@
                         <span>{{appointment.createdBy}}</span>
                     </el-form-item>
                     <el-form-item label="创建时间">
-                        <span>{{appointment.createdOn |dateFilter}}</span>
+                        <span>{{appointment.createdOn | dateFilter}}</span>
                     </el-form-item>
                     <el-form-item label="修改人">
                         <span>{{appointment.modifiedBy}}</span>
                     </el-form-item>
                     <el-form-item label="修改时间">
-                        <span>{{appointment.modifiedOn |dateFilter}}</span>
+                        <span>{{appointment.modifiedOn | dateFilter}}</span>
                     </el-form-item>
                     <el-form-item label="预约工单类型">
-                        <span>{{appointment.oderType}}</span>
+                        <span>{{appointment.orderType}}</span>
                     </el-form-item>
                     <el-form-item label="变更原因">
                         <span>{{appointment.changeReason}}</span>
                     </el-form-item>
-                    <el-form-item label="预约类型">
-                        <span>{{appointment.appointmentType}}</span>
-                    </el-form-item>
-                    <el-form-item label="状态">
-                        <span>{{appointment.status}}</span>
-                    </el-form-item>
-                    <el-form-item label="预约内容">
-                        <span>{{appointment.appointmentContent}}</span>
-                    </el-form-item>
-
+                    <el-collapse v-for="(x,i) in appointment.appointmentOrder" accordion>
+                        <el-collapse-item :title="'预约-'+i">
+                            <el-form-item label="预约类型">
+                                <span>{{x.appointmentType}}</span>
+                            </el-form-item>
+                            <el-form-item label="状态">
+                                <span>{{x.status}}</span>
+                            </el-form-item>
+                            <el-form-item label="预约内容">
+                                <span>{{x.appointmentContent}}</span>
+                            </el-form-item>
+                        </el-collapse-item>
+                    </el-collapse>
                 </el-form>
             </el-collapse-item>
         </el-collapse>
@@ -89,7 +92,6 @@
                 activeNames: [0],
             }
         },
-
         created: function () {
             this.getAppointment();
         },
@@ -107,7 +109,7 @@
                     } else {
                         this.$message.error(_ret.body.message);
                     }
-                }).catch((_ret) => {
+                }).catch(() => {
                     this.$message.error('服务器出错了');
                 })
             },

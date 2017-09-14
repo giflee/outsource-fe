@@ -4,7 +4,7 @@
             <el-collapse-item :title="'销售记录-'+index" :name="index">
                 <el-form class="m-vehro">
                     <el-form-item label="银行及金融公司">
-                        <span>{{vehro.bankId}}</span>
+                        <span>{{vehro.bankid}}</span>
                     </el-form-item>
                     <el-form-item label="开票日期">
                         <span>{{vehro.issueDate | dateFilter}}</span>
@@ -16,10 +16,10 @@
                         <span>{{vehro.earnest }}</span>
                     </el-form-item>
                     <el-form-item label="总额">
-                        <span>{{vehro.totalAmount }}</span>
+                        <span>{{vehro.totalamount }}</span>
                     </el-form-item>
                     <el-form-item label="订单日期">
-                        <span>{{vehro.orderDate | dateFilter}}</span>
+                        <span>{{vehro.orderdate | dateFilter}}</span>
                     </el-form-item>
                     <el-form-item label="状态">
                         <span>{{vehro.status }}</span>
@@ -52,58 +52,58 @@
                         <span>{{vehro.customer }}</span>
                     </el-form-item>
                     <el-form-item label="车主">
-                        <span>{{vehro.contactId }}</span>
+                        <span>{{vehro.contactid }}</span>
                     </el-form-item>
                     <el-form-item label="零售订单来源">
-                        <span>{{vehro.retailOrderType }}</span>
+                        <span>{{vehro.retailordertype }}</span>
                     </el-form-item>
                     <el-form-item label="标准价格">
-                        <span>{{vehro.stdPrice }}</span>
+                        <span>{{vehro.stdprice }}</span>
                     </el-form-item>
                     <el-form-item label="交定金时间">
-                        <span>{{vehro.payDepositTime }}</span>
+                        <span>{{vehro.paydeposit_time  | dateFilter }}</span>
                     </el-form-item>
                     <el-form-item label="保险公司">
-                        <span>{{vehro.insuranceCompanyId }}</span>
+                        <span>{{vehro.insurancecompanyid }}</span>
                     </el-form-item>
                     <el-form-item label="开票名称">
                         <span>{{vehro.invoiceName }}</span>
                     </el-form-item>
                     <el-form-item label="销售顾问">
-                        <span>{{vehro.ownerId }}</span>
+                        <span>{{vehro.ownerid }}</span>
                     </el-form-item>
                     <el-form-item label="零售锁车匹配类型">
-                        <span>{{vehro.retailLockType }}</span>
+                        <span>{{vehro.retaillocktype }}</span>
                     </el-form-item>
                     <el-form-item label="商城创建时间">
-                        <span>{{vehro.createdOnMall }}</span>
+                        <span>{{vehro.createdonmall  | dateFilter }}</span>
                     </el-form-item>
                     <el-form-item label="创建人名称">
-                        <span>{{vehro.createdByMall }}</span>
+                        <span>{{vehro.createdbymall }}</span>
                     </el-form-item>
                     <el-form-item label="数据来源平台">
-                        <span>{{vehro.dataPlatform }}</span>
+                        <span>{{vehro.dataplatform }}</span>
                     </el-form-item>
                     <el-form-item label="批售订单">
                         <span>{{vehro.wsorderId }}</span>
                     </el-form-item>
                     <el-form-item label="预计交期（天）">
-                        <span>{{vehro.deliveryTime }}</span>
+                        <span>{{vehro.deliverytime }}</span>
                     </el-form-item>
                     <el-form-item label="预计交期（周）">
-                        <span>{{vehro.deliveryWeek }}</span>
+                        <span>{{vehro.deliveryweek }}</span>
                     </el-form-item>
                     <el-form-item label="零售订单编号">
                         <span>{{vehro.name }}</span>
                     </el-form-item>
                     <el-form-item label="唯一排队号">
-                        <span>{{vehro.lineId }}</span>
+                        <span>{{vehro.lineid }}</span>
                     </el-form-item>
                     <el-form-item label="货币类型">
-                        <span>{{vehro.transactionCurrencyId }}</span>
+                        <span>{{vehro.transactioncurrencyid }}</span>
                     </el-form-item>
                     <el-form-item label="订单状态">
-                        <span>{{vehro.orderStatus }}</span>
+                        <span>{{vehro.orderstatus }}</span>
                     </el-form-item>
                     <el-form-item label="Vin">
                         <span>{{vehro.vin }}</span>
@@ -114,7 +114,6 @@
     </div>
 </template>
 
-
 <script>
     import moment from 'moment';
     import util from '../../../../util';
@@ -123,7 +122,7 @@
         data() {
             return {
                 vehros: [{
-                    bankId: '',
+                    bankid: '',
                 }],
                 activeNames: [0],
             }
@@ -146,7 +145,7 @@
                     } else {
                         this.$message.error(_ret.body.message);
                     }
-                }).catch((_ret) => {
+                }).catch(() => {
                     this.$message.error('服务器出错了');
                 })
             },

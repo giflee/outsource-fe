@@ -1,64 +1,93 @@
 <template>
     <div id="app" class="g-main">
-        <el-form ref="form" label-width="80px">
-            <el-form-item label="姓名">
-                <el-input v-model="userData.fullName"></el-input>
-            </el-form-item>
-            <el-form-item label="性别">
-                <el-select v-model="userData.genderCode" placeholder="请选择性别" style="width: 100%">
-                    <el-option v-for="item in genders" :label="item.label" :value="item.value"></el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item label="手机号码1">
-                <el-input v-model="userData.telephone1"></el-input>
-            </el-form-item>
-            <el-form-item label="手机号码2">
-                <el-input v-model="userData.telephone2"></el-input>
-            </el-form-item>
-            <el-form-item label="手机号码3">
-                <el-input v-model="userData.telephone3"></el-input>
-            </el-form-item>
-            <el-form-item label="邮箱">
-                <el-input v-model="userData.emailAddress1"></el-input>
-            </el-form-item>
-            <el-form-item label="区域">
-                <el-cascader
-                        style="width: 100%"
-                        :options="options"
-                        :clearable="true"
-                        @active-item-change="handleItemChange"
-                        v-model="selectArea"
-                        :props="props"
-                ></el-cascader>
-            </el-form-item>
-            <el-form-item label="联络地址">
-                <el-input type="textarea" v-model="userData.address"></el-input>
-            </el-form-item>
-            <el-form-item label="证件号码">
-                <span>{{ userData.governmentId }}</span>
-            </el-form-item>
-            <el-form-item label="接入渠道">
-                <span> {{ userData.leadSourceCode | channel }}</span>
-            </el-form-item>
-            <el-form-item label="数据来源">
-                <span> {{ userData.dataFrom | source }}</span>
-            </el-form-item>
-            <el-form-item label="备注">
-                <el-input type="textarea" v-model="userData.description"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="onSubmit" size="large" style="width: 180px;">提交</el-button>
-            </el-form-item>
-        </el-form>
+        <el-collapse v-for="(user,index) in userData" v-model="activeNames" accordion>
+            <el-collapse-item :title="'姓名-'+user.fullName" :name="index">
+                <el-form class="m-car">
+                    <el-form-item label="姓名">
+                        <template>
+                            <span>{{user.fullName}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="性别">
+                        <template>
+                            <span>{{user.genderCode}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="联系号码1">
+                        <template>
+                            <span>{{user.telephone1}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="联系号码2">
+                        <template>
+                            <span>{{user.telephone2}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="联系号码3">
+                        <template>
+                            <span>{{user.telephone3}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="邮箱">
+                        <template>
+                            <span>{{user.emailAddress1}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="省">
+                        <template>
+                            <span>{{user.province}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="市">
+                        <template>
+                            <span>{{user.city}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="区">
+                        <template>
+                            <span>{{user.district}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="联络地址">
+                        <template>
+                            <span>{{user.address}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="证件号码">
+                        <template>
+                            <span>{{user.id}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="接入渠道">
+                        <template>
+                            <span>{{user.leadSourceCode}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="数据来源">
+                        <template>
+                            <span>{{user.dataFrom}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="备注">
+                        <template>
+                            <span>{{user.description}}</span>
+                        </template>
+                    </el-form-item>
+
+                </el-form>
+            </el-collapse-item>
+        </el-collapse>
+
     </div>
 </template>
 
 <script>
     import util from '../../../../util.js';
+
     export default {
         data() {
             return {
-                userData: {
+                userData: [{
                     fullName: '',
                     genderCode: '',
                     telephone1: '',
@@ -71,103 +100,25 @@
                     leadSourceCode: '',
                     dataFrom: '',
                     description: '',
-                },
-                selectArea: [],
-                genders: [
-                    {label: '先生', value: 1},
-                    {label: '女士', value: 2},
-                ],
-                options: [],
-                props: {
-                    label: 'name',
-                    value: 'id',
-                    children: 'children'
-                }
+                }],
+                activeNames: [0]
             }
         },
 
         created: function () {
             this.getUserInfo(); //初始化
-            this.getProvince(); //获取省份
         },
 
         methods: {
-            /**
-             * 获取省份
-             */
-            getProvince() {
-                this.$http.get('/gl2/api/sys/map/provinces').then((res) => {
-                    if (res.body.code === 200) {
-                        res.body.result && res.body.result.forEach((province) => {
-                            province.children = [];
-                            this.options.push(province);
-                        })
-                    }
-                });
-            },
-
-            /**
-             * 处理级联
-             * @param _obj
-             */
-            handleItemChange(_obj) {
-                switch (_obj.length) {
-                    case 1:
-                        const province = _obj[0];
-                        this.$http.get('/gl2/api/sys/map/city', {
-                            params: {id: province}
-                        }).then((res) => {
-                            if (res.body.code === 200) {
-                                this.options.forEach((x) => {
-                                    //找到对应省份
-                                    if (x.id === province) {
-                                        //没有加载过
-                                        if (x.children && !x.children.length) {
-                                            res.body.result.forEach((city) => {
-                                                city.children = [];
-                                                x.children.push(city);
-                                            })
-                                        }
-                                    }
-                                });
-                            }
-                        });
-                        break;
-                    case 2:
-                        this.$http.get('/gl2/api/sys/map/area', {
-                            params: {id: _obj[1]}
-                        }).then((res) => {
-                            if (res.body.code === 200) {
-                                this.options.forEach((x, index) => {
-                                    //找到对应的省份
-                                    if (x.id === _obj[0]) {
-                                        this.options[index].children.forEach((city, index2) => {
-                                            //找到对应的市区
-                                            if (city.id === _obj[1]) {
-                                                //填进对应的区域
-                                                this.options[index]['children'][index2]['children'] = res.body.result;
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                        });
-                        break;
-                    default:
-                        break;
-                }
-            },
-
-            /**
-             * 获取初始信息
-             */
             getUserInfo() {
                 this.$http.get('/gl2/api/contact/query', {
                     emulateJson: true,
                     params: util.parseQueryString(location.search)
                 }).then((_ret) => {
                     if (_ret.body.code === 200) {
-                        this.userData = _ret.body.result;
+                        if (!!_ret.body.result) {
+                            this.userData = _ret.body.result;
+                        }
                     } else {
                         this.$message.error(_ret.body.message);
                     }
@@ -175,13 +126,6 @@
                     this.$message.error('服务器出错了');
                 })
             },
-
-            /**
-             * 提交
-             */
-            onSubmit() {
-                console.log('submit')
-            }
         },
 
         filters: {
@@ -220,5 +164,27 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .g-main {
+        .el-collapse {
+            .el-collapse-item {
+                .el-collapse-item__wrap {
+                    .m-vehro {
+                        .el-form-item {
+                            margin-bottom: 0;
+                            label {
+                                width: 110px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 </style>

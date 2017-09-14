@@ -25,22 +25,22 @@
                     </el-form-item>
                     <el-form-item label="试驾开始时间">
                         <template>
-                            <span>{{ driveData.startTime }}</span>
+                            <span>{{ driveData.sartTime | dateFilter}}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="试驾结束时间">
                         <template>
-                            <span>{{ driveData.finishTime }}</span>
+                            <span>{{ driveData.finishTtime | dateFilter}}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="预约开始时间">
                         <template>
-                            <span>{{ driveData.appointedStartTime }}</span>
+                            <span>{{ driveData.appointedStartTime | dateFilter }}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="预约结束时间">
                         <template>
-                            <span>{{ driveData.appointedFinishTime }}</span>
+                            <span>{{ driveData.appointedFinishTime | dateFilter }}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="试驾状态">
@@ -50,12 +50,12 @@
                     </el-form-item>
                     <el-form-item label="创建时间">
                         <template>
-                            <span>{{ driveData.createdOn}}</span>
+                            <span>{{ driveData.createdOn | dateFilter}}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="更新时间">
                         <template>
-                            <span>{{ driveData.modifiedOn}}</span>
+                            <span>{{ driveData.modifiedOn | dateFilter}}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="试驾车系">
@@ -87,8 +87,8 @@
                     accountId: '',
                     phone: '',
                     salesId: '',
-                    startTime: '',
-                    finishTime: '',
+                    sartTime: '',
+                    finishTtime: '',
                     appointedStartTime: '',
                     appointedFinishTime: '',
                     status: '',
@@ -112,7 +112,9 @@
                     params: util.parseQueryString(location.search)
                 }).then((_ret) => {
                     if (_ret.body.code === 200) {
-                        this.driveDatas = _ret.body.result;
+                        if(!!_ret.body.result.length){
+                            this.driveDatas = _ret.body.result;
+                        }
                     } else {
                         this.$message.error(_ret.body.message);
                     }
@@ -120,7 +122,15 @@
                     this.$message.error('服务器出错了');
                 })
             }
+        },
+
+        filters: {
+            dateFilter: function (value) {
+                if (!value) return '';
+                return moment(value).format('YYYY-MM-DD HH:mm:ss');
+            }
         }
+
     }
 </script>
 

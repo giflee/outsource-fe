@@ -1,14 +1,59 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(worksheet, index) in worksheets" v-model="activeNames" accordion>
-            <el-collapse-item :title="'案例-'+index" :name="index">
+            <el-collapse-item :title="'工单-'+index" :name="index">
                 <el-form class="m-worksheet">
                     <el-form-item label="实际解决时间">
                         <span>{{worksheet.actualsolveTime | dateFilter}}</span>
                     </el-form-item>
-                    <el-form-item label="问题分类1">
+                    <el-form-item label="问题分类(1)">
                         <template>
                             <span>{{worksheet.caseLevel1}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(2)">
+                        <template>
+                            <span>{{worksheet.caseLevel2}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(3)">
+                        <template>
+                            <span>{{worksheet.caseLevel3}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(3-1)">
+                        <template>
+                            <span>{{worksheet.caseLevel31}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(3-2)">
+                        <template>
+                            <span>{{worksheet.caseLevel32}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(3-3)">
+                        <template>
+                            <span>{{worksheet.caseLevel33}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(4)">
+                        <template>
+                            <span>{{worksheet.caseLevel4}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(4-1)">
+                        <template>
+                            <span>{{worksheet.caseLevel41}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(4-2)">
+                        <template>
+                            <span>{{worksheet.caseLevel42}}</span>
+                        </template>
+                    </el-form-item>
+                    <el-form-item label="问题分类(4-3)">
+                        <template>
+                            <span>{{worksheet.caseLevel43}}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="渠道">
@@ -91,7 +136,6 @@
                             <span>{{worksheet.vehicleClass}}</span>
                         </template>
                     </el-form-item>
-
                     <el-form-item label="回访人">
                         <template>
                             <span>{{worksheet.visitBy}}</span>
@@ -143,7 +187,7 @@
                         </template>
                     </el-form-item>
                     <el-form-item label="案例来源">
-                        <template scope="scope">
+                        <template>
                             <span>{{worksheet.caseOriginCode}}</span>
                         </template>
                     </el-form-item>
@@ -187,11 +231,13 @@
                     params: util.parseQueryString(location.search)
                 }).then((_ret) => {
                     if (_ret.body.code === 200) {
-                        this.worksheets = _ret.body.result
+                        if (!!_ret.body.result.length) {
+                            this.worksheets = _ret.body.result
+                        }
                     } else {
                         this.$message.error(_ret.body.message);
                     }
-                }).catch((_ret) => {
+                }).catch(() => {
                     this.$message.error('服务器出错了');
                 })
             },
@@ -205,6 +251,7 @@
         }
     }
 </script>
+
 <style lang="scss">
     body {
         margin: 0;
