@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(keep,index) in keeps" v-model="activeNames" accordion>
-            <el-collapse-item :title="'保养记录-'+keep.serviceProxyCode" :name="index">
+            <el-collapse-item :title="'保养记录-'+(keep.serviceProxyCode||'')" :name="index">
                 <el-form class="m-keep">
                     <el-form-item label="预约单号">
                         <span>{{keep.serviceProxyCode}}</span>

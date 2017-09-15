@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(user,index) in userData" v-model="activeNames" accordion>
-            <el-collapse-item :title="'姓名-'+user.fullName" :name="index">
+            <el-collapse-item :title="'姓名-'+(user.fullName||'')" :name="index">
                 <el-form class="m-car">
                     <el-form-item label="姓名">
                         <template>
@@ -73,7 +73,6 @@
                             <span>{{user.description}}</span>
                         </template>
                     </el-form-item>
-
                 </el-form>
             </el-collapse-item>
         </el-collapse>
@@ -120,7 +119,7 @@
                             this.userData = _ret.body.result;
                         }
                     } else {
-                        this.$message.error(_ret.body.message);
+                        !!_ret.body.message && this.$message.error(_ret.body.message);
                     }
                 }).catch(() => {
                     this.$message.error('服务器出错了');

@@ -116,7 +116,7 @@
                             this.driveDatas = _ret.body.result;
                         }
                     } else {
-                        this.$message.error(_ret.body.message);
+                        !!_ret.body.message && this.$message.error(_ret.body.message);
                     }
                 }).catch((_ret) => {
                     this.$message.error('服务器出错了');

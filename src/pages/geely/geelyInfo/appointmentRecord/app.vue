@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(appointment,index) in appointments" v-model="activeNames" accordion>
-            <el-collapse-item :title="'预约单号-'+appointment.appointmentCode" :name="index">
+            <el-collapse-item :title="'预约单号-'+(appointment.appointmentCode ||'')" :name="index">
                 <el-form class="m-appointment">
                     <el-form-item label="预约单号">
                         <span>{{appointment.appointmentCode}}</span>
@@ -107,7 +107,7 @@
                             this.appointments = _ret.body.result
                         }
                     } else {
-                        this.$message.error(_ret.body.message);
+                        !!_ret.body.message && this.$message.error(_ret.body.message);
                     }
                 }).catch(() => {
                     this.$message.error('服务器出错了');

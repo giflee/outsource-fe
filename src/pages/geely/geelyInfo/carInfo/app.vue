@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(carData,index) in carDatas" v-model="activeNames" accordion>
-            <el-collapse-item :title="'车辆-'+carData.licenseno" :name="index">
+            <el-collapse-item :title="'车辆-'+(carData.licenseno||'')" :name="index">
                 <el-form class="m-car">
                     <el-form-item label="VIN码">
                         <template>
@@ -91,7 +91,7 @@
                             this.carDatas = _ret.body.result;
                         }
                     } else {
-                        this.$message.error(_ret.body.message);
+                        !!_ret.body.message && this.$message.error(_ret.body.message);
                     }
                 }).catch(() => {
                     this.$message.error('服务器出错了');

@@ -61,7 +61,7 @@
                         <span>{{vehro.stdprice }}</span>
                     </el-form-item>
                     <el-form-item label="交定金时间">
-                        <span>{{vehro.paydeposit_time  | dateFilter }}</span>
+                        <span>{{vehro.paydeposit_time | dateFilter }}</span>
                     </el-form-item>
                     <el-form-item label="保险公司">
                         <span>{{vehro.insurancecompanyid }}</span>
@@ -76,7 +76,7 @@
                         <span>{{vehro.retaillocktype }}</span>
                     </el-form-item>
                     <el-form-item label="商城创建时间">
-                        <span>{{vehro.createdonmall  | dateFilter }}</span>
+                        <span>{{vehro.createdonmall | dateFilter }}</span>
                     </el-form-item>
                     <el-form-item label="创建人名称">
                         <span>{{vehro.createdbymall }}</span>
@@ -143,7 +143,7 @@
                             this.vehros = _ret.body.result
                         }
                     } else {
-                        this.$message.error(_ret.body.message);
+                        !!_ret.body.message && this.$message.error(_ret.body.message);
                     }
                 }).catch(() => {
                     this.$message.error('服务器出错了');
