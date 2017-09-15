@@ -10,7 +10,7 @@
                       position="bottom"
                       class="mint-datetime">
                 <mt-picker show-toolbar :slots="slots" @change="onValuesChange" :valueKey="valueKey"
-                           class="mint-datetime-picker">
+                           class="mint-datetime-picker picker-filter">
                     <span class="mint-datetime-action mint-datetime-cancel" @click="filterPopup = false;">取消</span>
                     <span class="mint-datetime-action mint-datetime-confirm" @click="pickFilter">确定</span>
                 </mt-picker>
@@ -136,6 +136,12 @@
             for (let i = this.startYear; i <= this.endYear; i++) {
                 this.monthSlots[0].values.push(i)
             }
+
+            // mint-ui 真垃圾
+            this.$nextTick(()=>{
+                const picker=document.querySelector('.picker-filter .picker-slot-wrapper');
+                picker.style.transform='translate(0px,72px) translateZ(0px)';
+            })
         },
 
         methods: {
