@@ -23,7 +23,7 @@
                       class="mint-datetime">
                 <mt-picker :slots="monthSlots" @change="onMonthChange" class="mint-datetime-picker"
                            show-toolbar>
-                    <span class="mint-datetime-action mint-datetime-cancel" @click="defaultMonth">不限</span>
+                    <span class="mint-datetime-action mint-datetime-cancel" @click="defaultMonth">全部</span>
                     <span class="mint-datetime-action mint-datetime-confirm"
                           @click="pickMonth">确定</span>
                 </mt-picker>
@@ -121,13 +121,13 @@
                 filter: 0, //筛选项
                 startTime: '', //月份筛选项
                 endTime: '',
-                monthTitle: '不限',
+                monthTitle: '全部',
                 selected: {
                     startTime: '',
                     endTime: '',
                     filter: 0
                 },
-                startYear: new Date(new Date().getFullYear() - 10, 0, 1).getFullYear(),
+                startYear: 2017,
                 endYear: new Date().getFullYear(),
             }
         },
@@ -165,7 +165,7 @@
             pickMonth() {
                 this.startTime = this.selected.startTime;
                 this.endTime = this.selected.endTime;
-                this.monthTitle = !!this.selected.startTime ? moment(this.startTime).format('YYYY-MM') : '不限';
+                this.monthTitle = !!this.selected.startTime ? moment(this.startTime).format('YYYY-MM') : '全部';
                 this.initData();
                 this.loadMore();
                 this.monthPopup = false;
@@ -176,7 +176,7 @@
              */
             defaultMonth() {
                 this.startTime = this.endTime = '';
-                this.monthTitle = '不限';
+                this.monthTitle = '全部';
                 this.initData();
                 this.loadMore();
                 this.monthPopup = false;
