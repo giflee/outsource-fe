@@ -20,7 +20,7 @@
                     </el-form-item>
                     <el-form-item label="购车日期">
                         <template>
-                            <span>{{carData.salesdate}}</span>
+                            <span>{{carData.salesdate | dateFilter}}</span>
                         </template>
                     </el-form-item>
                     <el-form-item label="所属经销商">
@@ -97,7 +97,14 @@
                     this.$message.error('服务器出错了');
                 })
             },
+        },
+        filters: {
+            dateFilter: function (value) {
+                if (!value) return '';
+                return moment(value).format('YYYY-MM-DD HH:mm:ss');
+            }
         }
+
     }
 </script>
 
