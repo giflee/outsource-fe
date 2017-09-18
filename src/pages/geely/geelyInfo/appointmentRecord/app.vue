@@ -22,7 +22,7 @@
                         <span>{{appointment.serviceName}}</span>
                     </el-form-item>
                     <el-form-item label="客户预约描述">
-                        <span>{{appointment.appointmentDescript}}</span>
+                        <span>{{appointment.appointmenDescript}}</span>
                     </el-form-item>
                     <el-form-item label="里程数">
                         <span>{{appointment.mileage}}</span>
