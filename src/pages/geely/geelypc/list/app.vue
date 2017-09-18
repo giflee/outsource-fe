@@ -70,8 +70,6 @@
                     label: '已完结', value: 1,
                 }, {
                     label: '受理中', value: 2,
-                }, {
-                    label: '未受理', value: 3,
                 }],
                 filter: 0,
                 noPagination: false,
