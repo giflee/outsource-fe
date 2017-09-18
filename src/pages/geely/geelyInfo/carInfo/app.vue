@@ -87,7 +87,7 @@
                     params: util.parseQueryString(location.search)
                 }).then((_ret) => {
                     if (_ret.body.code === 200) {
-                        if (!!_ret.body.result) {
+                        if (!!_ret.body.result && _ret.body.result.length) {
                             this.carDatas = _ret.body.result;
                         }
                     } else {
