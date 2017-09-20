@@ -63,19 +63,19 @@
 		<el-form>
 			<el-form-item label="工单评价">
 				<el-form class="f-evaluate">
-					<el-form-item :label="detailsData.custom[0].name">
+					<el-form-item :label="detailsData.custom[0] && detailsData.custom[0].name">
 						<el-rate 
 						v-model="resValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
-					<el-form-item :label="detailsData.custom[1].name">
+					<el-form-item :label="detailsData.custom[1] && detailsData.custom[1].name">
 						<el-rate 
 						v-model="effValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
-					<el-form-item :label="detailsData.custom[2].name">
+					<el-form-item :label="detailsData.custom[2] && detailsData.custom[2].name">
 						<el-rate 
 						v-model="attValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">

@@ -81,21 +81,21 @@
 				<div class="f-evaluate">
 					<el-row>
 						<el-col :span="8">
-							<label>{{ detailsData.custom[0].name }}</label>
+							<label>{{ detailsData.custom[0] && detailsData.custom[0].name }}</label>
 							<el-rate 
 								v-model="resValue" 
 								:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 							</el-rate>
 						</el-col>
 						<el-col :span="8">
-							<label>{{ detailsData.custom[1].name }}</label>
+							<label>{{ detailsData.custom[1] && detailsData.custom[1].name }}</label>
 							<el-rate 
 								v-model="effValue" 
 								:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 							</el-rate>
 						</el-col>
 						<el-col :span="8">
-							<label>{{ detailsData.custom[2].name }}</label>
+							<label>{{ detailsData.custom[2] && detailsData.custom[2].name }}</label>
 							<el-rate 
 								v-model="attValue" 
 								:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
