@@ -63,7 +63,7 @@
             <p v-show="loading" class="page-infinite-loading">
                 <mt-spinner type="fading-circle"></mt-spinner>
             </p>
-            <p v-show="allLoaded" class="page-infinite-loading">
+            <p v-show="allLoaded && (current > 1 || (pageTotal < limit && pageTotal > 0 ))" class="page-infinite-loading">
                 没有更多了
             </p>
         </div>
