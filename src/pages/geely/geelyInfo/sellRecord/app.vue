@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(vehro, index) in vehros" v-model="activeNames" accordion>
-            <el-collapse-item :title="'销售记录-'+index" :name="index">
+            <el-collapse-item :title="'销售记录-'+(index+1)" :name="index">
                 <el-form class="m-vehro">
                     <el-form-item label="银行及金融公司">
                         <span>{{vehro.bankid}}</span>

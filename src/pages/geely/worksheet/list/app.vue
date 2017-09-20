@@ -35,6 +35,7 @@
             <!--table-->
             <el-table
                     :data="tableData"
+                    :empty-text="emptyText"
                     @row-click="worksheetQuery" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading"
                     infinite-scroll-distance="5">
                 <el-table-column label="创建时间" width="100">
@@ -61,7 +62,6 @@
             </el-table>
             <p v-show="loading" class="page-infinite-loading">
                 <mt-spinner type="fading-circle"></mt-spinner>
-                加载中...
             </p>
             <p v-show="allLoaded" class="page-infinite-loading">
                 没有更多了
@@ -141,7 +141,11 @@
                 picker.style.transform='translate(0px,72px) translateZ(0px)';
             })
         },
-
+        computed:{
+            emptyText(){
+                return this.loading ? '加载中':'暂无数据';
+            }
+        },
         methods: {
 
             /**
@@ -241,7 +245,7 @@
              * 加载更多
              */
             loadMore() {
-                if (this.current !== 0) this.loading = true;
+                this.loading = true;
                 // 分页的页数
                 this.pageNum = parseInt(this.pageTotal / this.limit);
                 this.offset = (this.limit) * (this.current);

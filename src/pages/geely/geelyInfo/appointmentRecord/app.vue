@@ -61,7 +61,7 @@
                         <span>{{appointment.changeReason}}</span>
                     </el-form-item>
                     <el-collapse v-for="(x,i) in appointment.appointmentOrder" accordion>
-                        <el-collapse-item :title="'预约-'+i">
+                        <el-collapse-item :title="'预约-'+(i+1)">
                             <el-form-item label="预约类型">
                                 <span>{{x.appointmentType}}</span>
                             </el-form-item>

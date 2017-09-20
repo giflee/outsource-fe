@@ -101,7 +101,7 @@
                     </el-form-item>
 
                     <el-collapse v-for="(x,i) in keep.serviceOrder" accordion>
-                        <el-collapse-item :title="'维修工单-'+i">
+                        <el-collapse-item :title="'维修工单-'+(i+1)">
                             <el-form-item label="工单类型">
                                 <span>{{x.serviceType}}</span>
                             </el-form-item>
