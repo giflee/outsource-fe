@@ -85,7 +85,7 @@
                         <span>{{vehro.dataplatform }}</span>
                     </el-form-item>
                     <el-form-item label="批售订单">
-                        <span>{{vehro.wsorderId }}</span>
+                        <span>{{vehro.wsorderid }}</span>
                     </el-form-item>
                     <el-form-item label="预计交期（天）">
                         <span>{{vehro.deliverytime }}</span>

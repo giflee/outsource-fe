@@ -1,8 +1,11 @@
 <template>
     <div id="app" class="g-main">
         <el-collapse v-for="(worksheet, index) in worksheets" v-model="activeNames" accordion>
-            <el-collapse-item :title="'工单-'+(index+1)" :name="index">
+            <el-collapse-item :title="'工单-'+(worksheet.name||'')" :name="index">
                 <el-form class="m-worksheet">
+                    <el-form-item label="案例编号">
+                        <span>{{worksheet.name}}</span>
+                    </el-form-item>
                     <el-form-item label="实际解决时间">
                         <span>{{worksheet.actualsolveTime | dateFilter}}</span>
                     </el-form-item>
