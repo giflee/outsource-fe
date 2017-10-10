@@ -5,14 +5,24 @@ const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
+const argv = require('yargs').argv;
 
 const entries = {}
 const chunks = []
-glob.sync('./src/pages/**/app.js').forEach(path => {
-  const chunk = path.split('./src/pages/')[1].split('/app.js')[0]
-  entries[chunk] = path
-  chunks.push(chunk)
-})
+
+if (!argv.env || argv.env.project == 'global') {
+  glob.sync('./src/pages/**/app.js').forEach(path => {
+    const chunk = path.split('./src/pages/')[1].split('/app.js')[0]
+    entries[chunk] = path
+    chunks.push(chunk)
+  })
+}else{
+  glob.sync('./src/pages/'+argv.env.project+'/**/app.js').forEach(path => {
+    const chunk = path.split('./src/pages/')[1].split('/app.js')[0]
+    entries[chunk] = path
+    chunks.push(chunk)
+  })
+}
 
 const config = {
   entry: entries,
@@ -118,19 +128,36 @@ const config = {
   devtool: '#eval-source-map'
 }
 
-glob.sync('./src/pages/**/*.html').forEach(path => {
-  const chunk = path.split('./src/pages/')[1].split('/app.html')[0]
-  const filename = chunk + '.html'
-  const htmlConf = {
-    filename: filename,
-    template: path,
-    inject: 'body',
-    favicon: './src/assets/img/logo.png',
-    hash: process.env.NODE_ENV === 'production',
-    chunks: ['vendors', chunk]
-  }
-  config.plugins.push(new HtmlWebpackPlugin(htmlConf))
-})
+if ( !argv.env || argv.env.project == 'global') {
+  glob.sync('./src/pages/**/*.html').forEach(path => {
+    const chunk = path.split('./src/pages/')[1].split('/app.html')[0]
+    const filename = chunk + '.html'
+    const htmlConf = {
+      filename: filename,
+      template: path,
+      inject: 'body',
+      favicon: './src/assets/img/logo.png',
+      hash: process.env.NODE_ENV === 'production',
+      chunks: ['vendors', chunk]
+    }
+    config.plugins.push(new HtmlWebpackPlugin(htmlConf))
+  })
+}else{
+  glob.sync('./src/pages/'+argv.env.project+'/**/*.html').forEach(path => {
+    const chunk = path.split('./src/pages/')[1].split('/app.html')[0]
+    const filename = chunk + '.html'
+    const htmlConf = {
+      filename: filename,
+      template: path,
+      inject: 'body',
+      favicon: './src/assets/img/logo.png',
+      hash: process.env.NODE_ENV === 'production',
+      chunks: ['vendors', chunk]
+    }
+    config.plugins.push(new HtmlWebpackPlugin(htmlConf))
+  })
+}
+
 
 module.exports = config
 
@@ -151,3 +178,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+if (argv.env && argv.env.project) {
+  console.log('---------start building project only in '+argv.env.project+'-----------');
+}
+

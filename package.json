@@ -6,17 +6,18 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "build_geely": "cross-env NODE_ENV=production webpack --config webpack.geely.config.js --progress --hide-modules"
+    "build_geely": "cross-env NODE_ENV=production webpack --config webpack.geely.config.js --progress --hide-modules",
+    "build_single": "cross-env NODE_ENV=production webpack --progress --hide-modules --env.project $project || 'global'"
   },
   "dependencies": {
     "element-ui": "^1.2.8",
     "lodash": "^4.17.4",
     "mint-ui": "^2.2.7",
     "moment": "^2.18.1",
-    "sf-select": "^0.0.8",
     "vue": "^2.2.6",
     "vue-infinite-scroll": "^2.0.1",
-    "vue-resource": "^1.3.1"
+    "vue-resource": "^1.3.1",
+    "yargs": "^9.0.1"
   },
   "devDependencies": {
     "commander": "^2.11.0",
