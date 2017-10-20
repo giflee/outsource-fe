@@ -114,7 +114,7 @@
 
         <div v-show="activeTab === 'search'">
             <div style="padding: 0 20px">
-                <div style="text-align: center">
+                <div style="text-align: left; position: relative;">
                     <el-input placeholder="请输入内容" v-model="searchInput" class="searchType">
                         <el-select v-model="searchType" slot="prepend" placeholder="请选择">
                             <el-option label="快递单号" value="0"></el-option>
@@ -122,7 +122,7 @@
                         </el-select>
                     </el-input>
                     <el-button type="primary" class="btn-search" @click="getSearchList(!0)">搜索</el-button>
-                    <span class="u-total">共{{total}}条工单</span>
+                    <span class="u-total" v-if="total">共{{total}}条工单</span>
                 </div>
                 <el-table
                         :data="tableData"
@@ -217,15 +217,15 @@
                         {min: 1, max: 4, message: '超过限制输入', trigger: 'blur'}
                     ],
                     receiveName: [
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {required: true, message: '请输入收件人姓名', trigger: 'blur'},
                         {min: 1, max: 4, message: '超过限制输入', trigger: 'blur'}
                     ],
                     receivePhone: [
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {required: true, message: '请输入收件人电话', trigger: 'blur'},
                         {min: 1, max: 11, message: '超过限制输入', trigger: 'blur'}
                     ],
                     receiveAddress: [
-                        {required: true, message: '请输入活动名称', trigger: 'blur'},
+                        {required: true, message: '请输入收件人地址', trigger: 'blur'},
                         {min: 1, max: 100, message: '地址不得超过100个字', trigger: 'blur'}
                     ],
                     sendName: [
@@ -449,7 +449,7 @@
                         this.$http.post('/sto/api/addWorksheet', this.form).then((res) => {
                             if (res.body.code === 200) {
                                 this.resetForm();
-                                this.$message('提交成功')
+                                this.$message('工单提交成功')
                             } else {
                                 this.$message({
                                     showClose: true,
@@ -503,7 +503,9 @@
     }
 
     .searchType {
-        width: 60%;
+        width: 100%;
+        box-sizing: border-box;
+        padding-right: 90px;
         .el-input-group__prepend, .el-input__inner {
             border-radius: 2px;
         }
@@ -516,10 +518,22 @@
             }
         }
     }
+    
+    .el-form-item.is-required .el-form-item__label {
+        position: relative;
+    }
 
     .el-form-item.is-required .el-form-item__label:before {
-        color: #5092E1;
+        content: none;
     }
+
+    .el-form-item.is-required .el-form-item__label:after {
+        content: '*';
+        color: #5092E1;
+        position: absolute;
+        right: 10px;
+    }
+
 
     .el-upload, .el-upload-dragger {
         width: 100%;
@@ -532,6 +546,8 @@
     .u-total {
         font-size: 12px;
         color: #666666;
+        display: block;
+        padding-top: 10px;
     }
 
     .btn-search {
@@ -540,6 +556,9 @@
         width: 60px;
         margin-left: 5px;
         margin-right: 20px;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 
     .btn-submit {
@@ -610,5 +629,14 @@
                 border-color: #5092E1;
             }
         }
+    }
+
+    .el-textarea__inner {
+        font: 14px MicrosoftYaHei;  
+        border-radius: 2px;          
+    }
+    .el-input__inner {
+        font: 14px MicrosoftYaHei;
+        border-radius: 2px;
     }
 </style>
