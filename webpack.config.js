@@ -122,6 +122,10 @@ const config = {
         },
       '/gl2/api/*': {
         target: 'http://59.111.98.6:8282'
+      },
+      '/sto/api/*': {
+        // target: 'http://59.111.98.6:8484'
+        target: 'http://localhost:8002'
       }
     }
   },

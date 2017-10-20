@@ -148,12 +148,12 @@
                     </el-table-column>
                     <el-table-column
                             prop="status"
-                            width="80"
+                            width="90"
                             label="处理状态">
                     </el-table-column>
                     <el-table-column
                             prop="person"
-                            width="80"
+                            width="90"
                             label="处理人员">
                     </el-table-column>
                     <el-table-column
@@ -162,6 +162,7 @@
                     </el-table-column>
                 </el-table>
                 <el-pagination
+                        v-if="total > limit"
                         :page-size="limit"
                         @current-change="handleCurrentChange"
                         :current-page.sync="currentPage"
@@ -434,6 +435,7 @@
                 if (!this.searchInput) return word;
                 const keyword = this.regTrim(this.searchInput);
                 const hlValue = new RegExp("(" + keyword + ")", "gi");
+                word = word.toString();
                 return word.replace(hlValue, "<span style='color:red'>$1</span>");
             },
 
@@ -444,7 +446,7 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$http.post('/sto/api/worksheet', this.form).then((res) => {
+                        this.$http.post('/sto/api/addWorksheet', this.form).then((res) => {
                             if (res.body.code === 200) {
                                 this.resetForm();
                                 this.$message('提交成功')
