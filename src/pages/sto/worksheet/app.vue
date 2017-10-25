@@ -17,12 +17,12 @@
                     <span>标<span class="star">&nbsp;*&nbsp;</span>为必填项</span>
                 </div>
                 <el-form-item label="创建人" prop="creator">
-                    <el-input v-model="form.creator" placeholder="请输入创建人" :maxlength="10"></el-input>
+                    <el-input v-model.trim="form.creator" placeholder="请输入创建人" :maxlength="10"></el-input>
                 </el-form-item>
                 <el-form-item label="快递单号" prop="express">
-                    <el-input v-model="form.express" placeholder="请输入快递单号" :maxlength="13"></el-input>
+                    <el-input v-model.trim="form.express" placeholder="请输入快递单号" :maxlength="13"></el-input>
                 </el-form-item>
-                <el-form-item label="发起方" prop="initiate">
+                <!-- <el-form-item label="发起方" prop="initiate">
                     <el-select v-model="form.initiate" placeholder="请输入发起方">
                         <el-option
                                 v-for="item in options"
@@ -31,12 +31,12 @@
                                 :value="item.value">
                         </el-option>
                     </el-select>
-                </el-form-item>
+                </el-form-item> -->
                 <el-form-item label="发起方电话" prop="initiatePhone">
-                    <el-input v-model="form.initiatePhone" placeholder="请输入发起方电话" :maxlength="11"></el-input>
+                    <el-input v-model.trim="form.initiatePhone" placeholder="请输入发起方电话" :maxlength="11"></el-input>
                 </el-form-item>
                 <el-form-item label="发起方姓名" prop="initiateName">
-                    <el-input v-model="form.initiateName" placeholder="请输入发起方姓名" :maxlength="4"></el-input>
+                    <el-input v-model.trim="form.initiateName" placeholder="请输入发起方姓名" :maxlength="4"></el-input>
                 </el-form-item>
 
                 <div class="title clearfix">
@@ -44,10 +44,10 @@
                 </div>
 
                 <el-form-item label="收件人姓名" prop="receiveName">
-                    <el-input v-model="form.receiveName" placeholder="请输入收件人姓名" :maxlength="4"></el-input>
+                    <el-input v-model.trim="form.receiveName" placeholder="请输入收件人姓名" :maxlength="4"></el-input>
                 </el-form-item>
                 <el-form-item label="收件人电话" prop="receivePhone">
-                    <el-input v-model="form.receivePhone" placeholder="请输入收件人电话" :maxlength="11"></el-input>
+                    <el-input v-model.trim="form.receivePhone" placeholder="请输入收件人电话" :maxlength="11"></el-input>
                 </el-form-item>
                 <el-form-item label="收件人地址" prop="receiveAddress">
                     <el-input v-model="form.receiveAddress" type="textarea" resize="none" :maxlength="100"
@@ -58,10 +58,10 @@
                 <div class="line"></div>
 
                 <el-form-item label="发件人姓名" prop="sendName">
-                    <el-input v-model="form.sendName" placeholder="请输入发件人姓名" :maxlength="4"></el-input>
+                    <el-input v-model.trim="form.sendName" placeholder="请输入发件人姓名" :maxlength="4"></el-input>
                 </el-form-item>
                 <el-form-item label="发件人电话" prop="sendPhone">
-                    <el-input v-model="form.sendPhone" placeholder="请输入发件人电话" :maxlength="11"></el-input>
+                    <el-input v-model.trim="form.sendPhone" placeholder="请输入发件人电话" :maxlength="11"></el-input>
                 </el-form-item>
                 <el-form-item label="发件人地址" prop="sendAddress">
                     <el-input v-model="form.sendAddress" type="textarea" resize="none" :maxlength="100"
@@ -182,7 +182,7 @@
                 form: {
                     creator: '',
                     express: '',
-                    initiate: 0,
+                    // initiate: 0,
                     initiatePhone: '',
                     initiateName: '',
                     receiveName: '',
@@ -205,9 +205,9 @@
                         {required: true, message: '请输入快递单号', trigger: 'blur'},
                         {min: 1, max: 13, message: '请输入正确的快递单号', trigger: 'blur'}
                     ],
-                    initiate: [
-                        {type: 'number', required: true, message: '请选择工单发起方', trigger: 'change'}
-                    ],
+                    // initiate: [
+                    //     {type: 'number', required: true, message: '请选择工单发起方', trigger: 'change'}
+                    // ],
                     initiatePhone: [
                         {required: true, message: '请输入发起方电话', trigger: 'blur'},
                         {min: 1, max: 11, message: '超过限制输入', trigger: 'blur'}
@@ -291,7 +291,7 @@
                 const restForm = {
                     creator: '',
                     express: '',
-                    initiate: 0,
+                    // initiate: 0,
                     initiatePhone: '',
                     initiateName: '',
                     receiveName: '',

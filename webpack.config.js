@@ -124,8 +124,8 @@ const config = {
         target: 'http://59.111.98.6:8282'
       },
       '/sto/api/*': {
-        // target: 'http://59.111.98.6:8484'
-        target: 'http://localhost:8002'
+        target: 'http://59.111.98.6:8484'
+        // target: 'http://localhost:8002'
       }
     }
   },
