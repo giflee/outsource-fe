@@ -1,0 +1,24 @@
+{
+    "code": 200,
+    "message": "0CPYmlMsn9",
+    "result": [
+        {
+            "id": 78657,
+            "name": "hnDrzD6Fok",
+            "parent": 14380,
+            "pinyin": "LkxbAEGU9h"
+        },
+        {
+            "id": 79467,
+            "name": "4z6f3AxQQ2",
+            "parent": 72073,
+            "pinyin": "3bLeQoJtu6"
+        },
+        {
+            "id": 80401,
+            "name": "9vXJOspV05",
+            "parent": 29353,
+            "pinyin": "NGDRjMIbBo"
+        }
+    ]
+}

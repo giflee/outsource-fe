@@ -1,0 +1,76 @@
+{
+    "total": 27927,
+    "code": 200,
+    "message": "5vCZqd61iL",
+    "result": [
+        {
+            "name": "Y6vxCRzI16",
+            "sessions": "c5xQS1yhoL",
+            "messages": "6gtg4IJEMt",
+            "firstReponseTime": 1498455506825,
+            "responseTime": 1498455972557,
+            "users": 66414,
+            "loginDuration": 15410,
+            "id": 95439,
+            "onlineStatus": 25461,
+            "isformal": 42130,
+            "firstLoginTime": 1498456311112,
+            "sessionDuration": 89947,
+            "loginSumDuration": 65653,
+            "role": 27788,
+            "email": "jQol1J@3BWoN.ucc",
+            "groupIds": [
+                67520,
+                71468,
+                94552
+            ],
+            "onlineTime": 1498455796240
+        },
+        {
+            "name": "TKIxHEohEA",
+            "sessions": "ophxip4dCF",
+            "messages": "F8YXRGVVY9",
+            "firstReponseTime": 1498456783671,
+            "responseTime": 1498456481679,
+            "users": 62414,
+            "loginDuration": 64858,
+            "id": 96315,
+            "onlineStatus": 59686,
+            "isformal": 48616,
+            "firstLoginTime": 1498455380153,
+            "sessionDuration": 89403,
+            "loginSumDuration": 99545,
+            "role": 2157,
+            "email": "bvKLJ7lt@8KPTO.abv",
+            "groupIds": [
+                76541,
+                87009,
+                79212
+            ],
+            "onlineTime": 1498454224645
+        },
+        {
+            "name": "9ASXWNUuRj",
+            "sessions": "ubkbjSroNK",
+            "messages": "1tIAUKHs5H",
+            "firstReponseTime": 1498455744891,
+            "responseTime": 1498454978297,
+            "users": 23712,
+            "loginDuration": 11903,
+            "id": 96669,
+            "onlineStatus": 81415,
+            "isformal": 20546,
+            "firstLoginTime": 1498455263607,
+            "sessionDuration": 3452,
+            "loginSumDuration": 98638,
+            "role": 19490,
+            "email": "74RbH5Wi@Gi0o8.vwk",
+            "groupIds": [
+                39633,
+                35945,
+                22171
+            ],
+            "onlineTime": 1498455555688
+        }
+    ]
+}

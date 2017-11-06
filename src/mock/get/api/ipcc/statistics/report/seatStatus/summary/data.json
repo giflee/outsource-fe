@@ -1,0 +1,11 @@
+{
+    "code": 200,
+    "message": "a51eVHn8KP",
+    "result": {
+        "busyStaffCount": 12322,
+        "idleStaffCount": 7678,
+        "queueSize": 43736,
+        "answeredRatio": 87917,
+        "relativeSatisfactionRatio": 35972
+    }
+}

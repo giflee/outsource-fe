@@ -1,0 +1,40 @@
+{
+    "code": 200,
+    "message": "28OpSYHeBG",
+    "result": [
+        {
+            "timestamp": 65423,
+            "outTotal": 95237,
+            "outAnswered": 4600,
+            "outAnsweredRatio": 94536,
+            "avgTalkingMillis": 47639,
+            "avgDealingMillis": 16864,
+            "relativeSatisfactionRatio": 86596,
+            "satisfied": 98632,
+            "evaluated": 11746
+        },
+        {
+            "timestamp": 36411,
+            "outTotal": 22941,
+            "outAnswered": 32490,
+            "outAnsweredRatio": 67673,
+            "avgTalkingMillis": 20768,
+            "avgDealingMillis": 29740,
+            "relativeSatisfactionRatio": 67638,
+            "satisfied": 49084,
+            "evaluated": 16123
+        },
+        {
+            "timestamp": 75155,
+            "outTotal": 98483,
+            "outAnswered": 61558,
+            "outAnsweredRatio": 54533,
+            "avgTalkingMillis": 31439,
+            "avgDealingMillis": 93150,
+            "relativeSatisfactionRatio": 28037,
+            "satisfied": 29768,
+            "evaluated": 98608
+        }
+    ],
+    "total": 1698
+}

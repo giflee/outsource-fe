@@ -1,0 +1,27 @@
+{
+    "code": 200,
+    "message": "98BDObK40E",
+    "result": [
+        {
+            "id": 75584,
+            "name": "f6laiPFQPN",
+            "parent": 24450,
+            "pinyin": "mWEXxR5d33",
+            "rank": 51260
+        },
+        {
+            "id": 76002,
+            "name": "ZXY7hhd0yz",
+            "parent": 8441,
+            "pinyin": "QoxnzxTrrZ",
+            "rank": 77070
+        },
+        {
+            "id": 76184,
+            "name": "WlCwNJlrIN",
+            "parent": 18365,
+            "pinyin": "3MvMwE0yzw",
+            "rank": 57620
+        }
+    ]
+}

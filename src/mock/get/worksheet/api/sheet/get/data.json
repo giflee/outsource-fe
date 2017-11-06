@@ -1,0 +1,70 @@
+{
+    "code": 200,
+    "message": "Wkp1F1KDEd",
+    "result": {
+        "id": 77453,
+        "title": "DvBMKklx6w",
+        "actionStatus": 56788,
+        "originPerson": "hUsa9EAdgm",
+        "target": "EgjKO5rMWj",
+        "createTime": "1498456220056",
+        "modifyTime": "1498455752281",
+        "isRead": false,
+        "ext": "iL0KicLDs1",
+        "content": "bCFvdnKDIs",
+        "realname": "gmsS2Qz37O",
+        "mobile": 77124,
+        "email": "2dYXW9n@a3Kp0.iwk",
+        "isHolding": true,
+        "attachs": [
+            {
+                "name": "5JLqW5DTsy",
+                "url": "http://etl.njejvhmqaohkmf.vdynvwk",
+                "size": 52400
+            },
+            {
+                "name": "xbhdSFY4GB",
+                "url": "http://qej.emiidxl.qmssz",
+                "size": 70241
+            },
+            {
+                "name": "lHqRSvVJ5A",
+                "url": "http://qxg.glmhdegeveayh.ztwiy",
+                "size": 81597
+            }
+        ],
+        "canPick": true,
+        "isCreator": false,
+        "priority": 23000,
+        "customField": [
+            {
+                "value": "95EXYr8p0X",
+                "id": 77759,
+                "name": "2Ww6XqErXG",
+                "description": "00P5kKa8ny",
+                "type": 66147,
+                "required": 20904
+            },
+            {
+                "value": "qXb5DzzK40",
+                "id": 78414,
+                "name": "0fwlLsH5X4",
+                "description": "Q3zSOiTaHd",
+                "type": 78154,
+                "required": 46957
+            },
+            {
+                "value": "PYmiqR9MQj",
+                "id": 78502,
+                "name": "NiaxxQE5QG",
+                "description": "HhPJTRsfsq",
+                "type": 511,
+                "required": 45276
+            }
+        ],
+        "templateName": "工单模板1",
+        "sessionId": 79322,
+        "sessionType": 77163,
+        "flowStatus": 2
+    }
+}

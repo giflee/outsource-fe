@@ -1,0 +1,34 @@
+{
+    "code": 200,
+    "message": "GXnZtdo07D",
+    "result": [
+        {
+            "name": "1TKy6P0QD2",
+            "category": "Y443msZKtW",
+            "id": 96825,
+            "categoryId": 97280,
+            "pointName": "ogQw0ywJ0r",
+            "pointId": "97961",
+            "createTime": 1498454491664
+        },
+        {
+            "name": "mvoAU0B8Ye",
+            "category": "0IWkonAl8L",
+            "id": 98745,
+            "categoryId": 99026,
+            "pointName": "qNz3E3RSTh",
+            "pointId": "99726",
+            "createTime": 1498455425544
+        },
+        {
+            "name": "1WGy2RcjXb",
+            "category": "qLeGrQvqtU",
+            "id": 100413,
+            "categoryId": 100924,
+            "pointName": "DwJ2ZJ2HZU",
+            "pointId": "101648",
+            "createTime": 1498455669512
+        }
+    ],
+    "total": "Ufk2FkX8cr"
+}

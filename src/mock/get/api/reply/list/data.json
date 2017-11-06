@@ -1,0 +1,30 @@
+{
+    "code": 200,
+    "message": "j7f2oG98ee",
+    "result": [
+        {
+            "id": 52927,
+            "keyword": "1gR3dwltBg",
+            "content": "upmJCIhEZx",
+            "categoryId": 53690,
+            "type": 19875,
+            "isContentRich": 39011
+        },
+        {
+            "id": 54050,
+            "keyword": "5Wi9la8nFW",
+            "content": "8u9jzgSkLT",
+            "categoryId": 54172,
+            "type": 93508,
+            "isContentRich": 66496
+        },
+        {
+            "id": 54405,
+            "keyword": "Z6X6kNAYGb",
+            "content": "n7lDSllFeg",
+            "categoryId": 55328,
+            "type": 33669,
+            "isContentRich": 79421
+        }
+    ]
+}

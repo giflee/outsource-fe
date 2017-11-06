@@ -1,0 +1,43 @@
+{
+    "code": 200,
+    "message": "jYDlI2iN0k",
+    "total": 88188,
+    "result": [
+        {
+            "id": 85496,
+            "title": "Rbuz8TLRZt",
+            "desc": "B763RVEzvv",
+            "maxSeats": 96364,
+            "maxExpiry": 77647,
+            "type": 74405,
+            "price": 33225,
+            "detail": "gZwlq4hQwk",
+            "hintPrice": 78291,
+            "isDefault": false
+        },
+        {
+            "id": 85641,
+            "title": "s3ACAMD2w8",
+            "desc": "0dPj49te1X",
+            "maxSeats": 22439,
+            "maxExpiry": 86548,
+            "type": 22971,
+            "price": 71746,
+            "detail": "rjomIAwMpd",
+            "hintPrice": 13988,
+            "isDefault": true
+        },
+        {
+            "id": 85828,
+            "title": "Ply5FX52jf",
+            "desc": "IskMF7YxdP",
+            "maxSeats": 62430,
+            "maxExpiry": 85514,
+            "type": 36141,
+            "price": 5272,
+            "detail": "vMkRFC4g7T",
+            "hintPrice": 81370,
+            "isDefault": true
+        }
+    ]
+}

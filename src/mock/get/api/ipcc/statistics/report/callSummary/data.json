@@ -1,0 +1,11 @@
+{
+    "code": 200,
+    "message": "3QzW8UdHnA",
+    "result": {
+        "inTotal": 20678,
+        "outTotal": 55914,
+        "relativeSatisfactionRatio": 57328,
+        "avgCallLength": 96396,
+        "seatUtilization": 70570
+    }
+}

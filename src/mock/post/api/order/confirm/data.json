@@ -1,0 +1,79 @@
+{
+    "code": 200,
+    "message": "7TyVhnPIO9",
+    "result": {
+        "id": 85366,
+        "companyName": "IwAadO2Wtl",
+        "prodType": {
+            "id": 86083,
+            "title": "sgxcoixlUE",
+            "desc": "YAsaOxIGKo",
+            "maxSeats": 88989,
+            "maxExpiry": 27709,
+            "type": 65281,
+            "price": 23929,
+            "detail": "S3zrmafLL0",
+            "hintPrice": 41913,
+            "isDefault": true
+        },
+        "createTime": 1498454297454,
+        "status": "2",
+        "duration": 51766,
+        "buySeats": 26502,
+        "domain": "QpEHwo9fwa",
+        "mobile": "MLzjDxiT9b",
+        "superAccount": "We89ixg3Ii",
+        "amount": 42522,
+        "creator": "cZ2Zffew7Z",
+        "proStartTime": 1498455539702,
+        "freeSeats": 74886,
+        "freePrice": 80821,
+        "freeDuration": 53627,
+        "corpId": 86451,
+        "orderList": "7HTLPRzdh1",
+        "orderType": 66867,
+        "orderInfo": [
+            {
+                "type": "IfABoJRPIz",
+                "pkgType": "FAAFj4zXrY",
+                "seatNum": 26948,
+                "serviceStartTime": 1498454435694,
+                "serviceEndTime": 1498454239116,
+                "cash": 66866,
+                "list": 14618,
+                "buyYear": 27280,
+                "freeMonth": 23921,
+                "addPayOrderTime": 1498455073600
+            },
+            {
+                "type": "hIeuTWbM7U",
+                "pkgType": "3kZynMgpOa",
+                "seatNum": 4494,
+                "serviceStartTime": 1498456777866,
+                "serviceEndTime": 1498456059354,
+                "cash": 58897,
+                "list": 78735,
+                "buyYear": 61700,
+                "freeMonth": 71904,
+                "addPayOrderTime": 1498455310090
+            },
+            {
+                "type": "b9NwzMtR0Z",
+                "pkgType": "LMEFGYrJwQ",
+                "seatNum": 10452,
+                "serviceStartTime": 1498455368065,
+                "serviceEndTime": 1498456796148,
+                "cash": 85563,
+                "list": 42157,
+                "buyYear": 42133,
+                "freeMonth": 37456,
+                "addPayOrderTime": 1498455418349
+            }
+        ],
+        "count": 55171,
+        "realCount": 14931,
+        "orderStatus": "1",
+        "effective": "xViME9Br0f",
+        "preMoney": 65313
+    }
+}

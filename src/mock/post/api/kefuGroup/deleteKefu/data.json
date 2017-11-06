@@ -1,0 +1,163 @@
+{
+    "code": 200,
+    "message": "CT2w8bmZ1Q",
+    "result": {
+        "id": 87122,
+        "username": "dybx6Zqk4b",
+        "realname": "AnW8EdIdpw",
+        "nickname": "qmgBV8KXGz",
+        "role": 2,
+        "mobile": "qacnrFVmVb",
+        "email": "uOs0DlL@zeevg.flg",
+        "theme": 92385,
+        "password": "ytUzRNQMOd",
+        "pinyin": "F2TLdL2mDM",
+        "portrait": "BZuNBXoXOO",
+        "onlineStatus": "3",
+        "disabled": "0",
+        "maxSession": 16042,
+        "campany": "t3sSLnaaqM",
+        "isformal": 78617,
+        "status": 68945,
+        "groupIds": [
+            97642,
+            47820,
+            82749
+        ],
+        "corpName": "rwyWzHYHy5",
+        "corpCode": "zDaPQaUMYM",
+        "corpInfoUrl": "http://oxs.wkcikbcn.omwe",
+        "isFirstLogin": 80172,
+        "IMid": "88029",
+        "IMtoken": "pTXJoQadm4",
+        "appKey": "66Y7u2o5nl",
+        "call": {
+            "username": "RDQ5T5QAAW",
+            "password": "2rOarDREK8",
+            "ivrNumber": 39545,
+            "status": "5",
+            "restTime": 0,
+            "appId": "88854",
+            "ringUrl": "http://xul.zhquyqn.ortdbmv",
+            "statusOptions": [
+                "0",
+                "4",
+                "4"
+            ],
+            "mode": 0
+        },
+        "corpService": {
+            "ipccService": {
+                "type": 1,
+                "name": "免费",
+                "state": 2,
+                "seats": 1,
+                "dateStart": 28575,
+                "dateEnd": 44681,
+                "supplier": 0,
+                "cash": 0
+            },
+            "robotService": {
+                "type": 1,
+                "name": "基础",
+                "state": 2,
+                "dateStart": 81750,
+                "dateEnd": 47695,
+                "restFlow": 0,
+                "infinite": false
+            },
+            "worksheetService": {
+                "state": 2,
+                "dateStart": 92422,
+                "dateEnd": 20255,
+                "seat": 34267
+            },
+            "onlineService": {
+                "type": 1,
+                "name": "免费版",
+                "state": 2,
+                "dateStart": 0,
+                "dateEnd": 0,
+                "seats": 1,
+                "seatsAssign": 0
+            },
+            "messageService": {
+                "state": 2
+            },
+            "questionNaireService": {
+                "state": 0
+            },
+            "multiService": {
+                "type": 1,
+                "name": "免费",
+                "state": 2,
+                "seats": 1,
+                "dateStart": 24867,
+                "dateEnd": 62703
+            }
+        },
+        "callEnable": 0,
+        "callStatus": "1",
+        "corpSession": "OogpuRaEx1",
+        "kefuSessionSort": "2okHwbYAwE",
+        "kefuRobotHelper": 0,
+        "tipsInfo": {
+            "corpOrderPerformance": 0
+        },
+        "corpSer": {
+            "id": 89247,
+            "corpId": 90016,
+            "packagerType": 78797,
+            "ipccService": 64043,
+            "robotService": 36003,
+            "workSheetService": 86941,
+            "robotPackager": 10631
+        },
+        "type": 0,
+        "merchantInfo": {
+            "weixinAccessSwitch": "MWugxTyhc3",
+            "bid": "0"
+        },
+        "isShowMoreInfoTab": 1,
+        "restTime": 0,
+        "authority": {
+            "ADMIN_INDEX": 1,
+            "ADMIN_REPORT": 1,
+            "ADMIN_QUALITY": 1,
+            "ADMIN_CALL": 1,
+            "ADMIN_CUSTOMER": 1,
+            "ADMIN_KEFU": 1,
+            "ADMIN_KEFU_WRITE": 1,
+            "ADMIN_ROBOT": 1,
+            "ADMIN_COMPANY": 1,
+            "ADMIN_SETTING": 1,
+            "KEFU_CALL": 1,
+            "KEFU_CALL_OUT": 1,
+            "KEFU_LEAVE": 1,
+            "KEFU_LEAVE_ALL": 1,
+            "KEFU_LEAVE_GROUP": 1,
+            "KEFU_MONITOR": 1,
+            "KEFU_CHAT": 1,
+            "KEFU_SETTING": 1,
+            "KEFU_QUALITY": 1,
+            "SESSION": 1,
+            "SESSION_ALL": 1,
+            "SESSION_GROUP": 1,
+            "SESSION_INDIVIDUAL": 1,
+            "SESSION_SAT": 1,
+            "SESSION_ALERT": 1,
+            "WORKSHEET": 1,
+            "WORKSHEET_CREATE": 1,
+            "WORKSHEET_REOPEN": 1,
+            "WORKSHEET_FINISH": 1,
+            "WORKSHEET_OPERATE_ALL": 1,
+            "WORKSHEET_SEARCH": 1,
+            "WORKSHEET_TRANSFER": 1,
+            "WORKSHEET_ALL_SESSION": 1,
+            "SESSION_ROBOT": 1
+        },
+        "subRoleName": "q4rxX37iUS",
+        "subRoleId": "90415",
+        "switch2Manage": 1
+    }
+}

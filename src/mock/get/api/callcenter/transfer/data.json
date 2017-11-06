@@ -1,0 +1,49 @@
+{
+    "code": 200,
+    "message": "9iqzksSedH",
+    "result": {
+        "kefu": [
+            {
+                "nickname": "H7MuD3OVN3",
+                "id": 1,
+                "status": 1,
+                "username": "MnXCiWTGca",
+                "realname": "rn4RDJ3peX"
+            },
+            {
+                "nickname": "TuOIwHUkur",
+                "id": 1,
+                "status": 1,
+                "username": "C8KarSxht7",
+                "realname": "HkWQyTUT33"
+            },
+            {
+                "nickname": "g2QmBBJLrl",
+                "id": 1,
+                "status": 1,
+                "username": "UVjXsr4Zzt",
+                "realname": "qakslPqQZo"
+            }
+        ],
+        "group": [
+            {
+                "status": 1,
+                "number": 1,
+                "name": "QTkT9mByvl",
+                "id": 65277
+            },
+            {
+                "status": 1,
+                "number": 1,
+                "name": "c92tvTQZdw",
+                "id": 65788
+            },
+            {
+                "status": 1,
+                "number": 1,
+                "name": "hwq9tsiLX1",
+                "id": 66497
+            }
+        ]
+    }
+}

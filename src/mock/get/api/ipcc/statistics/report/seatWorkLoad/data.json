@@ -1,0 +1,40 @@
+{
+    "code": 200,
+    "message": "uMpkFyWAz5",
+    "result": [
+        {
+            "username": "280ZDlXCaF",
+            "callTotal": 51180,
+            "inTotal": 41098,
+            "inAnswered": 7739,
+            "inAnswerRatio": 91785,
+            "outTotal": 74380,
+            "outAnswered": 13396,
+            "outAnsweredRatio": 52100,
+            "satisfiedRatio": 21033
+        },
+        {
+            "username": "dlyp7fpXR1",
+            "callTotal": 65745,
+            "inTotal": 99172,
+            "inAnswered": 66548,
+            "inAnswerRatio": 12394,
+            "outTotal": 89876,
+            "outAnswered": 88200,
+            "outAnsweredRatio": 67761,
+            "satisfiedRatio": 44150
+        },
+        {
+            "username": "mVlPzTecEq",
+            "callTotal": 29703,
+            "inTotal": 31371,
+            "inAnswered": 57700,
+            "inAnswerRatio": 7617,
+            "outTotal": 16219,
+            "outAnswered": 41498,
+            "outAnsweredRatio": 12867,
+            "satisfiedRatio": 87624
+        }
+    ],
+    "total": 40285
+}

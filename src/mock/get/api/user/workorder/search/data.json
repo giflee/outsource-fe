@@ -1,0 +1,225 @@
+{
+    "code": 11172,
+    "message": "PqeCywjvJi",
+    "result": [
+        {
+            "area": "MY8IVM7Uyp",
+            "child_no": "aVr9prSzO8",
+            "cust_name": "ZqJHTdubmn",
+            "cust_no": "4znPV5Bw3R",
+            "dealer_code": "6zqN2xIi7x",
+            "dealer_name": "9DEc67hlHg",
+            "in_date": "1498456724815",
+            "license_no": "NesMPTyYWR",
+            "mileage": -1,
+            "repeat_type": -1,
+            "send_man": "sWjqSaud5a",
+            "send_man_tel": "XkIX3Vh3sB",
+            "service_addr": "hIc8x99mZ7",
+            "service_link_man": "yCpFqjtSxn",
+            "service_link_tel": "zrG78xtyUu",
+            "service_no": "ZcexRimOvU",
+            "use_times": -1,
+            "vin": "4JrS5ShxvI",
+            "workorder_no": "pP7pQlN8cO",
+            "part_details": [
+                {
+                    "amount": 59946,
+                    "cost_type": "OJ8DdnQ1Hn",
+                    "part_name": "HYiwvIFfy4",
+                    "part_no": "6m2rXiRhbx",
+                    "unit_price": 82348
+                },
+                {
+                    "amount": 91054,
+                    "cost_type": "9bOVfZiG6D",
+                    "part_name": "R1AZ2gpcnu",
+                    "part_no": "QTDCNNtH6m",
+                    "unit_price": 84006
+                },
+                {
+                    "amount": 16676,
+                    "cost_type": "E4NHoTrDUJ",
+                    "part_name": "bRXY0tObGI",
+                    "part_no": "OLhZyvog1a",
+                    "unit_price": 34126
+                }
+            ],
+            "item_details": [
+                {
+                    "cost_type": "BRP3qptfTJ",
+                    "item_code": "sEwOcJf413",
+                    "item_name": "ElD1isktXA",
+                    "man_hour": 84155,
+                    "operation_code": "mzUzYEBSfA",
+                    "repair_by": "mzFg6JBguc",
+                    "unit_price": 63527
+                },
+                {
+                    "cost_type": "IvbOPtQDo7",
+                    "item_code": "5XkjVcj6v6",
+                    "item_name": "L7kWcUufj3",
+                    "man_hour": 12146,
+                    "operation_code": "qTtaY4FP98",
+                    "repair_by": "9P3PVxXw8f",
+                    "unit_price": 3675
+                },
+                {
+                    "cost_type": "i4amduLG0T",
+                    "item_code": "TZPlxeMJ3G",
+                    "item_name": "CBVmdQZv8j",
+                    "man_hour": 60953,
+                    "operation_code": "VhxdFOhTkf",
+                    "repair_by": "9ivmtWRPu4",
+                    "unit_price": 32169
+                }
+            ]
+        },
+        {
+            "area": "GrXCRJVx5T",
+            "child_no": "baSgyPTiQ8",
+            "cust_name": "k8cS6mza9b",
+            "cust_no": "3YZtEZka9e",
+            "dealer_code": "FWWMoRN6PX",
+            "dealer_name": "4EA8MlVPHF",
+            "in_date": "1498455410268",
+            "license_no": "g7fBzZAVu7",
+            "mileage": -1,
+            "repeat_type": -1,
+            "send_man": "AE41ErR2ZF",
+            "send_man_tel": "QLyo3dYCoV",
+            "service_addr": "2lQRGOZ1Mt",
+            "service_link_man": "S2Ymkg6dVK",
+            "service_link_tel": "gRQkX3ctTI",
+            "service_no": "bPTMy7LD95",
+            "use_times": -1,
+            "vin": "yipluEykx4",
+            "workorder_no": "Qt3ekxPCuh",
+            "part_details": [
+                {
+                    "amount": 25910,
+                    "cost_type": "Sf4eQ3FKGW",
+                    "part_name": "P0r4HtkShX",
+                    "part_no": "TdOsybttyF",
+                    "unit_price": 91418
+                },
+                {
+                    "amount": 39661,
+                    "cost_type": "EXxPkszFYX",
+                    "part_name": "CNMzGrbqKb",
+                    "part_no": "US2ebEH0Lt",
+                    "unit_price": 52563
+                },
+                {
+                    "amount": 28067,
+                    "cost_type": "72AQV9VCOs",
+                    "part_name": "IP0xSrRYcG",
+                    "part_no": "KDvp2kLbUF",
+                    "unit_price": 330
+                }
+            ],
+            "item_details": [
+                {
+                    "cost_type": "4TJUOldm1p",
+                    "item_code": "haX2yUACxp",
+                    "item_name": "PYkHNzEqI8",
+                    "man_hour": 32189,
+                    "operation_code": "14se93i8lO",
+                    "repair_by": "Yk829RAmS2",
+                    "unit_price": 53683
+                },
+                {
+                    "cost_type": "xI8TMKlnLE",
+                    "item_code": "mmh8ngNW0s",
+                    "item_name": "JVWpMKnlJp",
+                    "man_hour": 17496,
+                    "operation_code": "QKENDUYIzp",
+                    "repair_by": "ggIHsPQIi2",
+                    "unit_price": 55477
+                },
+                {
+                    "cost_type": "g7LgPUKQcm",
+                    "item_code": "3z2osfDXzS",
+                    "item_name": "4M9q3u5WFr",
+                    "man_hour": 78504,
+                    "operation_code": "QHYw0tOuDS",
+                    "repair_by": "ZvxosG1FAz",
+                    "unit_price": 74553
+                }
+            ]
+        },
+        {
+            "area": "wqMcybElJI",
+            "child_no": "ahQkt9TKc3",
+            "cust_name": "QUvEdEcyiX",
+            "cust_no": "wLahOSHQSR",
+            "dealer_code": "JTyvnHLyWa",
+            "dealer_name": "CosmVh6b4I",
+            "in_date": "1498456469897",
+            "license_no": "bUbQO27Mt0",
+            "mileage": -1,
+            "repeat_type": -1,
+            "send_man": "ku1duSZI1t",
+            "send_man_tel": "dzL5QlQFHt",
+            "service_addr": "xabj24AVxK",
+            "service_link_man": "swoUHrxv9z",
+            "service_link_tel": "TdVAlLy5sU",
+            "service_no": "tMjMgw7z60",
+            "use_times": -1,
+            "vin": "m3opBwcauG",
+            "workorder_no": "klwcZYyQN1",
+            "part_details": [
+                {
+                    "amount": 13087,
+                    "cost_type": "bME9BALmWq",
+                    "part_name": "qiPjo7MITE",
+                    "part_no": "rnUAQnOIXf",
+                    "unit_price": 62111
+                },
+                {
+                    "amount": 73975,
+                    "cost_type": "qM3Mj6HOrv",
+                    "part_name": "R2IHg5kI6m",
+                    "part_no": "oRZrEiMJ2F",
+                    "unit_price": 34167
+                },
+                {
+                    "amount": 60810,
+                    "cost_type": "I4BPKJc7N7",
+                    "part_name": "tW8KqyiHzm",
+                    "part_no": "PLfNFkxRGx",
+                    "unit_price": 47956
+                }
+            ],
+            "item_details": [
+                {
+                    "cost_type": "pCjhpKGPpD",
+                    "item_code": "Lm4mM7wTVt",
+                    "item_name": "aUKga79x9d",
+                    "man_hour": 39938,
+                    "operation_code": "qH08bej4dx",
+                    "repair_by": "cPEowrKqbg",
+                    "unit_price": 94934
+                },
+                {
+                    "cost_type": "SgGRZ8YWT3",
+                    "item_code": "W6V6mSnOjD",
+                    "item_name": "mxkpsACjZA",
+                    "man_hour": 91699,
+                    "operation_code": "82OSka6X7k",
+                    "repair_by": "6tpoifhhSS",
+                    "unit_price": 20911
+                },
+                {
+                    "cost_type": "BFHuu7u2CE",
+                    "item_code": "Qh4YQpiUZm",
+                    "item_name": "TgjvS9rrJ5",
+                    "man_hour": 15755,
+                    "operation_code": "gGb7y468DM",
+                    "repair_by": "QuED8rhUvT",
+                    "unit_price": 62602
+                }
+            ]
+        }
+    ]
+}

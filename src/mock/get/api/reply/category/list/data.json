@@ -1,0 +1,30 @@
+{
+    "code": 200,
+    "message": "I2NBJzR5Oa",
+    "result": [
+        {
+            "id": 57348,
+            "name": "BeEiCrK88G",
+            "parent": 74501,
+            "pinyin": "ASYr4lbOR8",
+            "rank": 78915,
+            "feature": 31320
+        },
+        {
+            "id": 58124,
+            "name": "UJhQLvvNVy",
+            "parent": 90069,
+            "pinyin": "rUE0ryNZnr",
+            "rank": 62086,
+            "feature": 25851
+        },
+        {
+            "id": 58893,
+            "name": "sm5NOktDWq",
+            "parent": 21736,
+            "pinyin": "4A8Y6siDjy",
+            "rank": 63139,
+            "feature": 51450
+        }
+    ]
+}

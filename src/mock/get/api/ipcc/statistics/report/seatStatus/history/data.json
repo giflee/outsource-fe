@@ -1,0 +1,28 @@
+{
+    "code": 200,
+    "message": "q1ApIAh63f",
+    "result": [
+        {
+            "username": "otQ33dqA9h",
+            "startTime": 1498455721982,
+            "endTime": 1498454256265,
+            "status": 6021,
+            "duration": 95449
+        },
+        {
+            "username": "VeZJt0XdNj",
+            "startTime": 1498455569694,
+            "endTime": 1498456492726,
+            "status": 3449,
+            "duration": 30508
+        },
+        {
+            "username": "twtUUBf9ji",
+            "startTime": 1498454291011,
+            "endTime": 1498455263423,
+            "status": 24799,
+            "duration": 29539
+        }
+    ],
+    "total": 61192
+}

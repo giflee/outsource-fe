@@ -1,0 +1,60 @@
+{
+    "code": 200,
+    "message": "0FMu68sTgH",
+    "result": {
+        "ivrSwitch": 0,
+        "ivrInfos": [
+            {
+                "key": "#",
+                "name": "二级导航",
+                "action": 0,
+                "children": "数组的默认值不能解析为数组: 0",
+                "id": 56854,
+                "ttstext": "sister欢迎你",
+                "staffGroup": {
+                    "id": 56949,
+                    "name": "Z10h2bGCbA"
+                },
+                "tts": {
+                    "id": 56993,
+                    "name": "oFwRhNZSQS"
+                }
+            },
+            {
+                "key": "#",
+                "name": "二级导航",
+                "action": 0,
+                "children": "数组的默认值不能解析为数组: 0",
+                "id": 57592,
+                "ttstext": "sister欢迎你",
+                "staffGroup": {
+                    "id": 58424,
+                    "name": "UAYeghOkas"
+                },
+                "tts": {
+                    "id": 58694,
+                    "name": "zrZjXY1YcS"
+                }
+            },
+            {
+                "key": "6",
+                "name": "二级导航",
+                "action": 0,
+                "children": "数组的默认值不能解析为数组: 0",
+                "id": 58717,
+                "ttstext": "sister欢迎你",
+                "staffGroup": {
+                    "id": 59017,
+                    "name": "tjE43QcwL9"
+                },
+                "tts": {
+                    "id": 59695,
+                    "name": "DzVjGUER2e"
+                }
+            }
+        ],
+        "ivrName": "第一套IVR",
+        "ivrRules": "1,2,4,7",
+        "ivrId": 1
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "code": 200,
+    "message": "nbZW6HB7SK",
+    "result": [
+        {
+            "username": "Qb5vj9XPOn",
+            "answeredIn": 35510,
+            "outTotal": 66207,
+            "ipccStatus": "0",
+            "onlineDuration": 78077,
+            "relativeSatisfactionRatio": 46337,
+            "groupName": "7yGq5a2PHd",
+            "status": "0",
+            "id": 97586
+        },
+        {
+            "username": "lPTcgLzRhA",
+            "answeredIn": 36358,
+            "outTotal": 97111,
+            "ipccStatus": "1",
+            "onlineDuration": 58323,
+            "relativeSatisfactionRatio": 43015,
+            "groupName": "1sJ0iKCBeU",
+            "status": "5",
+            "id": 98513
+        },
+        {
+            "username": "uDpC4pbLMC",
+            "answeredIn": 69911,
+            "outTotal": 70343,
+            "ipccStatus": "1",
+            "onlineDuration": 51812,
+            "relativeSatisfactionRatio": 70027,
+            "groupName": "VcOuw9qkEb",
+            "status": "4",
+            "id": 99242
+        }
+    ],
+    "total": 18737
+}

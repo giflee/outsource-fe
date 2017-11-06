@@ -1,0 +1,102 @@
+{
+    "code": 200,
+    "message": "pZxHLeQLeV",
+    "result": [
+        {
+            "id": "58294",
+            "name": "IrjmiHqhco",
+            "pinyin": "0Dou8mhqR3",
+            "number": 0,
+            "staffs": [
+                {
+                    "id": 59182,
+                    "nickname": "RQnpJtH1U6",
+                    "pinyin": "AVZXnFzLOz",
+                    "realname": "0TrrsVKlXk",
+                    "role": 76306,
+                    "username": "AqrBqcW6Zp"
+                },
+                {
+                    "id": 59433,
+                    "nickname": "IzsXwJqd0R",
+                    "pinyin": "XoCKgjXqki",
+                    "realname": "3n75yjqnPB",
+                    "role": 41254,
+                    "username": "F7gh2MVXYo"
+                },
+                {
+                    "id": 59584,
+                    "nickname": "FdSPXof8GA",
+                    "pinyin": "ZwwmYJtpXV",
+                    "realname": "198CmuF5lj",
+                    "role": 86686,
+                    "username": "pSvYBNKfHA"
+                }
+            ]
+        },
+        {
+            "id": "60142",
+            "name": "QKxfZD9vX8",
+            "pinyin": "TLF6RMc9Hu",
+            "number": 0,
+            "staffs": [
+                {
+                    "id": 60464,
+                    "nickname": "Xa4u39uhMg",
+                    "pinyin": "c2IlM83Mj1",
+                    "realname": "st7assGHMb",
+                    "role": 7766,
+                    "username": "BNgqxh02Mg"
+                },
+                {
+                    "id": 60764,
+                    "nickname": "d2ONHOZj4O",
+                    "pinyin": "zguhNjX0cL",
+                    "realname": "tXLT0W2fvW",
+                    "role": 44967,
+                    "username": "xPysCruPb6"
+                },
+                {
+                    "id": 60975,
+                    "nickname": "oM2M4ORJif",
+                    "pinyin": "2tMqo35FsD",
+                    "realname": "MGGttjldmb",
+                    "role": 19929,
+                    "username": "zblcuGwFb9"
+                }
+            ]
+        },
+        {
+            "id": "61417",
+            "name": "nXdEmFRUpd",
+            "pinyin": "bobKUuWgqf",
+            "number": 0,
+            "staffs": [
+                {
+                    "id": 61764,
+                    "nickname": "YRGck8Yg22",
+                    "pinyin": "FOxYNdxOqI",
+                    "realname": "yLZkqmNjSA",
+                    "role": 87346,
+                    "username": "uHwLRrAjE5"
+                },
+                {
+                    "id": 62475,
+                    "nickname": "KLcuZD5xHO",
+                    "pinyin": "mVtIAbs3dI",
+                    "realname": "c9K5QxIh6h",
+                    "role": 92099,
+                    "username": "CgC0nWZ9Wy"
+                },
+                {
+                    "id": 63460,
+                    "nickname": "v42veBgXLw",
+                    "pinyin": "kLGEi3OkR6",
+                    "realname": "p8HKXPqxt1",
+                    "role": 9534,
+                    "username": "TksMSyn2Cu"
+                }
+            ]
+        }
+    ]
+}

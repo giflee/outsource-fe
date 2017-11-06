@@ -1,0 +1,51 @@
+{
+    "code": 200,
+    "message": "zeAoiIXGpH",
+    "result": {
+        "standard": "fCGMT5xweD",
+        "similars": [
+            "dNoDKxvYuv",
+            "LmhqVp3BmV",
+            "57fzcWKnzn"
+        ],
+        "internalAnswer": "ffbwmbTNte",
+        "categoryId": 72397,
+        "id": 72961,
+        "relatives": [
+            {
+                "name": "YSHRYU4eiL",
+                "id": 73378
+            },
+            {
+                "name": "4NOCZH50oU",
+                "id": 73957
+            },
+            {
+                "name": "LCIhSYpgOW",
+                "id": 74154
+            }
+        ],
+        "foreignAnswer": "vChjFQRsBm",
+        "parentPoint": {
+            "title": "VfkVXd7hlC",
+            "content": "JhUgpaVc8t",
+            "categoryId": 74311,
+            "id": 74834,
+            "relatives": [
+                {
+                    "name": "7qgd1nN1FS",
+                    "id": 75674
+                },
+                {
+                    "name": "FRZUCyATrk",
+                    "id": 76367
+                },
+                {
+                    "name": "04WKfP30HO",
+                    "id": 77360
+                }
+            ]
+        },
+        "category": "R3YLac5gzg"
+    }
+}

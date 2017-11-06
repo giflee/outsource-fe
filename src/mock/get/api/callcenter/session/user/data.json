@@ -1,0 +1,42 @@
+{
+    "code": 200,
+    "message": "aYJmtlA5ef",
+    "result": [
+        {
+            "id": 123456,
+            "startTime": 1465309835277,
+            "interaction": 0,
+            "category": {
+                "id": 93682,
+                "name": "tQ3gDAB5zn",
+                "parent": 81213,
+                "path": "krCJBomosh"
+            },
+            "sessionType": 1
+        },
+        {
+            "id": 123456,
+            "startTime": 1465309835277,
+            "interaction": 0,
+            "category": {
+                "id": 94509,
+                "name": "oHGdy7XhBm",
+                "parent": 89877,
+                "path": "zVOjm7LVbe"
+            },
+            "sessionType": 1
+        },
+        {
+            "id": 123456,
+            "startTime": 1465309835277,
+            "interaction": 0,
+            "category": {
+                "id": 95201,
+                "name": "BKXboII6d8",
+                "parent": 55428,
+                "path": "0wW5tTZi5X"
+            },
+            "sessionType": 1
+        }
+    ]
+}
