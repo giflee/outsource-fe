@@ -63,6 +63,14 @@
         <br>
         <el-button plain @click="get6">get</el-button>
         <el-button plain @click="clear6">clear</el-button>
+<!--         <p>{{mockData}}</p>
+ -->        
+ <ul
+          v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="loading"
+          infinite-scroll-distance="10">
+          <li v-for="item in list">{{ item.time }} {{ item.name }}  {{ item.status }}</li>
+        </ul>
     </div>
 </template>
 
@@ -98,12 +106,28 @@
             }
           }]
         },
-        value2: ''
+        value2: '',
+        mockData: '',
+        topStatus: '',
+        list: [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+          ]
         }
       },
+    created: function(){
+      // this.getList();
+    },
     methods: {
       gogogo () {
         location.assign('../customer/home.html')
+      },
+      created() {
+        // this.getList();
       },
       tototo () {
         location.assign('../user/login.html')
@@ -140,18 +164,34 @@
 
       get6() {
         var _$$this = this;
-        this.$http.get('/api/cn_goods').then((ret => {
+        this.$http.get('/api/session/get').then((ret => {
             console.log(ret);
-            _$$this.$data.tableData = ret.body;
+            _$$this.$data.mockData = ret.body;
         }, (err) => {
             console.log(err);
-            _$$this.$data.tableData = err.body;
+            _$$this.$data.mockData = err.body;
         }))
       },
 
       clear6() {
         var _$$this = this;
         _$$this.$data.tableData = [];
+      },
+      loadMore() {
+        this.loading = true;
+        setTimeout(() => {
+          let last = this.list[this.list.length - 1];
+          for (let i = 1; i <= 10; i++) {
+            this.list.push(last + i);
+          }
+          this.loading = false;
+        }, 1500);
+      },
+      getList() {
+        this.$http.get('/robot/api/question/list').then((_ret => {
+          console.log(_ret);
+          this.$data.list = _ret.body.result;
+        }))
       }
     }
   }
