@@ -81,15 +81,17 @@
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
-					<el-form-item>
-						<el-input
-						type="textarea"
-						:autosize="{ minRows: 2, maxRows: 4}"
-						placeholder="其他建议或意见"
-						:disabled="!detailsData.canEvaluate"
-						v-model="advValue">
-						</el-input>
-					</el-form-item>
+					<el-row>
+						<el-col :span="6">
+							<el-input
+							type="textarea"
+							:autosize="{ minRows: 2, maxRows: 4}"
+							placeholder="其他建议或意见"
+							:disabled="!detailsData.canEvaluate"
+							v-model="advValue">
+							</el-input>
+						</el-col>
+					</el-row>
 					<el-row>
 						<el-col :span="6">
 							<el-button
