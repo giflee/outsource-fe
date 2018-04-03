@@ -65,13 +65,13 @@
 				<el-form class="f-evaluate">
 					<el-form-item :label="detailsData.custom[0] && detailsData.custom[0].name">
 						<el-rate 
-						v-model="resValue" 
+						v-model="effValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
 					<el-form-item :label="detailsData.custom[1] && detailsData.custom[1].name">
 						<el-rate 
-						v-model="effValue" 
+						v-model="resValue" 
 						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
 						</el-rate>
 					</el-form-item>
