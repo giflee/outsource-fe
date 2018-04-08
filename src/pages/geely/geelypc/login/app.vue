@@ -9,7 +9,7 @@
 		<div class="m-query">
 			<el-row>
 			<el-tabs v-model="activeName" @tab-click="selectTab" type="border-card">
-				<el-tab-pane label="工单查询" name="first">
+				<!-- <el-tab-pane label="工单查询" name="first">
 					<el-row :gutter="20">
 						<el-col :span="24">
 							<el-input v-model="worksheetno" @input.native="checkWorksheetno" placeholder="请输入工单号码" 
@@ -20,8 +20,8 @@
 						<span class="tips">输入工单号有误</span>
 					</el-row>
 					<el-button type="primary" @click="worksheetQuery" class="m-btn">工单查询</el-button>
-				</el-tab-pane>
-				<el-tab-pane label="手机号查询" name="second">
+				</el-tab-pane> -->
+				<el-tab-pane label="手机号查询" name="first">
 					<el-row :gutter="20">
 						<el-col :span="24">
 							<el-input placeholder="请输入手机号码" v-model="mobile" @input.native="checkMobile" :maxlength="11"></el-input>
@@ -253,6 +253,7 @@
 	.el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active{
 		background-color: #d1dbe5;
 		border-bottom: 5px solid #2c6fa0;
+		width: 100%;
 	}
 	.el-tabs--border-card > .el-tabs__content{
 		padding: 0;

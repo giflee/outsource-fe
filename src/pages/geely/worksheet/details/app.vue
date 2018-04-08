@@ -63,24 +63,24 @@
 		<el-form>
 			<el-form-item label="工单评价">
 				<el-form class="f-evaluate">
-					<el-form-item :label="detailsData.custom[0] && detailsData.custom[0].name">
+					<div v-for="(item, index) in detailsData.custom">
+						<el-form-item :label="item.name" v-if="index < 3">
 						<el-rate 
-						v-model="effValue" 
-						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
-						</el-rate>
-					</el-form-item>
-					<el-form-item :label="detailsData.custom[1] && detailsData.custom[1].name">
+							v-model="resValue" 
+							:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate" v-if="item.name.indexOf('处理结果') > -1">
+							</el-rate>
+
 						<el-rate 
-						v-model="resValue" 
-						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
-						</el-rate>
-					</el-form-item>
-					<el-form-item :label="detailsData.custom[2] && detailsData.custom[2].name">
+							v-model="attValue" 
+							:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate" v-if="item.name.indexOf('服务态度') > -1">
+							</el-rate>
+							
 						<el-rate 
-						v-model="attValue" 
-						:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate">
-						</el-rate>
-					</el-form-item>
+							v-model="effValue" 
+							:colors="['#99A9BF', '#F7BA2A', '#FF9900']" :disabled="!detailsData.canEvaluate" v-if="item.name.indexOf('处理时效') > -1">
+							</el-rate>
+						</el-form-item>
+					</div>
 					<el-row>
 						<el-col :span="6">
 							<el-input
