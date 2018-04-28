@@ -17,7 +17,10 @@
 				<span>{{ruleForm.dealer_name}}</span>
 			</el-form-item>
 			<el-form-item label="意向车型" prop="inten_model">
-				<el-input v-model.trim="ruleForm.inten_model" @blur="save()"></el-input>
+				<!-- <el-input v-model.trim="ruleForm.inten_model" @blur="save()"></el-input> -->
+				<el-select v-model="inten_model_arr" multiple collapse-tags placeholder="请选择意向车型">
+					<el-option v-for="item in inten_model_options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+				</el-select>
 			</el-form-item>
 			<el-form-item label="其他意向车型" prop="inten_model_remark">
 				<span>{{ruleForm.inten_model_remark}}</span>
@@ -582,7 +585,32 @@
 						    "黑河市",
 						    "齐齐哈尔市"
 						  ]
-						}
+						},
+				inten_model_options: [
+					{"value": "五菱之光","label": "五菱之光"},
+					{"value": "五菱荣光","label": "五菱荣光"},
+					{"value": "五菱宏光S","label": "五菱宏光S"},
+					{"value": "五菱鸿途","label": "五菱鸿途"},
+					{"value": "乐驰","label": "乐驰"},
+					{"value": "五菱宏光","label": "五菱宏光"},
+					{"value": "宝骏630","label": "宝骏630"},
+					{"value": "五菱宏光S1","label": "五菱宏光S1"},
+					{"value": "宝骏610","label": "宝骏610"},
+					{"value": "宝骏730","label": "宝骏730"},
+					{"value": "五菱征程","label": "五菱征程"},
+					{"value": "五菱荣光V","label": "五菱荣光V"},
+					{"value": "宝骏560","label": "宝骏560"},
+					{"value": "宝骏330","label": "宝骏330"},
+					{"value": "宝骏310","label": "宝骏310"},
+					{"value": "五菱之光V","label": "五菱之光V"},
+					{"value": "宝骏E100","label": "宝骏E100"},
+					{"value": "宝骏510","label": "宝骏510"},
+					{"value": "宝骏310W","label": "宝骏310W"},
+					{"value": "五菱宏光S3","label": "五菱宏光S3"},
+					{"value": "宝骏530","label": "宝骏530"},
+					{"value": "宝骏360","label": "宝骏360"}
+				],
+				inten_model_arr: []
 
 			}
 		},
@@ -622,6 +650,12 @@
 						if (_$$this.$data.ruleForm.predict_buy_date) {
 							_$$this.$data.ruleForm.predict_buy_date = moment(_$$this.$data.ruleForm.predict_buy_date,"YYYYMMDDHHmmss").format('YYYY-MM-DD');
 						}
+
+						// 意向车型格式化
+						if (_$$this.$data.ruleForm.inten_model) {
+							// 有逗号，可能是新版本多选的形式
+							_$$this.$data.inten_model_arr = _$$this.$data.ruleForm.inten_model.split(',');
+						}
 					}
 				}).catch((_err) => {
 					console.log(_err);
@@ -641,6 +675,10 @@
 				var filter = {
 					predict_buy_date: ''
 				}
+
+				// format param
+				this.formatParam();
+
 				_.merge(filter, _$$this.$data.ruleForm, true);
 				_.forIn(filter, function(value, key){
 					if (value && (key == 'predict_buy_date')) {
@@ -693,6 +731,11 @@
 						this.$data.ruleForm.city = this.$data.cityArr[province][0];
 					}
 				}
+			},
+			formatParam(){
+				if (this.$data.inten_model_arr && this.$data.inten_model_arr.length) {
+					this.$data.ruleForm.inten_model = this.$data.inten_model_arr.join(',');
+				}
 			}
 		}
 	}
@@ -713,6 +756,9 @@
 		padding-bottom: 56px;
 	}
 	.u-maxwidth-btn{
+		width: 100%;
+	}
+	.el-select{
 		width: 100%;
 	}
 </style>
