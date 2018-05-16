@@ -129,10 +129,10 @@
 			checkMobile() {
 				this.$data.phoneCheckResult = false;
 				var partten1 = /^1$/;
-				var partten2 = /^1[3|4|5|7|8]$/;
-				var partten3 = /^1[3|4|5|7|8]\d*\d$/;
+				var partten2 = /^1\d*\d$/;
+				//只校验是不是1开头的手机号
 				if(this.$data.mobile != ""){
-					if (partten1.test(this.$data.mobile) || partten2.test(this.$data.mobile) || partten3.test(this.$data.mobile)){
+					if (partten1.test(this.$data.mobile) || partten2.test(this.$data.mobile)){
 					this.$data.phoneCheckResult = false;
 					}else{
 						this.$data.phoneCheckResult = true;
