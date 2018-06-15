@@ -6,7 +6,7 @@
             <p class="error" v-if="!!message">{{message}}</p>
        </header>
        <article class="m-tracelist">
-            <p class="warn" v-if="!!warn">{{warn}}</p>
+          <p class="warn" v-if="!!warn">{{warn}}</p>
            <ul>
                <li v-for="trace in traces">
                    <p>【{{trace.city}}】
@@ -147,7 +147,15 @@
         font-family: MicrosoftYaHei;
     }
     .m-trace{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         header{
+            height:47px;
             padding:10px;
             display:flex;
             position: relative;
@@ -157,6 +165,7 @@
                 }
             }
             .btn{
+                height: 36px;
                 width:100px;
                 border-radius: 0 4px 4px 0;
             }
@@ -176,6 +185,7 @@
         }
     }
     .m-tracelist{
+        overflow:auto;
         ul{
             margin:12px;
             border-left:solid 2px #ccc;
