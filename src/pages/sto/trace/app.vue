@@ -9,18 +9,16 @@
           <p class="warn" v-if="!!warn">{{warn}}</p>
            <ul>
                <li v-for="trace in traces">
-                   <p>【{{trace.city}}】
-                       {{trace.facilityName}}
-                       &nbsp;&nbsp;{{trace.detailDesc}}
-                       &nbsp;&nbsp;{{trace.action}}人：{{trace.contacter}}
-                        <span v-if="trace.contactPhone">
-                            &nbsp;&nbsp;电话：{{trace.contactPhone}}
+                   <p>【{{trace.UploadSiteName}}】
+                        {{trace.Memo}}
+                        <span v-if="trace.ScanType=='派件'">派件人：{{trace.EmployeeName}}
+                            <span v-if="trace.EmployeeMobile">
+                                &nbsp;&nbsp;电话：{{trace.EmployeeMobile}}
+                            </span>
                         </span>
-                        <span v-else>
-                        </span>
+                        <span v-if="trace.PreOrNext"> &nbsp;&nbsp;<span v-if="trace._isPrev">上一个站点</span><span v-else>下一个站点</span>：{{trace.PreOrNext}}</span>
                     </p>
-                    <p v-if="trace.nextNodeName">下一个站点：{{trace.nextNodeName}}</p>
-                    <p class="time">{{trace.timeStr}}</p>
+                    <p class="time">{{trace.UploadDate}}</p>
                </li>
            </ul>
        </article>
@@ -96,13 +94,14 @@
             },
             //根据运单号获取物流信息跟踪记录列表
             getTraceList(orderCode){
-                this.$http.get('/sto/api/searchTrace', {
+                this.$http.get('/sto/api/ExpressTrackByBillcode', {
                     searchInput: orderCode,
-                }).then((json) => {console.log(res);
+                }).then((json) => {console.log(json);
                     var res=json.body;
-                    if (res.responseState<2) {
-                        if(res.responseItems&&res.responseItems.length){
-                            this.traces = (res.responseItems[0].traces||[]).reverse();
+                    if (res.code==200) {
+                        if(res.Data&&res.Data.length){
+                            var _traces = (res.Data[0].ScanList||[]).reverse();
+                            this.traces=_traces;
                             if(this.traces.length<1){
                                 this.warn="查无快件记录";
                             }
@@ -127,6 +126,9 @@
                 if (!key) {
                     this.message = "请输入运单号";return;
                 }
+                // if(/[~!\^\:"\<\>\?,/\\{\}\|`';]/.test(key)){
+                //     this.message = "输入的运单号存在不合法字符";return;
+                // }
                 //this.traces=_res.responseItems[0].traces;
                 this.getTraceList(key);
                 if(sessionId){
@@ -178,7 +180,7 @@
             }
             .error{
                 position:absolute;
-                bottom:-20px;
+                bottom:-12px;
                 color:#f00;
                 font-size: 12px;
             }
@@ -187,7 +189,7 @@
     .m-tracelist{
         overflow:auto;
         ul{
-            margin:12px;
+            margin:12px;margin-top:0;
             border-left:solid 2px #ccc;
             li{
                 font-size:16px;
