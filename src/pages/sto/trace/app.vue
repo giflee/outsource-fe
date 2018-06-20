@@ -97,8 +97,8 @@
                 this.$http.get('/sto/api/ExpressTrackByBillcode?billcode='+orderCode).then((json) => {
                     var res=json.body;
                     if (res.code==200) {
-                        if(res.Data&&res.Data.length){
-                            var _traces = (res.Data[0].ScanList||[]).reverse();
+                        if(res.result&&res.result.Data&&res.result.Data.length){
+                            var _traces = (res.result.Data[0].ScanList||[]).reverse();
                             this.traces=_traces;
                             if(this.traces.length<1){
                                 this.warn="查无快件记录";
