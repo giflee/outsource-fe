@@ -104,12 +104,15 @@
                                 this.warn="查无快件记录";
                             }
                         }else{
+                            this.traces=[];
                             this.warn="查无快件记录";
                         }
                     } else {
+                        this.traces=[];
                         this.message=res.message || '未知错误';
                     }
                 }).catch((_err) => {
+                    this.traces=[];
                     this.message=_err.message || '未知错误';
                 })
             },
