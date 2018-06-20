@@ -94,9 +94,7 @@
             },
             //根据运单号获取物流信息跟踪记录列表
             getTraceList(orderCode){
-                this.$http.get('/sto/api/ExpressTrackByBillcode', {
-                    billcode: orderCode,
-                }).then((json) => {console.log(json);
+                this.$http.get('/sto/api/ExpressTrackByBillcode?billcode='+orderCode).then((json) => {
                     var res=json.body;
                     if (res.code==200) {
                         if(res.Data&&res.Data.length){
