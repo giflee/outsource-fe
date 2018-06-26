@@ -2,7 +2,7 @@
 	<div id="app">
 		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px">
 			<el-form-item label="客户姓名" prop="cust_name">
-				<el-input v-model.trim="ruleForm.cust_name" @blur="save()"></el-input>
+				<el-input v-model.trim="ruleForm.cust_name"></el-input>
 			</el-form-item>
 			<el-form-item label="客户热度" prop="cust_hot">
 				<span>{{ruleForm.cust_hot}}</span>
@@ -17,7 +17,7 @@
 				<span>{{ruleForm.dealer_name}}</span>
 			</el-form-item>
 			<el-form-item label="意向车型" prop="inten_model">
-				<!-- <el-input v-model.trim="ruleForm.inten_model" @blur="save()"></el-input> -->
+				<!-- <el-input v-model.trim="ruleForm.inten_model"></el-input> -->
 				<el-select v-model="inten_model_arr" multiple collapse-tags placeholder="请选择意向车型">
 					<el-option v-for="item in inten_model_options" :key="item.value" :label="item.label" :value="item.value"></el-option>
 				</el-select>
@@ -46,29 +46,32 @@
 				</el-date-picker>
 			</el-form-item>
 			<el-form-item label="省份" prop="provinceArr">
-				<!-- <el-input v-model.trim="ruleForm.province" @blur="save()"></el-input> -->
+				<!-- <el-input v-model.trim="ruleForm.province"></el-input> -->
 				<el-select v-model="ruleForm.province" placeholder="请选择省份" @visible-change="changeTypeProvince">
 					<el-option :label="item" :value="item" v-for="item in provinceArr"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="城市" prop="city">
-				<!-- <el-input v-model.trim="ruleForm.city" @blur="save()"></el-input> -->	
+				<!-- <el-input v-model.trim="ruleForm.city"></el-input> -->	
 				<el-select v-model="ruleForm.city" placeholder="请选择城市" @visible-change="changeType">
 					<el-option :label="item" :value="item" v-for="item in cityArr[ruleForm.province]"></el-option>
 				</el-select>
 			</el-form-item>
 			<el-form-item label="备注" prop="remark">
-			    <el-input type="textarea" v-model.trim="ruleForm.remark" @blur="save()"></el-input>
+			    <el-input type="textarea" v-model.trim="ruleForm.remark"></el-input>
 			</el-form-item>
 			<el-form-item label="备注1" prop="remark_one">
-			    <el-input type="textarea" v-model.trim="ruleForm.remark_one" @blur="save()"></el-input>
+			    <el-input type="textarea" v-model.trim="ruleForm.remark_one"></el-input>
 			</el-form-item>
 			<el-form-item label="备注2" prop="remark_two">
-			    <el-input type="textarea" v-model.trim="ruleForm.remark_two" @blur="save()"></el-input>
+			    <el-input type="textarea" v-model.trim="ruleForm.remark_two"></el-input>
 			</el-form-item>
 		</el-form>
 		<el-row class="m-fix-btn">
-			<el-col :span="6" :offset="9">
+			<el-col :span="6" :offset="4">
+				<el-button type="primary" @click="save()" class="u-maxwidth-btn">保存</el-button>
+			</el-col>
+			<el-col :span="6" :offset="6">
 				<el-button type="primary" @click="save(true)" class="u-maxwidth-btn">提交</el-button>
 			</el-col>
 		</el-row>
